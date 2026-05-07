@@ -71,6 +71,20 @@ Results — confirming or refuting — get published here.
 
 A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation extraction.
 
+### Tracked through [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)
+
+The project's central bets are registered as falsifiable assumptions in the [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas) decision ledger — the sibling project built for exactly this shape of work. Each assumption carries a falsifier and a resolution criterion; multi-model AI council dissent is logged at registration; outcomes (confirm / refute) propagate to dependent claims when experiments resolve.
+
+The currently tracked assumptions:
+
+1. **Self-reported (x,y,z) coordinates correspond to actual activation geometry**, not interpretability-discourse priors. *Falsifier:* TransformerLens activation extraction + adversarial controls described above.
+2. **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** *Falsifier:* ≥20% precision@5 lift on 30 blind cross-domain queries vs Voyage-3 + LLM rerank.
+3. **Coordinate stability across runs is measurement-grade**, not stable narrative priors. *Falsifier:* adversarial replication with false anchors and synthetic concept domains.
+4. **Manifold proximity outperforms bridge-tension** (high embedding distance × high relational similarity) on cross-domain bridges. *Falsifier:* head-to-head on the same query corpus.
+5. **Human-rated bridge value is not explained by generic embedding similarity + LLM rationale generation.** *Falsifier:* baseline 2 above — if raters prefer rationale-augmented embeddings at equal or higher rates, the manifold effect is presentation, not retrieval.
+
+If 5 refutes, the project pivots — and the public pivot post is the launch. Watching your own thesis fail in the open is the strongest brand outcome the bet can produce.
+
 ---
 
 ## Theoretical Foundation
