@@ -12,6 +12,19 @@ This repo is an in-progress experiment to test whether geodesic proximity beats 
 
 ---
 
+## How this slots in
+
+Flywheel Geometry is an **extension library for [flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — the local-first MCP server that turns an Obsidian vault into safe AI memory. Today flywheel-memory ships hybrid BM25 + semantic search via Reciprocal Rank Fusion. Flywheel Geometry tests a third retrieval mode: geodesic proximity on the manifold the model already encodes. If the experiment lands, it ships as an optional index layer alongside cosine — same MCP surface, an extra search axis.
+
+Part of the [Flywheel](https://github.com/velvetmonkey) suite:
+
+- **[flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — local-first MCP server, hybrid search, knowledge graph (this repo's host)
+- **[flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)** — Obsidian plugin: graph sidebar, vault health, semantic search UI
+- **[flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)** — falsifiable decision ledger with multi-model AI council dissent
+- **flywheel-geometry** *(this repo)* — geodesic retrieval, in-progress
+
+---
+
 ## The Problem
 
 Standard retrieval measures cosine similarity between embedding vectors — linear distance in high-dimensional space. But concepts aren't encoded linearly. Neural networks encode meaning as curved manifolds: hue wheels, temporal spirals, helices, emotional circumplexes.
@@ -95,9 +108,10 @@ A separate falsifier targets the introspective probe itself: extract activations
 - Cross-domain surfacing as primary retrieval mode
 - Hallucination-resistant retrieval via probe-based confidence signals
 
-**Phase 4 — Product**
-- Manifold-aware search as a layer over any knowledge base
-- Open source geometry-respecting manifold capture tool
+**Phase 4 — Ship inside flywheel-memory**
+- Geodesic retrieval as an optional index layer alongside BM25 + semantic
+- New `search(action: query, mode: "geodesic")` discriminator on the existing MCP surface
+- Vault topology visualisation surfaced through [flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)
 - The SAE alternative Goodfire named but hasn't built
 
 See [`benchmark/`](./benchmark/) for the empirical plan.
@@ -128,7 +142,3 @@ This work builds on, does not extend, the underlying interpretability research. 
 Research stage. Pre-implementation. Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Empirical experiment runs week of 2026-05-19; results land by 2026-05-26.
 
 Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
-
----
-
-*Part of the [Flywheel](https://github.com/velvetmonkey) ecosystem.*
