@@ -1,14 +1,14 @@
-# Flywheel Geometry
+<div align="center">
+  <img src="header.png" alt="Flywheel" width="256"/>
+  <h1>Flywheel Geometry</h1>
+  <p><strong>Geodesic retrieval for personal vaults.</strong></p>
+</div>
 
-> *Your second brain, but you can see its shape.*
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
 
-Most knowledge tools treat your notes as a flat list of words. Search finds keywords. Graphs show links. But meaning isn't flat — it has shape.
+Nobody designed the hexagon into a snowflake — the physics doesn't permit anything else. Recent interpretability work shows neural networks across architectures encode meaning on curved manifolds: helices, circumplexes, shells ([Lubana et al., 2025–2026](https://www.youtube.com/watch?v=F9eEYWX64ZA); [@slashreboot, 2026](https://doi.org/10.5281/ZENODO.18176077)). Different architectures, different training data, similar internal geometry. Cosine similarity cuts through the void between those shapes. Geodesic retrieval follows the curve.
 
-Neural networks trained on different data, different architectures, by different teams keep converging on the same internal geometry. That geometry isn't a property of the network. It propagates from the world through human perception, through language, through training data, into activations. It belongs to the bottom of that chain: reality itself.
-
-Current embedding-based retrieval (cosine similarity on flat vectors) is leaving most of that signal on the table.
-
-**Flywheel Geometry** maps your personal knowledge onto the manifold. It finds connections you couldn't have found yourself.
+This repo is an in-progress experiment to test whether geodesic proximity beats cosine on cross-domain bridge-finding for personal knowledge bases.
 
 ---
 
@@ -24,21 +24,11 @@ Sparse autoencoders (SAEs) tile the manifold into fragments. They shatter the he
 
 ## The Solution
 
-Flywheel Geometry captures **manifold coordinates** for each note — not just embedding vectors. Geometric position in the model's actual semantic space. Then queries by geodesic proximity: distance *along the curve*, not across the void.
+Flywheel Geometry captures **manifold coordinates** for each note — not just embedding vectors. Geometric position in the model's representational space. Then queries by geodesic proximity: distance *along the curve*, not across the void.
 
-**The killer feature:** cross-domain bridge finding. Notes from entirely different domains — horse training, AI architecture, finance, philosophy — that are geometrically adjacent surface automatically. No shared keywords. No explicit links. Just semantic proximity in the space where meaning actually lives.
+The bet: cross-domain bridge finding. Notes from different domains — horse training, AI architecture, finance, philosophy — that are geometrically adjacent surface together. No shared keywords. No explicit links. Just proximity on the manifold the model already encodes.
 
----
-
-## Theoretical Foundation
-
-- **Cross-architecture convergence** — Gemma, Llama, GPT independently develop identical geometric structures (hue wheels, temporal helices, emotional circumplexes) without coordination. The geometry isn't in the network. It's in the world. *([Matthew (@slashreboot)](https://x.com/slashreboot), Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in LLMs, Jan 2026 — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077))*
-
-- **Geometry = behavior** — Representation geometry is a direct reflection of data statistics and model beliefs. To control behavior you must respect the geometry. Geodesic paths stay on the manifold; linear paths enter the void. *([Ekdeep Singh Lubana (@EkdeepL)](https://x.com/EkdeepL) et al., [Goodfire AI (@GoodfireAI)](https://x.com/GoodfireAI), 2025–2026 — [talk](https://www.youtube.com/watch?v=F9eEYWX64ZA))*
-
-- **Marr's three levels** — Behavior, algorithms, and representations are reflections of each other because the model learned the world's distribution. The geometry propagates upward from reality through all three levels. *(David Marr, Vision, 1982)*
-
-- **The tool gap** — *"We will probably need tools which can capture these geometries in a general fashion — something like a SAE but which respects nonlinear geometry."* *(Ekdeep Singh Lubana, Goodfire AI, 2026)*
+Whether this actually beats strong embedding retrieval is an open empirical question. See **How we'll know this works** below.
 
 ---
 
@@ -55,18 +45,45 @@ Query by geodesic proximity on the manifold, not cosine similarity on flat vecto
 
 ---
 
+## How we'll know this works
+
+We're not assuming geodesic retrieval beats cosine — we're testing it. On a held-out set of 30 cross-domain queries against a 500-note vault, blind-rated top-5 results need to show ≥20% precision gain over **two** baselines:
+
+1. Voyage-3 + LLM rerank.
+2. Voyage-3 + LLM rerank where the LLM is allowed to generate bridge rationales for each candidate.
+
+The second baseline is the one that distinguishes retrieval from presentation. If raters prefer rationale-augmented embeddings at equal or higher rates, the manifold "effect" is the LLM explaining adjacency, not the geometry surfacing it.
+
+**Experiment runs week of 2026-05-19. Results — confirming or refuting — published here by 2026-05-26 regardless of outcome.**
+
+A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation extraction.
+
+---
+
+## Theoretical Foundation
+
+- **Cross-architecture convergence** — Gemma, Llama, and GPT independently develop similar geometric structures (hue wheels, temporal helices, emotional circumplexes). *([Matthew (@slashreboot)](https://x.com/slashreboot), *Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in LLMs*, Jan 2026 — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077))*
+
+- **Geometry = behavior** — Representation geometry is a direct reflection of data statistics and model beliefs. To control behavior you must respect the geometry. Geodesic paths stay on the manifold; linear paths enter the void. *([Ekdeep Singh Lubana (@EkdeepL)](https://x.com/EkdeepL) et al., [Goodfire AI (@GoodfireAI)](https://x.com/GoodfireAI), 2025–2026 — [talk](https://www.youtube.com/watch?v=F9eEYWX64ZA))*
+
+- **Marr's three levels** — Behavior, algorithms, and representations are reflections of each other because the model learned the world's distribution. *(David Marr, *Vision*, 1982)*
+
+- **The tool gap** — *"We will probably need tools which can capture these geometries in a general fashion — something like a SAE but which respects nonlinear geometry."* *(Ekdeep Singh Lubana, Goodfire AI, 2026)*
+
+---
+
 ## Roadmap
 
 **Phase 0 — Research & Validation**
 - Replicate Matthew's zero-shot geometric probing on sample vault content
-- Validate coordinate stability across runs
+- Validate coordinate stability across runs and adversarial prompting
 - Implement counterfactual pair generation + DAS causal filter
 - Compare manifold proximity vs cosine similarity — identify divergence points
 
 **Phase 1 — Proof of Concept**
 - Build manifold coordinate store alongside standard embeddings
 - Implement geodesic proximity query layer
-- Validate cross-domain bridge finding on real vault content
+- Validate (or refute) cross-domain bridge finding on real vault content
 
 **Phase 2 — Manifold Index**
 - Full vault indexing with manifold coordinates
@@ -83,6 +100,8 @@ Query by geodesic proximity on the manifold, not cosine similarity on flat vecto
 - Open source geometry-respecting manifold capture tool
 - The SAE alternative Goodfire named but hasn't built
 
+See [`benchmark/`](./benchmark/) for the empirical plan.
+
 ---
 
 ## Key References
@@ -92,17 +111,23 @@ Query by geodesic proximity on the manifold, not cosine similarity on flat vecto
 - Ekdeep Singh Lubana et al. — nonlinear geometry + geodesic steering (Goodfire AI, upcoming 2026)
 - Matthew (@slashreboot) — *Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in Large Language Models* — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077) (Jan 2026)
 - Yasaman Bahri et al. — theoretical prediction of geometry from data statistics
-- Adakus Geiger et al. — causal abstraction / DAS framework (Goodfire AI)
+- Atticus Geiger et al. — causal abstraction / DAS framework (Goodfire AI)
 - Goodfire AI — *[The World Inside Neural Networks](https://www.goodfire.ai/research/the-world-inside-neural-networks)* (2025)
 - David Marr — *Vision* (1982)
 
 ---
 
+## Credit & Collaboration
+
+This work builds on, does not extend, the underlying interpretability research. We are applying findings from Goodfire AI ([@EkdeepL](https://x.com/EkdeepL), [@GoodfireAI](https://x.com/GoodfireAI), [@thomas_fel_](https://x.com/thomas_fel_)) and [Matthew (@slashreboot)](https://x.com/slashreboot) to personal knowledge retrieval. Coauthorship on derivative academic work belongs upstream.
+
+---
+
 ## Status
 
-Research stage. No implementation yet. Concept captured 7 May 2026 following Goodfire's neural geometry research drop and conversations with researchers in the space.
+Research stage. Pre-implementation. Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Empirical experiment runs week of 2026-05-19; results land by 2026-05-26.
 
-Interested in collaborating or following progress? Open an [issue](../../issues) or reach out.
+Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
 
 ---
 
