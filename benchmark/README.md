@@ -2,7 +2,7 @@
 
 Open benchmark for cross-domain semantic bridge retrieval in personal knowledge bases.
 
-**Status:** stub. First run shipping week of 2026-05-19 alongside `flywheel-geometry` v0.2.
+**Status:** stub. First run shipping with `flywheel-geometry` v0.2.
 
 ## The question
 

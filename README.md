@@ -67,7 +67,7 @@ We're not assuming geodesic retrieval beats cosine — we're testing it. On a he
 
 The second baseline is the one that distinguishes retrieval from presentation. If raters prefer rationale-augmented embeddings at equal or higher rates, the manifold "effect" is the LLM explaining adjacency, not the geometry surfacing it.
 
-**Experiment runs week of 2026-05-19. Results — confirming or refuting — published here by 2026-05-26 regardless of outcome.**
+Results — confirming or refuting — get published here.
 
 A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation extraction.
 
@@ -139,6 +139,6 @@ This work builds on, does not extend, the underlying interpretability research. 
 
 ## Status
 
-Research stage. Pre-implementation. Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Empirical experiment runs week of 2026-05-19; results land by 2026-05-26.
+Research stage. Pre-implementation. Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive).
 
 Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
