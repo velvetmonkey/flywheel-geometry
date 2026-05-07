@@ -44,5 +44,3 @@ The framing draws on:
 - Matthew (@slashreboot)'s zero-shot introspective probe ([Zenodo, Jan 2026](https://doi.org/10.5281/ZENODO.18176077))
 - David Marr's three levels of analysis (*Vision*, 1982)
 - Snowflake hexagonal symmetry as the canonical example of physics constraining structure independently of designer intent
-
-A separate piece of public conversation drew speculative connections to Christopher Langan's Cognitive-Theoretic Model of the Universe. That connection is held outside this repo's scope; it is not load-bearing on any empirical claim made here.
