@@ -98,7 +98,7 @@ If `asm-3zmj1VGB` refutes, the project pivots a second time — and the public p
 
 ## Theoretical Foundation
 
-- **Cross-architecture convergence** — Gemma, Llama, and GPT independently develop similar geometric structures (hue wheels, temporal helices, emotional circumplexes). *([Matthew (@slashreboot)](https://x.com/slashreboot), *Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in LLMs*, Jan 2026 — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077))*
+- **Cross-architecture convergence on self-reported coordinates** — Gemma, Llama, and GPT independently produce similar `(x, y, z)` outputs when prompted to introspect on the same concept (hue wheels, temporal helices, emotional circumplexes). *([Matthew (@slashreboot)](https://x.com/slashreboot), *Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in LLMs*, Jan 2026 — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077))*. **What this project's 2026-05-08 cheap-probe sweep replicated and what it did NOT**: we reproduced the *surface artifact* — different models output convergent coordinates on identical prompts — but the published reasoning traces (and our adversarial sweep, see [`docs/v0.1-pivot.md`](./docs/v0.1-pivot.md)) show the mechanism is **shared training-data priors** (PAD valence/arousal, Russell circumplex, colour-wheel framings from psychology textbooks), not shared internal geometry. The convergence is real; the interpretation that it reads activation manifolds is not. Method 6 (residual-stream kNN via TransformerLens) is the path that would read activation manifolds directly.
 
 - **Cross-modality convergence on physical reality** — Edamadaka, Yang, Li, Gómez-Bombarelli (MIT), *Universally Converging Representations of Matter Across Scientific Foundation Models* — [arXiv:2512.03750](https://arxiv.org/abs/2512.03750) (Dec 2025). ~60 foundation models across string-, graph-, 3D-atomistic, protein, and LLM architectures converge on shared representations of matter without coordinated training. Better-performing models converge more strongly; weaker ones scatter to architecture-specific manifolds. The strongest available evidence that the geometry is a property of the territory, not the map.
 
@@ -176,6 +176,19 @@ This work builds on, does not extend, the underlying interpretability research. 
 ## Status
 
 **v0.1 in flight, three of four kill-product-floor rows on the leaderboard.** Cheap-probe Phase 0 was pre-registered, run, and falsified earlier in the same session — the [public pivot post](./docs/v0.1-pivot.md) is live and Method 6 (TransformerLens activation extraction) is the remaining central bet.
+
+### What we've shown so far — and what we have not
+
+| Claim | State as of 2026-05-08 |
+|---|---|
+| Strong baselines on the 27 cross-domain bridge queries are scorable + reproducible | ✅ shown — BM25 0.252, Voyage-native 0.333, CLI direct rerank (Sonnet 4.6) 0.370 — pinned manifests |
+| Different LLMs output convergent `(x, y, z)` coordinates when prompted to introspect (Matthew's published artifact) | ✅ replicated — surface phenomenon reproducible on Sonnet 4.6 |
+| Those self-reported coordinates **measure activation geometry** | ❌ refuted — the cheap-probe adversarial sweep + the published reasoning traces both show the mechanism is text generation from learned discourse priors (PAD valence/arousal, Russell circumplex), not direct activation readout |
+| Those self-reported coordinates **carry retrieval-useful relational structure even as narrative-derived** | ❌ refuted — variants A / B / E ranked correlations 0.078 / 0.290 / 0.108 against `core` (pre-registered bar: ρ > 0.5); variant D failure-signal trap fired at 18× core's ground-truth pair separation |
+| **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss** (the project's central bet) | ⏳ open — Method 6 (TransformerLens residual-stream kNN at layers 8 / 10 / 12 of Llama-3.1-8B-Instruct) is scaffolded; lift target = 0.444 primary p@5 (1.20 × Method 3); cloud-GPU rental session pending |
+| LLM rationale generation alone explains human-rated bridge value (the kill-product floor) | ⏳ open — Method 4a / 4b runs deferred until the Method 6 spike validates the path; if Method 6 fails to clear Method 3, those rows wouldn't have changed the resolution anyway |
+
+The first three rows are the corrective lens for anyone reading [Matthew's Zenodo paper](https://doi.org/10.5281/ZENODO.18176077) as evidence that introspection reads activation manifolds: the artifact (convergent self-reported coordinates) replicates, but the explanation (shared internal geometry) does not. The fourth row is the project's *narrower* falsifier on the same probe path, and it also failed. The fifth row is what's left.
 
 Current [leaderboard](./benchmark/results/RESULTS.md) on the 27 cross-domain bridge queries:
 
