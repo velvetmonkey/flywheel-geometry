@@ -1,0 +1,56 @@
+{
+  "query_id": "q01",
+  "query_text": "What does feedback channel quality have to do with how fast a skill compounds?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-02",
+      "score": 0.6368281589861345
+    },
+    {
+      "id": "ca-01",
+      "score": 0.35565611642294753
+    },
+    {
+      "id": "qf-04",
+      "score": 0.35473505768318436
+    },
+    {
+      "id": "ph-04",
+      "score": 0.34614566343349
+    },
+    {
+      "id": "ph-01",
+      "score": 0.31621989354521524
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback",
+      "score": 0.8125
+    },
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet",
+      "score": 0.7109375
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.5625
+    },
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile",
+      "score": 0.5234375
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes",
+      "score": 0.51953125
+    }
+  ]
+}

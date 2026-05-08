@@ -1,0 +1,56 @@
+{
+  "query_id": "q25",
+  "query_text": "Why does the same operation produce different value at different scales?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ai-05",
+      "score": 0.30305033339546866
+    },
+    {
+      "id": "ai-04",
+      "score": 0.2777758053367862
+    },
+    {
+      "id": "qf-05",
+      "score": 0.2695237000816052
+    },
+    {
+      "id": "ve-04",
+      "score": 0.26420074682820743
+    },
+    {
+      "id": "ai-01",
+      "score": 0.2637593499361421
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "qf-05",
+      "title": "Rotation cost vs alpha tradeoff memo",
+      "score": 0.609375
+    },
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12",
+      "score": 0.52734375
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes",
+      "score": 0.474609375
+    },
+    {
+      "id": "ai-01",
+      "title": "Mechanistic primer on residual streams",
+      "score": 0.453125
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.4453125
+    }
+  ]
+}

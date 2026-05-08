@@ -1,0 +1,56 @@
+{
+  "query_id": "q19",
+  "query_text": "Why is the maintenance discipline that produces compounding always boring?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-02",
+      "score": 0.4574389696834398
+    },
+    {
+      "id": "ve-05",
+      "score": 0.40299098510177384
+    },
+    {
+      "id": "ha-02",
+      "score": 0.3941255020673736
+    },
+    {
+      "id": "ve-01",
+      "score": 0.3745879837122829
+    },
+    {
+      "id": "dj-04",
+      "score": 0.3563062798148875
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ve-04",
+      "title": "Solar inverter telemetry \u2014 anomaly check",
+      "score": 0.69921875
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.671875
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback",
+      "score": 0.578125
+    },
+    {
+      "id": "ve-01",
+      "title": "Polestar 2 \u2014 service log",
+      "score": 0.54296875
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet",
+      "score": 0.53515625
+    }
+  ]
+}

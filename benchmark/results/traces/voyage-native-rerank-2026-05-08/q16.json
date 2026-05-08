@@ -1,0 +1,56 @@
+{
+  "query_id": "q16",
+  "query_text": "Why does revising a draft sometimes lose the thing that made the first draft good?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-02",
+      "score": 0.3482608885141609
+    },
+    {
+      "id": "ai-02",
+      "score": 0.329718378326483
+    },
+    {
+      "id": "dj-01",
+      "score": 0.3211300268210855
+    },
+    {
+      "id": "ai-01",
+      "score": 0.31833692104038364
+    },
+    {
+      "id": "sa-02",
+      "score": 0.31690245945079426
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15",
+      "score": 0.75390625
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.69921875
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback",
+      "score": 0.50390625
+    },
+    {
+      "id": "dj-04",
+      "title": "Daily \u2014 2026-05-04",
+      "score": 0.50390625
+    },
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet",
+      "score": 0.47265625
+    }
+  ]
+}

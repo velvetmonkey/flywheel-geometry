@@ -1,0 +1,56 @@
+{
+  "query_id": "q28",
+  "query_text": "Why are the most useful things from any trip the constraints, not the freedom?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "tr-05",
+      "score": 0.4402495941942962
+    },
+    {
+      "id": "tr-01",
+      "score": 0.42182047109909193
+    },
+    {
+      "id": "ha-04",
+      "score": 0.4071440584259663
+    },
+    {
+      "id": "eq-03",
+      "score": 0.38716921564911383
+    },
+    {
+      "id": "ca-02",
+      "score": 0.37525065821040965
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "tr-05",
+      "title": "Bhutan trek \u2014 visa timeline",
+      "score": 0.671875
+    },
+    {
+      "id": "tr-02",
+      "title": "Japan itinerary draft 2026",
+      "score": 0.546875
+    },
+    {
+      "id": "tr-01",
+      "title": "Tasmania trip 2025 \u2014 debrief",
+      "score": 0.53125
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates",
+      "score": 0.48046875
+    },
+    {
+      "id": "tr-04",
+      "title": "Bali workation \u2014 venue research",
+      "score": 0.466796875
+    }
+  ]
+}

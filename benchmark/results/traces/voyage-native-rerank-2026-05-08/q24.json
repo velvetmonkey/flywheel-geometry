@@ -1,0 +1,56 @@
+{
+  "query_id": "q24",
+  "query_text": "How does attention texture differ from attention quantity?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-01",
+      "score": 0.5220120504885448
+    },
+    {
+      "id": "ai-01",
+      "score": 0.29572718943820053
+    },
+    {
+      "id": "ai-04",
+      "score": 0.27042771235346297
+    },
+    {
+      "id": "ca-04",
+      "score": 0.2521256829046523
+    },
+    {
+      "id": "eq-04",
+      "score": 0.24253074190757548
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ph-01",
+      "title": "On the texture of attention",
+      "score": 0.6875
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes",
+      "score": 0.42578125
+    },
+    {
+      "id": "ai-01",
+      "title": "Mechanistic primer on residual streams",
+      "score": 0.41015625
+    },
+    {
+      "id": "ca-05",
+      "title": "Reading list \u2014 strategic thinking",
+      "score": 0.40234375
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15",
+      "score": 0.376953125
+    }
+  ]
+}

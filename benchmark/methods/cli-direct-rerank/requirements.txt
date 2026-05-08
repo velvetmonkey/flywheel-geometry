@@ -1,0 +1,3 @@
+# No deps beyond stdlib + the shared _lib/cli_invoker.py.
+# Listed for completeness:
+# (none)

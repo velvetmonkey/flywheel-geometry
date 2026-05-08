@@ -1,0 +1,56 @@
+{
+  "query_id": "q21",
+  "query_text": "How do you tell when consistency of conditions is doing the work versus the action itself?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "eq-02",
+      "score": 0.34470724356408394
+    },
+    {
+      "id": "eq-04",
+      "score": 0.33520756276714087
+    },
+    {
+      "id": "ca-05",
+      "score": 0.2964470154949849
+    },
+    {
+      "id": "ph-04",
+      "score": 0.28841262439177884
+    },
+    {
+      "id": "ha-02",
+      "score": 0.2786485096891189
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12",
+      "score": 0.80078125
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule",
+      "score": 0.58203125
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback",
+      "score": 0.5625
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.5234375
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.51171875
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "query_id": "q17",
+  "query_text": "How does pre-rehearsing a difficulty change what happens when it actually arrives?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-05",
+      "score": 0.3002933921941528
+    },
+    {
+      "id": "eq-04",
+      "score": 0.2723805817915495
+    },
+    {
+      "id": "eq-03",
+      "score": 0.25916908845101483
+    },
+    {
+      "id": "ph-01",
+      "score": 0.25227054348290395
+    },
+    {
+      "id": "eq-02",
+      "score": 0.24276077494576379
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ph-05",
+      "title": "Notes on Stoic exposure therapy",
+      "score": 0.76171875
+    },
+    {
+      "id": "dj-03",
+      "title": "Daily \u2014 2026-04-30",
+      "score": 0.65234375
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes",
+      "score": 0.5078125
+    },
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile",
+      "score": 0.484375
+    },
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12",
+      "score": 0.484375
+    }
+  ]
+}

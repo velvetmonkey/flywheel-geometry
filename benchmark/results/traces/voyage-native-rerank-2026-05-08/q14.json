@@ -1,0 +1,56 @@
+{
+  "query_id": "q14",
+  "query_text": "Why do we always discover that idempotency is universal in retrospect?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "sa-02",
+      "score": 0.48672435316652235
+    },
+    {
+      "id": "sa-01",
+      "score": 0.3493878024713481
+    },
+    {
+      "id": "ai-01",
+      "score": 0.34124112018172525
+    },
+    {
+      "id": "ha-02",
+      "score": 0.32577221386603034
+    },
+    {
+      "id": "sa-05",
+      "score": 0.3225477415776917
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "sa-01",
+      "title": "Crucible \u2014 system overview",
+      "score": 0.671875
+    },
+    {
+      "id": "qf-04",
+      "title": "Factor decay benchmarks",
+      "score": 0.490234375
+    },
+    {
+      "id": "sa-02",
+      "title": "Idempotency keys for write-safe APIs",
+      "score": 0.419921875
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.37109375
+    },
+    {
+      "id": "sa-04",
+      "title": "Event sourcing for financial pipelines",
+      "score": 0.361328125
+    }
+  ]
+}

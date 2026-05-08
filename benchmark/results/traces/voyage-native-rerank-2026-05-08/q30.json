@@ -1,0 +1,56 @@
+{
+  "query_id": "q30",
+  "query_text": "Why does the same text feel different when re-read at a different stage?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ca-05",
+      "score": 0.3409206451757388
+    },
+    {
+      "id": "ai-01",
+      "score": 0.3198945737597667
+    },
+    {
+      "id": "ph-01",
+      "score": 0.3135338021839403
+    },
+    {
+      "id": "ph-05",
+      "score": 0.30873562081718026
+    },
+    {
+      "id": "ai-04",
+      "score": 0.2893583504893662
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ph-05",
+      "title": "Notes on Stoic exposure therapy",
+      "score": 0.515625
+    },
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12",
+      "score": 0.5
+    },
+    {
+      "id": "ph-01",
+      "title": "On the texture of attention",
+      "score": 0.48828125
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15",
+      "score": 0.453125
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes",
+      "score": 0.43359375
+    }
+  ]
+}

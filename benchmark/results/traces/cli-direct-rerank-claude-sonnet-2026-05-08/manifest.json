@@ -1,0 +1,18 @@
+{
+  "method": "cli-direct-rerank",
+  "started_at": "2026-05-08T17:10:30.058467+00:00",
+  "completed_at": "2026-05-08T17:18:40.474715+00:00",
+  "wall_clock_seconds": 490.42,
+  "cli": "claude",
+  "model_override": "claude-sonnet-4-6",
+  "temperature": "cli-default",
+  "corpus_sha256": "76f33934a2d994c3d77e0611b3ceb5209c8a972836fc164aa8291d761b2a0d7d",
+  "corpus_count": 50,
+  "queries_sha256": "e98ce569222310e06510ef676f994f73b5a66387c844e04315366cb2e075da07",
+  "queries_count": 30,
+  "candidate_pool_size": 50,
+  "top_k": 5,
+  "env": {
+    "python": "3.12.3"
+  }
+}

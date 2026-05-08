@@ -1,0 +1,56 @@
+{
+  "query_id": "q15",
+  "query_text": "What's the cost of pretending consensus among self-interested parties produces good decisions?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ha-02",
+      "score": 0.48293517287945165
+    },
+    {
+      "id": "ca-04",
+      "score": 0.3656721531780659
+    },
+    {
+      "id": "ca-05",
+      "score": 0.3150389882748496
+    },
+    {
+      "id": "sa-01",
+      "score": 0.31357334241652274
+    },
+    {
+      "id": "dj-02",
+      "score": 0.3067182751610603
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes",
+      "score": 0.828125
+    },
+    {
+      "id": "ha-04",
+      "title": "Dog walker rota \u2014 scheduling logic",
+      "score": 0.470703125
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.396484375
+    },
+    {
+      "id": "dj-03",
+      "title": "Daily \u2014 2026-04-30",
+      "score": 0.384765625
+    },
+    {
+      "id": "dj-05",
+      "title": "Daily \u2014 2026-05-07",
+      "score": 0.384765625
+    }
+  ]
+}

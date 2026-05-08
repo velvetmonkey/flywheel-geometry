@@ -1,0 +1,56 @@
+{
+  "query_id": "q02",
+  "query_text": "When two systems work mechanically for weeks then suddenly shift state, what's actually happening?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "qf-03",
+      "score": 0.38927126352717467
+    },
+    {
+      "id": "eq-02",
+      "score": 0.36184234286396794
+    },
+    {
+      "id": "ve-04",
+      "score": 0.3299980465553001
+    },
+    {
+      "id": "ai-05",
+      "score": 0.3168147567744361
+    },
+    {
+      "id": "sa-04",
+      "score": 0.30796123315209956
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12",
+      "score": 0.828125
+    },
+    {
+      "id": "dj-03",
+      "title": "Daily \u2014 2026-04-30",
+      "score": 0.41015625
+    },
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes",
+      "score": 0.388671875
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.375
+    },
+    {
+      "id": "ph-01",
+      "title": "On the texture of attention",
+      "score": 0.3671875
+    }
+  ]
+}

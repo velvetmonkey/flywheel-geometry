@@ -1,0 +1,19 @@
+{
+  "method": "voyage-native-rerank",
+  "started_at": "2026-05-08T17:12:50.141401+00:00",
+  "completed_at": "2026-05-08T17:13:09.335798+00:00",
+  "wall_clock_seconds": 19.19,
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "corpus_sha256": "76f33934a2d994c3d77e0611b3ceb5209c8a972836fc164aa8291d761b2a0d7d",
+  "corpus_count": 50,
+  "queries_sha256": "e98ce569222310e06510ef676f994f73b5a66387c844e04315366cb2e075da07",
+  "queries_count": 30,
+  "candidate_pool_size": 50,
+  "top_k": 5,
+  "env": {
+    "python": "3.12.3",
+    "voyageai": "0.3.7",
+    "numpy": "2.4.4"
+  }
+}

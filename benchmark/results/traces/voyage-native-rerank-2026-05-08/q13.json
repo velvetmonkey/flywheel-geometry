@@ -1,0 +1,56 @@
+{
+  "query_id": "q13",
+  "query_text": "How does a long-term commitment differ in shape from a short-cycle decision?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ph-04",
+      "score": 0.5040056987407406
+    },
+    {
+      "id": "ca-03",
+      "score": 0.23565536430498069
+    },
+    {
+      "id": "qf-04",
+      "score": 0.22018629825690675
+    },
+    {
+      "id": "ha-04",
+      "score": 0.22003589055573738
+    },
+    {
+      "id": "sa-05",
+      "score": 0.21878198428933354
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet",
+      "score": 0.79296875
+    },
+    {
+      "id": "ca-01",
+      "title": "Quant track vs ML research \u2014 fork analysis",
+      "score": 0.57421875
+    },
+    {
+      "id": "dj-05",
+      "title": "Daily \u2014 2026-05-07",
+      "score": 0.384765625
+    },
+    {
+      "id": "sa-05",
+      "title": "Why we picked Postgres over Mongo \u2014 postmortem",
+      "score": 0.359375
+    },
+    {
+      "id": "tr-04",
+      "title": "Bali workation \u2014 venue research",
+      "score": 0.35546875
+    }
+  ]
+}

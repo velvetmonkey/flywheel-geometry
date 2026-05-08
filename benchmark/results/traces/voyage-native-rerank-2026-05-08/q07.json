@@ -1,0 +1,56 @@
+{
+  "query_id": "q07",
+  "query_text": "What's the difference between a system whose alpha is intrinsic and a system whose alpha depends on how you run it?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "qf-05",
+      "score": 0.45386959513369995
+    },
+    {
+      "id": "ai-01",
+      "score": 0.36660525418862117
+    },
+    {
+      "id": "qf-03",
+      "score": 0.3585416874190652
+    },
+    {
+      "id": "ai-05",
+      "score": 0.34257496468631204
+    },
+    {
+      "id": "qf-04",
+      "score": 0.33860310564511226
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "qf-05",
+      "title": "Rotation cost vs alpha tradeoff memo",
+      "score": 0.8203125
+    },
+    {
+      "id": "ph-01",
+      "title": "On the texture of attention",
+      "score": 0.369140625
+    },
+    {
+      "id": "ai-01",
+      "title": "Mechanistic primer on residual streams",
+      "score": 0.36328125
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.3515625
+    },
+    {
+      "id": "eq-03",
+      "title": "Exploration vs exploitation in groundwork",
+      "score": 0.296875
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "query_id": "q20",
+  "query_text": "What's the right way to introduce yourself to a researcher whose work you admire?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ca-02",
+      "score": 0.3368846020704965
+    },
+    {
+      "id": "dj-05",
+      "score": 0.2942069894393695
+    },
+    {
+      "id": "ai-03",
+      "score": 0.28303859379232676
+    },
+    {
+      "id": "eq-03",
+      "score": 0.2548701617790745
+    },
+    {
+      "id": "ca-01",
+      "score": 0.2439898077770997
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "dj-05",
+      "title": "Daily \u2014 2026-05-07",
+      "score": 0.58984375
+    },
+    {
+      "id": "ca-02",
+      "title": "Mentor sessions with Marcus \u2014 2026 Q1",
+      "score": 0.48828125
+    },
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes",
+      "score": 0.404296875
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates",
+      "score": 0.392578125
+    },
+    {
+      "id": "dj-02",
+      "title": "Daily \u2014 2026-04-22",
+      "score": 0.375
+    }
+  ]
+}

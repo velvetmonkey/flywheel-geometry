@@ -1,0 +1,56 @@
+{
+  "query_id": "q08",
+  "query_text": "Why does intervening on geometry produce coherent change while intervening on direction doesn't?",
+  "embed_model": "voyage-3",
+  "rerank_model": "rerank-2",
+  "candidate_pool_size": 50,
+  "cosine_top_5_pre_rerank": [
+    {
+      "id": "ai-05",
+      "score": 0.4394567448875064
+    },
+    {
+      "id": "ai-04",
+      "score": 0.4387298116667
+    },
+    {
+      "id": "ai-02",
+      "score": 0.3477463019203785
+    },
+    {
+      "id": "eq-02",
+      "score": 0.344242347444926
+    },
+    {
+      "id": "ca-02",
+      "score": 0.33581599109371374
+    }
+  ],
+  "reranked_top_k": [
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log",
+      "score": 0.6953125
+    },
+    {
+      "id": "ai-04",
+      "title": "Linear vs nonlinear concept geometry \u2014 survey notes",
+      "score": 0.58984375
+    },
+    {
+      "id": "ai-02",
+      "title": "Why SAEs miss helices",
+      "score": 0.494140625
+    },
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet",
+      "score": 0.412109375
+    },
+    {
+      "id": "dj-05",
+      "title": "Daily \u2014 2026-05-07",
+      "score": 0.3828125
+    }
+  ]
+}
