@@ -80,9 +80,36 @@ Pinned model IDs are not enough — serving infrastructure can change underneath
 **Primary metric**: precision@5 on the **27 cross-domain bridge queries**.
 **Secondary metric**: precision@5 on the **3 intra-domain control queries**, reported separately.
 
-Method 6 (activation-derived geodesic retrieval) ships only if it shows ≥20% precision@5 lift over **both** Method 3 (Voyage + Claude rerank) and Method 4 (rationale-augmented embedding rerank) on the **primary** metric. Control queries are reported alongside but never mixed into the headline.
+Method 6 (activation-derived geodesic retrieval) ships only if it shows ≥20% precision@5 lift over **all three of Method 3, Method 4a, and Method 4b** on the **primary** metric (27 cross-domain bridge queries). Control queries are reported alongside but never mixed into the headline.
 
-Equal or worse vs Method 4 on the primary metric means the bridge "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots — to bridge-tension via relational structure, to direct activation extraction without the introspective wrapper, or away from the manifold thesis entirely. The pivot post is the launch.
+Equal or worse vs Method 4a *or* Method 4b on the primary metric means the bridge "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots — to bridge-tension via relational structure, to direct activation extraction without the introspective wrapper, or away from the manifold thesis entirely. The pivot post is the launch.
+
+## Scoring runs
+
+After a method writes `results/<method>-<date>.jsonl` + traces, score it with:
+
+```bash
+python eval.py --gold gold/targets.jsonl --queries queries.public.jsonl \
+  results/<method>-<date>.jsonl [results/<method2>-<date>.jsonl ...]
+```
+
+The evaluator never reads anything under `methods/` — only `gold/`, `queries.public.jsonl`, `corpus/notes.jsonl`, and the named results files. **Method runners never read `gold/`** (enforced by the gold-leak tripwire below).
+
+### Pre-scoring guards
+
+Every results file is validated before metrics are computed. Any failure exits non-zero with no row appended to `RESULTS.md`. Guards:
+
+1. Each results file has exactly 30 rows.
+2. No missing or duplicated `query_id` within a file.
+3. No duplicate note IDs within any `top_k` array.
+4. Every retrieved ID exists in `corpus/notes.jsonl`.
+5. **Gold-leak tripwire**: no method output contains `target_note_ids`, `target_domains`, or `rationale` fields.
+
+### v0.1 tie threshold (debugging aid only)
+
+For v0.1 harness validation, methods within **0.05 absolute** primary p@5 of the best are flagged `tied_with_best: yes` in the eval table. **This is a debugging aid, not the v0.2 ship criterion.** The real ship criterion remains the ≥20% lift stated in the **Decision criterion** above. Use the v0.1 tie marker to surface methods that are statistically indistinguishable at small N (27 primary queries); use the ≥20% bar to make ship/pivot decisions.
+
+Per-query traces with `hits_at_5` boolean arrays land at `results/<method>-<date>-eval.json`.
 
 ## Submitting a method
 

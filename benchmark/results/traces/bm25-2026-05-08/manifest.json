@@ -1,0 +1,21 @@
+{
+  "method": "bm25",
+  "started_at": "2026-05-08T10:44:11.131667+00:00",
+  "completed_at": "2026-05-08T10:44:11.148684+00:00",
+  "wall_clock_seconds": 0.02,
+  "tokenizer": "lowercase-whitespace",
+  "bm25_params": {
+    "k1": 1.5,
+    "b": 0.75
+  },
+  "corpus_sha256": "76f33934a2d994c3d77e0611b3ceb5209c8a972836fc164aa8291d761b2a0d7d",
+  "corpus_count": 50,
+  "queries_sha256": "e98ce569222310e06510ef676f994f73b5a66387c844e04315366cb2e075da07",
+  "queries_count": 30,
+  "top_k": 5,
+  "env": {
+    "python": "3.12.3",
+    "rank_bm25": "0.2.2",
+    "numpy": "2.4.4"
+  }
+}
