@@ -1,17 +1,31 @@
 <div align="center">
   <img src="header.png" alt="Flywheel" width="256"/>
   <h1>Flywheel Geometry</h1>
-  <p><strong>Bridge finder for personal knowledge bases.</strong></p>
-  <p><em>What's structurally adjacent to what I'm thinking about — even if the language differs?</em></p>
+  <p><strong>An open, pre-registered study of cross-domain knowledge retrieval.</strong></p>
+  <p><em>Trial 2 in flight: does kNN + geodesic distance over residual-stream activations surface bridges that strong embedding retrieval misses?</em></p>
 </div>
 
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-blue.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Pre-registered Study: Trial 2](https://img.shields.io/badge/Pre--registered_Study-Trial_2-orange)](#falsification-log)
 
-Standard search is fine for "find me the note about X." It struggles at the question that actually compounds in a knowledge vault: *what's structurally adjacent to what I'm thinking about, even if the language differs?* — bridges across domains, where the same idea wears different vocabulary.
+Open question: do cross-domain bridges in a personal knowledge vault — notes that share underlying structure but no surface vocabulary — surface more reliably via activation-derived geometry than via strong embedding retrieval? Recent interpretability work suggests neural networks encode meaning on curved manifolds where geodesic distance follows the curve while cosine cuts through the void ([Lubana et al., 2025–2026](https://www.youtube.com/watch?v=F9eEYWX64ZA); [@slashreboot, 2026](https://doi.org/10.5281/ZENODO.18176077)) — this repo turns that into a falsifiable benchmark with locked baselines, hidden gold targets, and pre-registered ≥20 % p@5 lift criteria. See Falsification Log below.
 
-Recent interpretability work shows neural networks across architectures encode meaning on curved manifolds: helices, circumplexes, shells ([Lubana et al., 2025–2026](https://www.youtube.com/watch?v=F9eEYWX64ZA); [@slashreboot, 2026](https://doi.org/10.5281/ZENODO.18176077)). Cosine similarity cuts through the void between those shapes; geodesic distance follows the curve. The hypothesis: activation-derived geometry should surface non-obvious cross-domain bridges that strong embedding retrieval misses.
+---
 
-This repo tests that hypothesis empirically. **Normal search stays.** Geodesic mode is an additional axis answering the bridge-finding question — not a replacement for cosine retrieval. Whether the geodesic axis is worth shipping is the open empirical question. See **How we'll know this works** below.
+## Falsification log
+
+Each trial is pre-registered before any data lands. Resolution is one of `falsified`, `validated`, `running`, or `deferred` — the same vocabulary as `flywheel-ideas` outcome states. Public commitments only; the private vault holds method-design notes that don't bind outside readers.
+
+| # | Trial | Pre-registered | Status | Numbers / outcome |
+|---|---|---|---|---|
+| 0 | Kill-product floor — pinned-model retrieval baselines on 27 cross-domain bridge queries | 2026-05-08 (eval guards + corpus + queries locked at commit `c023a94`) | ✅ **scored** (3 of 4 rows) | BM25 0.252 · Voyage-native 0.333 · CLI direct rerank (Sonnet 4.6) **0.370** primary p@5. Method 4a / 4b held until Method 6 spike validates the path. |
+| 1 | Cheap-probe Phase 0 — does @slashreboot's introspective coordinate elicitation produce stable, retrieval-useful relational structure under adversarial framing? | 2026-05-08 (variants A–E + decision rules locked at commit `f529c0b`) | ❌ **falsified 2026-05-08** | All four primary screens failed (ρ A 0.078 · B 0.290 · C 0.159 · E 0.108 — pre-reg bar ρ > 0.5); variant-D failure-signal trap fired (D ground-truth pair separation 5.16 vs core's 0.27, 18×). Full data + narrative: [`docs/v0.1-pivot.md`](./docs/v0.1-pivot.md). Refutes flywheel-ideas `asm-HvE9muhM` + `asm-VotY4n8g`; outcome `out-MyLPFpg7`. |
+| 2 | Method 6 — kNN + geodesic distance over residual-stream activations at layers 8 / 10 / 12 of `meta-llama/Llama-3.1-8B-Instruct` beats the kill-product floor on the 27 primary queries by ≥20 % p@5 | 2026-05-08 (primary layer 10 + sensitivity 8/12 + random-kNN negative control + activation contract locked at commit `82540a3`) | ⏳ **running** (awaiting one ~30-min cloud-GPU rental session) | Lift target: `1.20 × 0.370 = 0.444` primary p@5. Hard gates: `layer-10 p@5 ≥ 1.20 × Method 3 p@5` AND `layer-10 p@5 > random-kNN p@5 + 0.05` absolute. Locked assumption: `asm-3zmj1VGB`. |
+| 3 | Method 6 vs rationale-augmented baselines — does the manifold effect survive the kill-product floor's full set (Method 3 + 4a + 4b)? | Triggers only on Trial 2 validate branch | ⏸️ deferred | Method 4a + 4b runs *full* (not smoke) once Trial 2 clears its hard gates. Locked assumption: `asm-wxSuxhBk`. |
+
+The artifact-vs-geometry distinction relevant to Trial 1: the cheap-probe sweep replicated @slashreboot's *surface artifact* (different LLMs output convergent self-reported coordinates on identical prompts) but **not** the underlying claim that those coordinates measure activation geometry. Reasoning traces show models constructing coordinates from PAD valence/arousal axes + Russell-circumplex priors learned in training. Method 6 (Trial 2) is the path that would read activation manifolds directly — which is why the project pivoted there rather than discarding the manifold thesis on Trial 1's failure.
+
+The full leaderboard with all per-query metrics is at [`benchmark/results/RESULTS.md`](./benchmark/results/RESULTS.md). The flywheel-ideas decision ledger (idea `idea-b4ZeRCoa`) holds the full assumption / outcome state.
 
 ---
 
@@ -112,39 +126,6 @@ If `asm-3zmj1VGB` refutes, the project pivots a second time — and the public p
 
 ---
 
-## Roadmap
-
-**Phase 0 — Research & Validation**
-- Replicate Matthew's zero-shot geometric probing on sample vault content
-- Validate coordinate stability across runs and adversarial prompting
-- Implement counterfactual pair generation + DAS causal filter
-- Compare manifold proximity vs cosine similarity — identify divergence points
-
-**Phase 1 — Proof of Concept**
-- Build manifold coordinate store alongside standard embeddings
-- Implement geodesic proximity query layer
-- Validate (or refute) cross-domain bridge finding on real vault content
-
-**Phase 2 — Manifold Index**
-- Full vault indexing with manifold coordinates
-- Visualise vault topology: dense clusters = deep expertise, sparse = gaps
-- Confidence weighting: how strongly is each concept encoded?
-
-**Phase 3 — Bridge Finder**
-- "You're thinking about X. These notes are nearby on the manifold."
-- Cross-domain surfacing as primary retrieval mode
-- Hallucination-resistant retrieval via probe-based confidence signals
-
-**Phase 4 — Ship inside flywheel-memory**
-- Geodesic retrieval as an optional index layer alongside BM25 + semantic
-- New `search(action: query, mode: "geodesic")` discriminator on the existing MCP surface
-- Vault topology visualisation surfaced through [flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)
-- The SAE alternative Goodfire named but hasn't built
-
-See [`benchmark/`](./benchmark/) for the empirical plan.
-
----
-
 ## Key References
 
 **Activation geometry & SAE critique** (the methodological foundation):
@@ -175,32 +156,7 @@ This work builds on, does not extend, the underlying interpretability research. 
 
 ## Status
 
-**v0.1 in flight, three of four kill-product-floor rows on the leaderboard.** Cheap-probe Phase 0 was pre-registered, run, and falsified earlier in the same session — the [public pivot post](./docs/v0.1-pivot.md) is live and Method 6 (TransformerLens activation extraction) is the remaining central bet.
-
-### What we've shown so far — and what we have not
-
-| Claim | State as of 2026-05-08 |
-|---|---|
-| Strong baselines on the 27 cross-domain bridge queries are scorable + reproducible | ✅ shown — BM25 0.252, Voyage-native 0.333, CLI direct rerank (Sonnet 4.6) 0.370 — pinned manifests |
-| Different LLMs output convergent `(x, y, z)` coordinates when prompted to introspect (Matthew's published artifact) | ✅ replicated — surface phenomenon reproducible on Sonnet 4.6 |
-| Those self-reported coordinates **measure activation geometry** | ❌ refuted — the cheap-probe adversarial sweep + the published reasoning traces both show the mechanism is text generation from learned discourse priors (PAD valence/arousal, Russell circumplex), not direct activation readout |
-| Those self-reported coordinates **carry retrieval-useful relational structure even as narrative-derived** | ❌ refuted — variants A / B / E ranked correlations 0.078 / 0.290 / 0.108 against `core` (pre-registered bar: ρ > 0.5); variant D failure-signal trap fired at 18× core's ground-truth pair separation |
-| **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss** (the project's central bet) | ⏳ open — Method 6 (TransformerLens residual-stream kNN at layers 8 / 10 / 12 of Llama-3.1-8B-Instruct) is scaffolded; lift target = 0.444 primary p@5 (1.20 × Method 3); cloud-GPU rental session pending |
-| LLM rationale generation alone explains human-rated bridge value (the kill-product floor) | ⏳ open — Method 4a / 4b runs deferred until the Method 6 spike validates the path; if Method 6 fails to clear Method 3, those rows wouldn't have changed the resolution anyway |
-
-The first three rows are the corrective lens for anyone reading [Matthew's Zenodo paper](https://doi.org/10.5281/ZENODO.18176077) as evidence that introspection reads activation manifolds: the artifact (convergent self-reported coordinates) replicates, but the explanation (shared internal geometry) does not. The fourth row is the project's *narrower* falsifier on the same probe path, and it also failed. The fifth row is what's left.
-
-Current [leaderboard](./benchmark/results/RESULTS.md) on the 27 cross-domain bridge queries:
-
-| Method | P@5 | nDCG@5 | Provenance |
-|---|---|---|---|
-| `bm25-2026-05-08` | 0.252 | 0.439 | sanity floor |
-| `voyage-native-rerank-2026-05-08` | 0.333 | 0.624 | `voyage-3` + `rerank-2`, no LLM |
-| `cli-direct-rerank-claude-sonnet-2026-05-08` | **0.370** | **0.670** | `claude-sonnet-4-6`, single LLM rerank |
-
-**Method 6 lift target**: `1.20 × 0.370 = 0.444` primary p@5 to validate locked assumption [`asm-3zmj1VGB`](#tracked-through-flywheel-ideas) (≥20 % over Method 3). Required vs the 1.0 ceiling = achievable on this corpus configuration. Method 4a + 4b held until the Method 6 result lands; if Method 6 clears Method 3, both run *full* (not smoke) before the assumption resolves "validate."
-
-**Method 6 implementation**: scaffolded as a two-stage pipeline at [`benchmark/methods/method-geodesic/`](./benchmark/methods/method-geodesic/). Stage 1 (`extract.py`) runs on a rented 24 GB GPU, loads `meta-llama/Llama-3.1-8B-Instruct` via TransformerLens, extracts last-token residual-stream tensors at layers 8 / 10 / 12, dumps to a single `.npz`. Stage 2 (`run.py`) reads the `.npz` locally, builds a kNN graph (k = 10, Euclidean, symmetric union), computes shortest-path geodesic distances, retrieves top-5 per query, and emits eval-format JSONL plus a `.graphml` graph dump. Pre-registration locks **layer 10 as primary** and layers 8 / 12 as sensitivity rows; a deterministic random-kNN row at layer 10 is the within-method negative control. Hard gates for `asm-3zmj1VGB` resolution: `layer-10 p@5 ≥ 1.20 × Method 3 p@5` AND `layer-10 p@5 > random-kNN p@5 + 0.05` absolute.
+Live trial state — including pinned numbers for the three scored kill-product-floor rows and the open Method 6 gate — lives in the [Falsification Log](#falsification-log) at the top of this README. The full leaderboard with per-query metrics is at [`benchmark/results/RESULTS.md`](./benchmark/results/RESULTS.md).
 
 **30-day milestone (2026-06-07).** Three concrete success criteria, all required:
 1. Kill-product floor scored on the 27 primary queries, with at least one of {BM25, LLM rerank, rationale-augmented rerank} producing a non-degenerate baseline that the geodesic method must clear by ≥20% precision@5. **Three of four rows landed**; Method 4a / 4b deferred until after Method 6 spike per pre-registered staging.
