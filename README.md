@@ -72,6 +72,8 @@ We're not assuming geodesic retrieval surfaces better cross-domain bridges than 
 
 The second baseline is the one that distinguishes retrieval from presentation. If raters prefer rationale-augmented embeddings at equal or higher rates, the manifold "effect" is the LLM explaining adjacency, not the geometry surfacing it.
 
+**Gold firewall.** Method runners consume only [`benchmark/queries.public.jsonl`](./benchmark/queries.public.jsonl); the hidden targets in [`benchmark/gold/`](./benchmark/gold/) are read exclusively by the evaluator. The eval harness rejects any results file that includes gold-shaped fields (`target_note_ids`, `target_domains`, `rationale`) — so a runner that accidentally peeks fails the pre-scoring guard and never lands a row on the leaderboard.
+
 Results — confirming or refuting — get published here.
 
 A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation extraction.
@@ -83,7 +85,7 @@ The project's central bets are registered as falsifiable assumptions in the [fly
 The currently tracked assumptions:
 
 1. **Self-reported (x,y,z) coordinates correspond to actual activation geometry**, not interpretability-discourse priors. *Falsifier:* TransformerLens activation extraction + adversarial controls described above.
-2. **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** *Falsifier:* ≥20% precision@5 lift on 30 blind cross-domain queries vs Voyage-3 + LLM rerank.
+2. **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** *Falsifier:* ≥20% precision@5 lift over the LLM-rerank baselines (direct rerank, rationale-augmented rerank, and rationale-augmented rerank with a stronger reranker) on the 27 cross-domain bridge queries that constitute the primary metric. Control queries are reported separately, never mixed into the headline.
 3. **Coordinate stability across runs is measurement-grade**, not stable narrative priors. *Falsifier:* adversarial replication with false anchors and synthetic concept domains.
 4. **Manifold proximity outperforms bridge-tension** (high embedding distance × high relational similarity) on cross-domain bridges. *Falsifier:* head-to-head on the same query corpus.
 5. **Human-rated bridge value is not explained by generic embedding similarity + LLM rationale generation.** *Falsifier:* baseline 2 above — if raters prefer rationale-augmented embeddings at equal or higher rates, the manifold effect is presentation, not retrieval.
@@ -167,6 +169,6 @@ This work builds on, does not extend, the underlying interpretability research. 
 
 ## Status
 
-Research stage. Pre-implementation. Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive).
+v0.1 benchmark scaffolded: 50-note synthetic corpus, 30 cross-domain queries (27 primary + 3 control), gold-firewall split, evaluator with pre-scoring guards, baseline methods in [`benchmark/methods/`](./benchmark/methods/). BM25 sanity floor is the first scored row on the [running leaderboard](./benchmark/results/RESULTS.md); LLM-rerank baselines are next, pinned to a named model so the numbers are reproducible. Cheap-probe Phase 0 (introspective coordinate validation under adversarial controls) in flight. Method 6 (geodesic, activation-derived retrieval) pre-registered for v0.2.
 
-Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
+Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
