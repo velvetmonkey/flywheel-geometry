@@ -9,7 +9,7 @@ Pure lexical overlap between query and note body. No semantics, no learning, no 
 ## Inputs
 
 - `../../corpus/notes.jsonl` — 50 notes
-- `../../queries.jsonl` — 30 cross-domain bridge queries
+- `../../queries.public.jsonl` — 30 cross-domain bridge queries
 
 ## Outputs
 
@@ -19,7 +19,7 @@ Pure lexical overlap between query and note body. No semantics, no learning, no 
 
 ```bash
 pip install -r requirements.txt
-python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl --out ../../results/bm25-$(date +%Y-%m-%d).jsonl
+python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.public.jsonl --out ../../results/bm25-$(date +%Y-%m-%d).jsonl
 ```
 
 ## Implementation

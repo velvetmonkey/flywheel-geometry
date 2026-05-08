@@ -21,7 +21,21 @@ def tokenize(text: str) -> list[str]:
 
 
 def file_checksum(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def env_summary() -> dict:
+    info = {"python": sys.version.split()[0]}
+    try:
+        from importlib.metadata import version
+        for pkg in ["rank_bm25", "numpy"]:
+            try:
+                info[pkg] = version(pkg)
+            except Exception:
+                info[pkg] = None
+    except Exception:
+        pass
+    return info
 
 
 def main() -> int:
@@ -70,11 +84,12 @@ def main() -> int:
         "wall_clock_seconds": round(time.time() - started, 2),
         "tokenizer": "lowercase-whitespace",
         "bm25_params": {"k1": 1.5, "b": 0.75},
-        "corpus_checksum": file_checksum(args.corpus),
+        "corpus_sha256": file_checksum(args.corpus),
         "corpus_count": len(notes),
-        "queries_checksum": file_checksum(args.queries),
+        "queries_sha256": file_checksum(args.queries),
         "queries_count": len(queries),
         "top_k": args.top_k,
+        "env": env_summary(),
     }
     (traces_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print(f"wrote {len(queries)} results to {args.out}; traces in {traces_dir}")

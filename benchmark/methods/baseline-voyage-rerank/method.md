@@ -11,7 +11,7 @@ How far retrieval quality improves when a frontier LLM (Claude Sonnet 4.6) is al
 ## Inputs
 
 - `../../corpus/notes.jsonl`
-- `../../queries.jsonl`
+- `../../queries.public.jsonl`
 
 ## Outputs
 
@@ -32,7 +32,7 @@ export VOYAGE_API_KEY=...                # always needed for embeddings
 pip install -r requirements.txt
 
 # Subscription CLI (default — claude); 30 calls × ~20s ≈ 10 min:
-python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl \
+python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.public.jsonl \
               --out ../../results/voyage-rerank-claude-$(date +%Y-%m-%d).jsonl
 
 # Try a different CLI:

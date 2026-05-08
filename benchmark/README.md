@@ -13,7 +13,8 @@ This is a narrower claim than "geodesic retrieval beats cosine for general searc
 ## Setup
 
 - **Corpus** (`corpus/notes.jsonl`): **50 fully synthetic notes** authored from a fictional persona (see [`corpus/PERSONA.md`](./corpus/PERSONA.md)). Spans 10 domains (AI research, equine training, quant finance, vehicle/equipment, philosophy, travel, career, software architecture, home admin, daily journal). Designed so the same underlying concepts (feedback loops, regime change, calibration, tail dependence, exploration vs exploitation, attention texture) recur across surface-different domains. v0.1 size; **v0.2 scales to 500 notes** for the public claim.
-- **Queries** (`queries.jsonl`): 30 hand-written cross-domain bridge queries with hidden gold target note IDs. 27 cross-domain, 3 intra-domain control queries.
+- **Queries** (`queries.public.jsonl`): 30 hand-written queries — `query_id`, `query_text`, `is_control` only. 27 are cross-domain bridge queries (the headline benchmark). 3 are intra-domain control queries (sanity floor; reported separately, never mixed into the headline metric).
+- **Gold targets** (`gold/targets.jsonl`): hidden target note IDs + target domains + rationale per query. **Method runners must not read this file.** Only the evaluator reads `gold/`. See [`gold/README.md`](./gold/README.md) for the rationale.
 - **Evaluation**: blind precision@5 and nDCG@5 against hidden gold targets; head-to-head human + LLM-as-judge preference under hidden method labels.
 
 ## Methods
@@ -25,11 +26,18 @@ The benchmark separates four signal channels deliberately — **embedding qualit
 | 1 | BM25 | lexical sanity floor | scaffolded | [`methods/baseline-bm25/`](./methods/baseline-bm25/) |
 | 2 | Voyage-3 + **Voyage native reranker** | embedding + reranker quality, no LLM | scaffolded | [`methods/baseline-voyage-native-rerank/`](./methods/baseline-voyage-native-rerank/) |
 | 3 | Voyage-3 + Claude rerank | + LLM reranker effect | scaffolded | [`methods/baseline-voyage-rerank/`](./methods/baseline-voyage-rerank/) |
-| 4 | Voyage-3 + Claude rerank **with bridge-rationale generation** *(kill-product test)* | + LLM explanation effect | scaffolded | [`methods/baseline-voyage-rationale-rerank/`](./methods/baseline-voyage-rationale-rerank/) |
+| 4a | Voyage-3 + **rationale-augmented embedding rerank** *(kill-product test)* | + LLM explanation effect, embedding-only re-rank | scaffolded | [`methods/baseline-voyage-rationale-rerank/`](./methods/baseline-voyage-rationale-rerank/) |
+| 4b | Voyage-3 + rationale-augmented + **Claude final rerank** | + LLM explanation effect, LLM as final judge | scaffolded | [`methods/baseline-voyage-rationale-claude-rerank/`](./methods/baseline-voyage-rationale-claude-rerank/) |
 | 5 | @slashreboot's introspective coordinate probe | learned-discourse priors | v0.2 | — |
-| 6 | **Activation extraction via TransformerLens + kNN** *(the real hypothesis)* | activation-space geometry | v0.2 | — |
+| 6 | **Activation extraction via TransformerLens + kNN** *(the real hypothesis)* | activation-space geometry | v0.2 | [`methods/method-geodesic/`](./methods/method-geodesic/) (spec only) |
 
-Method 4 is the bar Method 6 must clear. Method 2 vs Method 3 isolates "LLM-as-reranker" effects from "embedding + reranker" baseline. Method 3 vs Method 4 isolates the *explanation-generation* effect from the rerank.
+A frontier-commercial baseline using `voyage-4-large + rerank-2.5` lives at [`methods/baseline-voyage-frontier/`](./methods/baseline-voyage-frontier/). Treat it as a moving target — Voyage's API rolls forward — rather than a stable v0.1 comparison point. The stable comparison anchors are Methods 1–4b, which all pin `voyage-3` and `rerank-2`.
+
+Methods 4a + 4b are the bar Method 6 must clear. Comparison logic:
+- Method 2 vs Method 3 → isolates "Claude as reranker" from "Voyage native reranker" (no rationale in either).
+- Method 3 vs Method 4a → isolates the *rationale-generation* effect, with the *same* Voyage embedding step doing the final rank.
+- Method 4a vs Method 4b → isolates the effect of the *final reranker* (Voyage-cosine over augmented text, vs Claude reading both query and augmented text and picking).
+- Method 6 vs Method 4b → activation geometry vs the strongest LLM-augmented embedding baseline.
 
 ### LLM dispatch: subscription CLI by default
 
@@ -69,16 +77,19 @@ Pinned model IDs are not enough — serving infrastructure can change underneath
 
 ## Decision criterion
 
-Method 6 (activation-derived geodesic retrieval) ships only if it shows ≥20% precision@5 lift over **both** Method 3 (Voyage + Claude rerank) and Method 4 (Voyage + Claude rerank with rationale generation) on the 30 cross-domain bridge queries.
+**Primary metric**: precision@5 on the **27 cross-domain bridge queries**.
+**Secondary metric**: precision@5 on the **3 intra-domain control queries**, reported separately.
 
-Equal or worse vs Method 4 means the bridge "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots — to bridge-tension via relational structure, to direct activation extraction without the introspective wrapper, or away from the manifold thesis entirely. The pivot post is the launch.
+Method 6 (activation-derived geodesic retrieval) ships only if it shows ≥20% precision@5 lift over **both** Method 3 (Voyage + Claude rerank) and Method 4 (rationale-augmented embedding rerank) on the **primary** metric. Control queries are reported alongside but never mixed into the headline.
+
+Equal or worse vs Method 4 on the primary metric means the bridge "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots — to bridge-tension via relational structure, to direct activation extraction without the introspective wrapper, or away from the manifold thesis entirely. The pivot post is the launch.
 
 ## Submitting a method
 
 PRs welcome. A method submission is a directory under `methods/` containing:
 
 - `method.md` — short description + pre-registered theoretical justification
-- `run.py` — deterministic script that reads `corpus/notes.jsonl` + `queries.jsonl` and writes both `results/<method>-<date>.jsonl` and `results/traces/<method>-<date>/`
+- `run.py` — deterministic script that reads `corpus/notes.jsonl` + `queries.public.jsonl` and writes both `results/<method>-<date>.jsonl` and `results/traces/<method>-<date>/`
 - `requirements.txt` — Python deps (or equivalent for other languages)
 
 Open an issue first if you want to discuss corpus, query set, or method-comparison design — the goal is a stable comparison point, not a moving target.

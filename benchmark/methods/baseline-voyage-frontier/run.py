@@ -1,7 +1,8 @@
-"""Voyage-3 + Voyage native reranker baseline (no LLM in the loop).
+"""Frontier Voyage baseline (voyage-4-large + rerank-2.5).
 
-Embed corpus + queries with Voyage-3, cosine-rank to full corpus (v0.1 scale),
-rerank via Voyage's rerank-2, take top-5. Full traces written for reproducibility.
+Mirrors baseline-voyage-native-rerank but with current-frontier model strings
+configurable via --embed-model and --rerank-model. Results from this method
+should be treated as a moving target, not a stable v0.1 comparison anchor.
 """
 import argparse
 import hashlib
@@ -16,9 +17,7 @@ import numpy as np
 import voyageai
 
 CACHE_DIR = Path(__file__).parent / ".cache"
-EMBED_MODEL = "voyage-3"
-RERANK_MODEL = "rerank-2"
-METHOD_NAME = "voyage-native-rerank"
+METHOD_NAME = "voyage-frontier"
 
 
 def cosine(a: np.ndarray, b: np.ndarray) -> float:
@@ -43,15 +42,15 @@ def env_summary() -> dict:
     return info
 
 
-def embed_corpus(notes: list[dict], vclient: voyageai.Client, corpus_path: Path) -> dict[str, np.ndarray]:
+def embed_corpus(notes: list[dict], vclient: voyageai.Client, corpus_path: Path, embed_model: str) -> dict[str, np.ndarray]:
     CACHE_DIR.mkdir(exist_ok=True)
     sha = file_checksum(corpus_path)[:16]
-    cache_path = CACHE_DIR / f"corpus-{EMBED_MODEL}-{sha}.npz"
+    cache_path = CACHE_DIR / f"corpus-{embed_model}-{sha}.npz"
     if cache_path.exists():
         data = np.load(cache_path, allow_pickle=True)
         return {str(k): data[k] for k in data.files}
     texts = [f"{n['title']}\n\n{n['body']}" for n in notes]
-    result = vclient.embed(texts, model=EMBED_MODEL, input_type="document")
+    result = vclient.embed(texts, model=embed_model, input_type="document")
     by_id = {n["id"]: np.array(emb) for n, emb in zip(notes, result.embeddings)}
     np.savez(cache_path, **{k: v for k, v in by_id.items()})
     return by_id
@@ -63,13 +62,15 @@ def main() -> int:
     ap.add_argument("--queries", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--top-k", type=int, default=5)
+    ap.add_argument("--embed-model", default="voyage-4-large")
+    ap.add_argument("--rerank-model", default="rerank-2.5")
     args = ap.parse_args()
 
     notes = [json.loads(line) for line in args.corpus.read_text().splitlines() if line.strip()]
     queries = [json.loads(line) for line in args.queries.read_text().splitlines() if line.strip()]
 
     vclient = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
-    note_embeddings = embed_corpus(notes, vclient, args.corpus)
+    note_embeddings = embed_corpus(notes, vclient, args.corpus, args.embed_model)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     traces_dir = args.out.parent / "traces" / args.out.stem
@@ -78,13 +79,13 @@ def main() -> int:
     started = time.time()
     with args.out.open("w") as f:
         for q in queries:
-            q_emb = np.array(vclient.embed([q["query_text"]], model=EMBED_MODEL, input_type="query").embeddings[0])
+            q_emb = np.array(vclient.embed([q["query_text"]], model=args.embed_model, input_type="query").embeddings[0])
             scored = [(n, cosine(q_emb, note_embeddings[n["id"]])) for n in notes]
-            candidates = sorted(scored, key=lambda x: x[1], reverse=True)
-            candidate_notes = [n for n, _ in candidates]
+            sorted_full = sorted(scored, key=lambda x: x[1], reverse=True)
+            candidate_notes = [n for n, _ in sorted_full]
             candidate_texts = [f"{n['title']}\n\n{n['body']}" for n in candidate_notes]
 
-            rr_result = vclient.rerank(query=q["query_text"], documents=candidate_texts, model=RERANK_MODEL, top_k=args.top_k)
+            rr_result = vclient.rerank(query=q["query_text"], documents=candidate_texts, model=args.rerank_model, top_k=args.top_k)
             reranked = [candidate_notes[r.index] for r in rr_result.results]
             scores = [r.relevance_score for r in rr_result.results]
 
@@ -97,10 +98,10 @@ def main() -> int:
             (traces_dir / f"{q['query_id']}.json").write_text(json.dumps({
                 "query_id": q["query_id"],
                 "query_text": q["query_text"],
-                "embed_model": EMBED_MODEL,
-                "rerank_model": RERANK_MODEL,
+                "embed_model": args.embed_model,
+                "rerank_model": args.rerank_model,
                 "candidate_pool_size": len(candidate_notes),
-                "cosine_top_5_pre_rerank": [{"id": n["id"], "score": s} for n, s in candidates[:5]],
+                "cosine_top_5_pre_rerank": [{"id": n["id"], "score": s} for n, s in sorted_full[:5]],
                 "reranked_top_k": [{"id": n["id"], "title": n["title"], "score": s} for n, s in zip(reranked, scores)],
             }, indent=2))
 
@@ -109,8 +110,8 @@ def main() -> int:
         "started_at": datetime.fromtimestamp(started, tz=timezone.utc).isoformat(),
         "completed_at": datetime.now(timezone.utc).isoformat(),
         "wall_clock_seconds": round(time.time() - started, 2),
-        "embed_model": EMBED_MODEL,
-        "rerank_model": RERANK_MODEL,
+        "embed_model": args.embed_model,
+        "rerank_model": args.rerank_model,
         "corpus_sha256": file_checksum(args.corpus),
         "corpus_count": len(notes),
         "queries_sha256": file_checksum(args.queries),
@@ -118,6 +119,7 @@ def main() -> int:
         "candidate_pool_size": len(notes),
         "top_k": args.top_k,
         "env": env_summary(),
+        "note": "Frontier baseline — model strings are moving targets; not a stable v0.1 comparison anchor.",
     }
     (traces_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print(f"wrote {len(queries)} results to {args.out}; traces in {traces_dir}")

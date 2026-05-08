@@ -9,7 +9,7 @@ How far we can push retrieval quality on cross-domain bridge queries using only 
 ## Inputs
 
 - `../../corpus/notes.jsonl`
-- `../../queries.jsonl`
+- `../../queries.public.jsonl`
 
 ## Outputs
 
@@ -21,7 +21,7 @@ How far we can push retrieval quality on cross-domain bridge queries using only 
 ```bash
 export VOYAGE_API_KEY=...
 pip install -r requirements.txt
-python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl --out ../../results/voyage-native-rerank-$(date +%Y-%m-%d).jsonl
+python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.public.jsonl --out ../../results/voyage-native-rerank-$(date +%Y-%m-%d).jsonl
 ```
 
 ## Implementation

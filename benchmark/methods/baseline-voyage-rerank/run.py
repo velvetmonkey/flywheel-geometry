@@ -32,17 +32,30 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
 
 
 def file_checksum(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()[:16]
+    return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def embed_corpus(notes: list[dict], vclient: voyageai.Client) -> dict[str, np.ndarray]:
+def env_summary() -> dict:
+    info = {"python": sys.version.split()[0]}
+    try:
+        from importlib.metadata import version
+        for pkg in ["voyageai", "anthropic", "numpy"]:
+            try:
+                info[pkg] = version(pkg)
+            except Exception:
+                info[pkg] = None
+    except Exception:
+        pass
+    return info
+
+
+def embed_corpus(notes: list[dict], vclient: voyageai.Client, corpus_path: Path) -> dict[str, np.ndarray]:
     CACHE_DIR.mkdir(exist_ok=True)
-    cache_path = CACHE_DIR / f"corpus-{EMBED_MODEL}.npz"
+    sha = file_checksum(corpus_path)[:16]
+    cache_path = CACHE_DIR / f"corpus-{EMBED_MODEL}-{sha}.npz"
     if cache_path.exists():
         data = np.load(cache_path, allow_pickle=True)
-        cached = {str(k): data[k] for k in data.files}
-        if all(n["id"] in cached for n in notes):
-            return cached
+        return {str(k): data[k] for k in data.files}
     texts = [f"{n['title']}\n\n{n['body']}" for n in notes]
     result = vclient.embed(texts, model=EMBED_MODEL, input_type="document")
     by_id = {n["id"]: np.array(emb) for n, emb in zip(notes, result.embeddings)}
@@ -98,6 +111,7 @@ def rerank_via_api(query: str, candidates: list[dict], top_k: int, model: str) -
     msg = aclient.messages.create(
         model=model,
         max_tokens=200,
+        temperature=0,
         messages=[{"role": "user", "content": prompt}],
     )
     raw = msg.content[0].text.strip()
@@ -116,6 +130,7 @@ def rerank_via_api(query: str, candidates: list[dict], top_k: int, model: str) -
         "method": "api",
         "api": "anthropic",
         "model": model,
+        "temperature": 0,
         "prompt": prompt,
         "raw_response": raw,
         "parsed": parsed,
@@ -142,7 +157,7 @@ def main() -> int:
     queries = [json.loads(line) for line in args.queries.read_text().splitlines() if line.strip()]
 
     vclient = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
-    note_embeddings = embed_corpus(notes, vclient)
+    note_embeddings = embed_corpus(notes, vclient, args.corpus)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     traces_dir = args.out.parent / "traces" / args.out.stem
@@ -190,12 +205,14 @@ def main() -> int:
         "cli": args.cli if args.llm == "cli" else None,
         "api_model": api_model if args.llm == "api" else None,
         "model_override": args.model,
-        "corpus_checksum": file_checksum(args.corpus),
+        "temperature": 0 if args.llm == "api" else "cli-default",
+        "corpus_sha256": file_checksum(args.corpus),
         "corpus_count": len(notes),
-        "queries_checksum": file_checksum(args.queries),
+        "queries_sha256": file_checksum(args.queries),
         "queries_count": len(queries),
         "candidate_pool_size": len(notes),
         "top_k": args.top_k,
+        "env": env_summary(),
     }
     (traces_dir / "manifest.json").write_text(json.dumps(manifest, indent=2))
     print(f"wrote {len(queries)} results to {args.out}; traces in {traces_dir}")

@@ -13,7 +13,7 @@ If geodesic retrieval (Method 6, v0.2) can't beat *both* plain rerank AND ration
 ## Inputs
 
 - `../../corpus/notes.jsonl`
-- `../../queries.jsonl`
+- `../../queries.public.jsonl`
 
 ## Outputs
 
@@ -42,7 +42,7 @@ export VOYAGE_API_KEY=...
 pip install -r requirements.txt
 
 # Subscription CLI (default), 5 parallel:
-python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl \
+python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.public.jsonl \
               --out ../../results/voyage-rationale-rerank-claude-$(date +%Y-%m-%d).jsonl
 
 # Faster CLI (codex was ~3× faster than claude in smoke tests):
