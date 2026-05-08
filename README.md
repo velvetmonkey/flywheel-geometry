@@ -158,12 +158,11 @@ This work builds on, does not extend, the underlying interpretability research. 
 
 Live trial state — including pinned numbers for the three scored kill-product-floor rows and the open Method 6 gate — lives in the [Falsification Log](#falsification-log) at the top of this README. The full leaderboard with per-query metrics is at [`benchmark/results/RESULTS.md`](./benchmark/results/RESULTS.md).
 
-**30-day milestone (2026-06-07).** Three concrete success criteria, all required:
+**30-day milestone (2026-06-07).** Two concrete success criteria, both required:
 1. Kill-product floor scored on the 27 primary queries, with at least one of {BM25, LLM rerank, rationale-augmented rerank} producing a non-degenerate baseline that the geodesic method must clear by ≥20% precision@5. **Three of four rows landed**; Method 4a / 4b deferred until after Method 6 spike per pre-registered staging.
 2. Cheap-probe Phase 0 resolved — **resolved → pivot**. The introspective probe was falsified along the variant-D failure-signal trap (D produced 18× core's ground-truth pair separation only when the prompt explicitly requested coherent geometry; the model performs, it doesn't measure). Full data + narrative at [`docs/v0.1-pivot.md`](./docs/v0.1-pivot.md).
-3. ≥1 substantive reply from researcher outreach (Matthew, Ekdeep, or Thomas Fel) on the benchmark design — pending.
 
-If two of three slip, the public pivot post is the launch. Watching the thesis fail in the open is itself a defensible outcome.
+If either slips — or if Method 6 itself refutes `asm-3zmj1VGB` — the public pivot post is the launch. Watching the thesis fail in the open is itself a defensible outcome.
 
 ### Goodfire Ember note (2026-05-08)
 
