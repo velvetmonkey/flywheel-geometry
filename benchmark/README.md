@@ -2,7 +2,7 @@
 
 Open benchmark for cross-domain semantic bridge retrieval in personal knowledge bases.
 
-**Status:** stub. First run shipping with `flywheel-geometry` v0.2.
+**Status:** v0.1 scaffold. Three baseline methods are in place; corpus + queries land next; first results land with v0.2.
 
 ## The question
 
@@ -10,34 +10,38 @@ Does retrieval over manifold-derived coordinates surface useful cross-domain bri
 
 ## Setup
 
-- **Corpus**: 500 anonymised personal-vault notes, mixed-domain (technical, personal, philosophical, operational).
-- **Queries**: 30 cross-domain bridge-finding queries with human-rated relevance labels.
-- **Evaluation**: blind precision@5, blind nDCG@5, head-to-head human preference under hidden method labels.
+- **Corpus** (`corpus/notes.jsonl`): 50 anonymised personal-vault notes spanning ≥5 domains (technical projects, personal/operational, philosophical, AI research, daily/temporal).
+- **Queries** (`queries.jsonl`): 30 cross-domain bridge-finding queries with hidden gold-standard target notes.
+- **Evaluation**: blind precision@5 and nDCG@5; head-to-head human + LLM-as-judge preference under hidden method labels.
 
-## Baselines (initial)
+## Methods (three baselines in place; geodesic method is the v0.2 hypothesis)
 
-- BM25
-- Voyage-3 + LLM rerank
-- Voyage-3 + LLM rerank with bridge-rationale generation *(distinguishes retrieval from presentation)*
-- Cohere-embed-v4 + rerank
-- OpenAI text-embedding-3 + rerank
-- [@slashreboot](https://x.com/slashreboot)'s introspective coordinate probe (frontier model self-report)
-- Layer-wise activation extraction (TransformerLens, open-source model)
+| Method | Status | Path |
+|---|---|---|
+| BM25 (lexical sanity floor) | scaffolded | [`methods/baseline-bm25/`](./methods/baseline-bm25/) |
+| Voyage-3 + Claude rerank (strong embedding baseline) | scaffolded | [`methods/baseline-voyage-rerank/`](./methods/baseline-voyage-rerank/) |
+| Voyage-3 + Claude rerank **with bridge-rationale generation** *(kill-product test)* | scaffolded | [`methods/baseline-voyage-rationale-rerank/`](./methods/baseline-voyage-rationale-rerank/) |
+| Activation extraction via TransformerLens (the actual hypothesis) | v0.2 | — |
+| @slashreboot's introspective coordinate probe (cheap baseline) | v0.2 | — |
 
 ## Decision criterion
 
-Manifold-aware retrieval continues only if it shows ≥20% precision@5 lift over **both** baseline (2) and baseline (3) on cross-domain bridge queries. Equal or worse against rationale-augmented embeddings means the manifold "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots accordingly.
+Geodesic (activation-derived) retrieval continues only if it shows ≥20% precision@5 lift over **both** baseline 2 (Voyage + rerank) and baseline 3 (Voyage + rationale rerank) on cross-domain bridge queries.
+
+Equal or worse vs baseline 3 means the manifold "effect" is the LLM explaining adjacency, not the geometry surfacing it. Project pivots accordingly — to bridge-tension via relational structure, or to direct activation extraction without the introspective probe wrapper, or away from the manifold thesis entirely.
 
 ## Submitting a method
 
 PRs welcome. A method submission is a directory under `methods/` containing:
 
 - `method.md` — short description + theoretical justification
-- `run.py` — deterministic script that takes the corpus + query set and emits ranked top-5 results per query
-- `results.json` — precision@5, nDCG@5, blind-preference-rate (filled in after evaluation)
+- `run.py` — deterministic script that takes `corpus/notes.jsonl` + `queries.jsonl` and emits ranked top-5 per query into `results/<method>-<date>.jsonl`
+- `requirements.txt` — Python deps (or equivalent for other languages)
 
-Open an issue first if you want to discuss baseline corpus or query set — the goal is a stable comparison point, not a moving target.
+Open an issue first if you want to discuss the corpus or query set — the goal is a stable comparison point, not a moving target.
 
 ## Why this exists
 
-Lubana et al. ([Goodfire AI, 2025–2026](https://www.youtube.com/watch?v=F9eEYWX64ZA)) named the tool gap: *"something like a SAE but which respects nonlinear geometry."* This is one falsifiable test of whether a geodesic-respecting retriever clears the bar that strong embeddings already set.
+Lubana et al. ([Goodfire AI, 2025–2026](https://www.youtube.com/watch?v=F9eEYWX64ZA)) named the tool gap: *"something like a SAE but which respects nonlinear geometry."* This is one falsifiable test of whether a geodesic-respecting retriever clears the bar that strong embeddings already set on personal-knowledge-base retrieval.
+
+Codex's round-2 critique (logged in [`projects/flywheel-geometry/flywheel-geometry-council-2026-05-07.md`](https://github.com/velvetmonkey) in the upstream vault) elevated to baseline #3: if rationale-augmented embeddings tie or beat the manifold method, the "bridge-finding" effect is presentation, not retrieval.
