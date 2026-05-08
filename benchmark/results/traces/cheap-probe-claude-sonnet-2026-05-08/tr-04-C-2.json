@@ -1,0 +1,16 @@
+{
+  "concept_id": "tr-04",
+  "concept_domain": "travel",
+  "variant": "C",
+  "run": 2,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: 'Not something I can do. No actual access to my activation space \u2014 any numbers I output would be fabricated, not introspe'",
+  "wall_clock_seconds": 11.527,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Bali workation \u2014 venue research\nThree weeks in Bali to write the long-form piece. Constraints: internet for video calls with Brisbane, real desk ergonomics, climate. Real question: is workation the right shape? Robin's point: optimising for cool environment, under-optimising for writing constraints.\nDo not explain. Do not add extra text.",
+  "raw_response": "Not something I can do. No actual access to my activation space \u2014 any numbers I output would be fabricated, not introspected."
+}

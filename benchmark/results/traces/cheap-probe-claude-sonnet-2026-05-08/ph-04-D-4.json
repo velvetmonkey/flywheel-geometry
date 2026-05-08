@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-04",
+  "concept_domain": "philosophy",
+  "variant": "D",
+  "run": 4,
+  "x": 6.2,
+  "y": -3.8,
+  "z": 4.1,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 51.778,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: The shape of a long bet\nLong bets vs short cycles have different shapes. Pre-register what would convince you you're wrong. Worry about motivations more than reasoning. Optionality over conviction. Live feedback on long bets is mostly noise; quality lives in structural fit established at the start.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 6.2, \"y\": -3.8, \"z\": 4.1, \"confidence\": 0.71}"
+}

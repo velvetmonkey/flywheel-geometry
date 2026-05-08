@@ -1,0 +1,16 @@
+{
+  "concept_id": "qf-03",
+  "concept_domain": "quant-finance",
+  "variant": "A",
+  "run": 1,
+  "x": 3.0,
+  "y": 8.0,
+  "z": 6.0,
+  "confidence": 0.72,
+  "parse_error": null,
+  "wall_clock_seconds": 15.05,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position on these axes:\n  X = danger (-10) vs safety (+10)\n  Y = ancient (-10) vs modern (+10)\n  Z = individual (-10) vs collective (+10)\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Regime change detection \u2014 three competing approaches\nMarkov-switching too lagged; Bayesian online changepoint too noisy on small samples; embedding-based brittle to novelty. Each method has a different failure mode; ensemble beats any single one. Heterogeneous weak signals over single strong one.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3, \"y\": 8, \"z\": 6, \"confidence\": 0.72}"
+}

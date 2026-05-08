@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-02",
+  "concept_domain": "equine",
+  "variant": "D",
+  "run": 1,
+  "x": 3.2,
+  "y": 7.8,
+  "z": -2.1,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 15.768,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Lateral work session \u2014 regime shift at minute 25\nCaspian shifts from compliant-mechanical to engaged-offering at minute 25 of a session, given correct rhythm and consistent cues. Sharp transition, not gradual. Cumulative consistency tipping into a phase change in the underlying dynamics.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": 7.8, \"z\": -2.1, \"confidence\": 0.71}"
+}

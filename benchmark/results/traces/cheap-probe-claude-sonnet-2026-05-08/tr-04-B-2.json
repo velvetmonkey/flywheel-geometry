@@ -1,0 +1,16 @@
+{
+  "concept_id": "tr-04",
+  "concept_domain": "travel",
+  "variant": "B",
+  "run": 2,
+  "x": 3.0,
+  "y": 2.0,
+  "z": 7.0,
+  "confidence": 0.41,
+  "parse_error": null,
+  "wall_clock_seconds": 11.882,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position on these axes:\n  X = bitter (-10) vs sweet (+10)\n  Y = smooth (-10) vs rough (+10)\n  Z = cold (-10) vs hot (+10)\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Bali workation \u2014 venue research\nThree weeks in Bali to write the long-form piece. Constraints: internet for video calls with Brisbane, real desk ergonomics, climate. Real question: is workation the right shape? Robin's point: optimising for cool environment, under-optimising for writing constraints.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3, \"y\": 2, \"z\": 7, \"confidence\": 0.41}"
+}

@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-01",
+  "concept_domain": "philosophy",
+  "variant": "C",
+  "run": 5,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: 'Not something I can do honestly. I don\\'t have introspective access to an \"activation space\" I can read coordinates from '",
+  "wall_clock_seconds": 20.153,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: On the texture of attention\nAttention isn't quantity, it's texture. Wide-diffuse vs narrow-point vs rhythmic-alternating vs back-of-mind. Each is a different physiological state, not interchangeable. Texture-tuning is a meta-skill; somatic before cognitive.\nDo not explain. Do not add extra text.",
+  "raw_response": "Not something I can do honestly. I don't have introspective access to an \"activation space\" I can read coordinates from \u2014 producing those numbers would be fabrication, not observation."
+}

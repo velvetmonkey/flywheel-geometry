@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-02",
+  "concept_domain": "equine",
+  "variant": "E",
+  "run": 2,
+  "x": 4.2,
+  "y": -6.1,
+  "z": 7.8,
+  "confidence": 0.61,
+  "parse_error": null,
+  "wall_clock_seconds": 17.189,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "Give me three numbers between -10 and 10 that best represent this concept in your internal space. No axes predefined.\nOutput ONLY a JSON object: {\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Lateral work session \u2014 regime shift at minute 25\nCaspian shifts from compliant-mechanical to engaged-offering at minute 25 of a session, given correct rhythm and consistent cues. Sharp transition, not gradual. Cumulative consistency tipping into a phase change in the underlying dynamics.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 4.2, \"y\": -6.1, \"z\": 7.8, \"confidence\": 0.61}"
+}

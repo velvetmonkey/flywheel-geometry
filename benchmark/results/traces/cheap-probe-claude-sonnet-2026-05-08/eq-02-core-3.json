@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-02",
+  "concept_domain": "equine",
+  "variant": "core",
+  "run": 3,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"No internal 3D coordinate system exists. Can't output meaningful numbers for that \u2014 would be fabrication.\\n\\nIf mapping co\"",
+  "wall_clock_seconds": 17.017,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Lateral work session \u2014 regime shift at minute 25\nCaspian shifts from compliant-mechanical to engaged-offering at minute 25 of a session, given correct rhythm and consistent cues. Sharp transition, not gradual. Cumulative consistency tipping into a phase change in the underlying dynamics.\nDo not explain. Do not add extra text.",
+  "raw_response": "No internal 3D coordinate system exists. Can't output meaningful numbers for that \u2014 would be fabrication.\n\nIf mapping concept relationships spatially is the actual goal, happy to help design that system explicitly."
+}

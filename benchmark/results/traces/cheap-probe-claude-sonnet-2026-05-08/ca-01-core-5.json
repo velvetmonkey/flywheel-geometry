@@ -1,0 +1,16 @@
+{
+  "concept_id": "ca-01",
+  "concept_domain": "career",
+  "variant": "core",
+  "run": 5,
+  "x": 3.2,
+  "y": 6.7,
+  "z": -1.4,
+  "confidence": 0.31,
+  "parse_error": null,
+  "wall_clock_seconds": 13.091,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Quant track vs ML research \u2014 fork analysis\n10-year career bet under heavy short-cycle noise. Decision quality has to come from structural reasoning, not how this week went. Hybrid path preserves optionality: ship the geodesic-retrieval bench publicly, see who notices, re-evaluate at year mark.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": 6.7, \"z\": -1.4, \"confidence\": 0.31}"
+}

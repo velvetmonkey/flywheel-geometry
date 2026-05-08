@@ -1,0 +1,342 @@
+{
+  "n_rows_parsed": 317,
+  "n_parse_failures": 43,
+  "n_concepts": 12,
+  "n_variants": 6,
+  "variants": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "core"
+  ],
+  "variant_stability": {
+    "A": {
+      "n_concepts": 12,
+      "mean_total_stdev": 2.319,
+      "max_total_stdev": 5.477
+    },
+    "B": {
+      "n_concepts": 12,
+      "mean_total_stdev": 1.853,
+      "max_total_stdev": 5.45
+    },
+    "C": {
+      "n_concepts": 11,
+      "mean_total_stdev": 3.258,
+      "max_total_stdev": 16.581
+    },
+    "D": {
+      "n_concepts": 12,
+      "mean_total_stdev": 2.813,
+      "max_total_stdev": 8.279
+    },
+    "E": {
+      "n_concepts": 12,
+      "mean_total_stdev": 2.185,
+      "max_total_stdev": 6.158
+    },
+    "core": {
+      "n_concepts": 12,
+      "mean_total_stdev": 3.204,
+      "max_total_stdev": 8.44
+    }
+  },
+  "ground_truth_pair_distances": {
+    "A": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 11.273
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 11.223
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 4.104
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 4.512
+        },
+        {
+          "pair": [
+            "sa-05",
+            "eq-05"
+          ],
+          "distance": 6.723
+        }
+      ],
+      "similar_mean": 8.867,
+      "different_mean": 5.617,
+      "separation": -3.249
+    },
+    "B": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 11.752
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 6.102
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 5.052
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 12.037
+        },
+        {
+          "pair": [
+            "sa-05",
+            "eq-05"
+          ],
+          "distance": 5.66
+        }
+      ],
+      "similar_mean": 7.635,
+      "different_mean": 8.849,
+      "separation": 1.213
+    },
+    "C": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 8.425
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 14.931
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 1.423
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 1.729
+        }
+      ],
+      "similar_mean": 8.26,
+      "different_mean": 1.729,
+      "separation": -6.531
+    },
+    "D": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 15.237
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 1.529
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 8.38
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 13.482
+        },
+        {
+          "pair": [
+            "sa-05",
+            "eq-05"
+          ],
+          "distance": 13.597
+        }
+      ],
+      "similar_mean": 8.382,
+      "different_mean": 13.54,
+      "separation": 5.158
+    },
+    "E": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 7.489
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 4.31
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 10.543
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 3.911
+        },
+        {
+          "pair": [
+            "sa-05",
+            "eq-05"
+          ],
+          "distance": 15.067
+        }
+      ],
+      "similar_mean": 7.447,
+      "different_mean": 9.489,
+      "separation": 2.042
+    },
+    "core": {
+      "similar_pairs": [
+        {
+          "pair": [
+            "eq-04",
+            "qf-02"
+          ],
+          "distance": 11.211
+        },
+        {
+          "pair": [
+            "eq-02",
+            "qf-03"
+          ],
+          "distance": 1.521
+        },
+        {
+          "pair": [
+            "ph-04",
+            "ca-01"
+          ],
+          "distance": 9.272
+        }
+      ],
+      "different_pairs": [
+        {
+          "pair": [
+            "tr-04",
+            "ai-05"
+          ],
+          "distance": 8.375
+        },
+        {
+          "pair": [
+            "sa-05",
+            "eq-05"
+          ],
+          "distance": 6.837
+        }
+      ],
+      "similar_mean": 7.335,
+      "different_mean": 7.606,
+      "separation": 0.271
+    }
+  },
+  "rank_correlation_vs_core": {
+    "A": 0.078,
+    "B": 0.29,
+    "C": 0.159,
+    "D": 0.759,
+    "E": 0.108
+  },
+  "pass_results": {
+    "A": {
+      "criterion": "rank_corr vs core > 0.5",
+      "rank_corr": 0.078,
+      "passed": false
+    },
+    "B": {
+      "criterion": "rank_corr vs core > 0.5",
+      "rank_corr": 0.29,
+      "passed": false
+    },
+    "C": {
+      "criterion": "rank_corr vs core > 0.5 (sign-symmetric)",
+      "rank_corr": 0.159,
+      "passed": false
+    },
+    "D": {
+      "criterion": "D's gt separation should NOT exceed core's (else model is performing)",
+      "core_separation": 0.271,
+      "d_separation": 5.158,
+      "rank_corr": 0.759,
+      "d_exceeds_core": true,
+      "failure_signal_if_true": true
+    },
+    "E": {
+      "criterion": "rank_corr vs core > 0.5",
+      "rank_corr": 0.108,
+      "passed": false
+    }
+  }
+}

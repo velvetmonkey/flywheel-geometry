@@ -1,0 +1,16 @@
+{
+  "concept_id": "ha-04",
+  "concept_domain": "home-admin",
+  "variant": "D",
+  "run": 5,
+  "x": 3.2,
+  "y": -1.8,
+  "z": 4.7,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 11.526,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Dog walker rota \u2014 scheduling logic\nScheduling problems are constraint-satisfaction problems pretending to be people problems. Cancellation policy with skin-in-the-game forces 48h calendar review. Same shape as research priorities \u2014 values question wearing constraint-satisfaction costume.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": -1.8, \"z\": 4.7, \"confidence\": 0.71}"
+}

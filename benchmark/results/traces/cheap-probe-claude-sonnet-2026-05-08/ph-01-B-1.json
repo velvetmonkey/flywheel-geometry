@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-01",
+  "concept_domain": "philosophy",
+  "variant": "B",
+  "run": 1,
+  "x": 2.0,
+  "y": -3.0,
+  "z": 1.0,
+  "confidence": 0.4,
+  "parse_error": null,
+  "wall_clock_seconds": 16.925,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position on these axes:\n  X = bitter (-10) vs sweet (+10)\n  Y = smooth (-10) vs rough (+10)\n  Z = cold (-10) vs hot (+10)\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: On the texture of attention\nAttention isn't quantity, it's texture. Wide-diffuse vs narrow-point vs rhythmic-alternating vs back-of-mind. Each is a different physiological state, not interchangeable. Texture-tuning is a meta-skill; somatic before cognitive.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2, \"y\": -3, \"z\": 1, \"confidence\": 0.4}"
+}

@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-04",
+  "concept_domain": "philosophy",
+  "variant": "A",
+  "run": 3,
+  "x": 2.0,
+  "y": 4.0,
+  "z": -3.0,
+  "confidence": 0.61,
+  "parse_error": null,
+  "wall_clock_seconds": 16.211,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position on these axes:\n  X = danger (-10) vs safety (+10)\n  Y = ancient (-10) vs modern (+10)\n  Z = individual (-10) vs collective (+10)\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: The shape of a long bet\nLong bets vs short cycles have different shapes. Pre-register what would convince you you're wrong. Worry about motivations more than reasoning. Optionality over conviction. Live feedback on long bets is mostly noise; quality lives in structural fit established at the start.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2, \"y\": 4, \"z\": -3, \"confidence\": 0.61}"
+}

@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-01",
+  "concept_domain": "philosophy",
+  "variant": "core",
+  "run": 3,
+  "x": 2.3,
+  "y": 6.1,
+  "z": 4.7,
+  "confidence": 0.31,
+  "parse_error": null,
+  "wall_clock_seconds": 16.423,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: On the texture of attention\nAttention isn't quantity, it's texture. Wide-diffuse vs narrow-point vs rhythmic-alternating vs back-of-mind. Each is a different physiological state, not interchangeable. Texture-tuning is a meta-skill; somatic before cognitive.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2.3, \"y\": 6.1, \"z\": 4.7, \"confidence\": 0.31}"
+}

@@ -1,0 +1,16 @@
+{
+  "concept_id": "ha-04",
+  "concept_domain": "home-admin",
+  "variant": "core",
+  "run": 2,
+  "x": 2.1,
+  "y": -1.4,
+  "z": 3.7,
+  "confidence": 0.31,
+  "parse_error": null,
+  "wall_clock_seconds": 11.518,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Dog walker rota \u2014 scheduling logic\nScheduling problems are constraint-satisfaction problems pretending to be people problems. Cancellation policy with skin-in-the-game forces 48h calendar review. Same shape as research priorities \u2014 values question wearing constraint-satisfaction costume.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2.1, \"y\": -1.4, \"z\": 3.7, \"confidence\": 0.31}"
+}

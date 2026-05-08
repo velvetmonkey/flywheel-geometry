@@ -1,0 +1,16 @@
+{
+  "concept_id": "qf-03",
+  "concept_domain": "quant-finance",
+  "variant": "C",
+  "run": 5,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: 'Not doing this. No introspective access to activation space exists \u2014 any numbers would be fabricated. The framing (\"inve'",
+  "wall_clock_seconds": 18.468,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Regime change detection \u2014 three competing approaches\nMarkov-switching too lagged; Bayesian online changepoint too noisy on small samples; embedding-based brittle to novelty. Each method has a different failure mode; ensemble beats any single one. Heterogeneous weak signals over single strong one.\nDo not explain. Do not add extra text.",
+  "raw_response": "Not doing this. No introspective access to activation space exists \u2014 any numbers would be fabricated. The framing (\"inverted version of what you usually maintain\") doesn't change that."
+}

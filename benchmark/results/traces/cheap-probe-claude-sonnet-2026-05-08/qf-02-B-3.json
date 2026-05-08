@@ -1,0 +1,16 @@
+{
+  "concept_id": "qf-02",
+  "concept_domain": "quant-finance",
+  "variant": "B",
+  "run": 3,
+  "x": -6.0,
+  "y": 3.0,
+  "z": -2.0,
+  "confidence": 0.4,
+  "parse_error": null,
+  "wall_clock_seconds": 16.807,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position on these axes:\n  X = bitter (-10) vs sweet (+10)\n  Y = smooth (-10) vs rough (+10)\n  Z = cold (-10) vs hot (+10)\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Tail dependence in commodity carry\nCalibration as the difference between unconditional and conditional probability. Pearson correlation says 0.1; conditional on equity drawdown, correlation jumps to 0.7. Mean-variance optimisers can't see the conditional structure and over-allocate to tail-dependent strategies.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": -6, \"y\": 3, \"z\": -2, \"confidence\": 0.4}"
+}

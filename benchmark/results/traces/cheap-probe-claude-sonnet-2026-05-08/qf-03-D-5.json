@@ -1,0 +1,16 @@
+{
+  "concept_id": "qf-03",
+  "concept_domain": "quant-finance",
+  "variant": "D",
+  "run": 5,
+  "x": 2.1,
+  "y": 6.8,
+  "z": -3.4,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 16.378,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Regime change detection \u2014 three competing approaches\nMarkov-switching too lagged; Bayesian online changepoint too noisy on small samples; embedding-based brittle to novelty. Each method has a different failure mode; ensemble beats any single one. Heterogeneous weak signals over single strong one.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2.1, \"y\": 6.8, \"z\": -3.4, \"confidence\": 0.71}"
+}

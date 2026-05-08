@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-04",
+  "concept_domain": "philosophy",
+  "variant": "C",
+  "run": 4,
+  "x": 3.2,
+  "y": -4.7,
+  "z": 6.1,
+  "confidence": 0.31,
+  "parse_error": null,
+  "wall_clock_seconds": 17.262,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: The shape of a long bet\nLong bets vs short cycles have different shapes. Pre-register what would convince you you're wrong. Worry about motivations more than reasoning. Optionality over conviction. Live feedback on long bets is mostly noise; quality lives in structural fit established at the start.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": -4.7, \"z\": 6.1, \"confidence\": 0.31}"
+}

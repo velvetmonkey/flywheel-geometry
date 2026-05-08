@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-04",
+  "concept_domain": "philosophy",
+  "variant": "E",
+  "run": 5,
+  "x": 7.2,
+  "y": -4.1,
+  "z": 2.8,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 16.741,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "Give me three numbers between -10 and 10 that best represent this concept in your internal space. No axes predefined.\nOutput ONLY a JSON object: {\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: The shape of a long bet\nLong bets vs short cycles have different shapes. Pre-register what would convince you you're wrong. Worry about motivations more than reasoning. Optionality over conviction. Live feedback on long bets is mostly noise; quality lives in structural fit established at the start.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 7.2, \"y\": -4.1, \"z\": 2.8, \"confidence\": 0.71}"
+}

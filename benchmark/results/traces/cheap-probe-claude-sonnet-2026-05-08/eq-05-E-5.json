@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-05",
+  "concept_domain": "equine",
+  "variant": "E",
+  "run": 5,
+  "x": -3.2,
+  "y": 6.8,
+  "z": -1.4,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 55.43,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "Give me three numbers between -10 and 10 that best represent this concept in your internal space. No axes predefined.\nOutput ONLY a JSON object: {\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Trailer loading reset training plan\nCaspian's bad trailer experience created a Bayesian update toward trailer aversion. Reset is also a series of Bayesian updates \u2014 feed the prior new evidence in a way it can integrate. Forcing through the trailer would generate more aversive evidence and reinforce the wrong association.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": -3.2, \"y\": 6.8, \"z\": -1.4, \"confidence\": 0.71}"
+}

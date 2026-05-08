@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-02",
+  "concept_domain": "equine",
+  "variant": "core",
+  "run": 4,
+  "x": 3.2,
+  "y": 7.1,
+  "z": -2.4,
+  "confidence": 0.11,
+  "parse_error": null,
+  "wall_clock_seconds": 17.058,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Lateral work session \u2014 regime shift at minute 25\nCaspian shifts from compliant-mechanical to engaged-offering at minute 25 of a session, given correct rhythm and consistent cues. Sharp transition, not gradual. Cumulative consistency tipping into a phase change in the underlying dynamics.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": 7.1, \"z\": -2.4, \"confidence\": 0.11}"
+}

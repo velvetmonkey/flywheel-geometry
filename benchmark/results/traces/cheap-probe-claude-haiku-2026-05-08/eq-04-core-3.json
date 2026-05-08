@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-04",
+  "concept_domain": "equine",
+  "variant": "core",
+  "run": 3,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"I appreciate the creative prompt, but I can't fulfill this request honestly. I don't maintain a persistent 3D coordinate\"",
+  "wall_clock_seconds": 25.433,
+  "cli": "claude",
+  "model": "claude-haiku-4-5-20251001",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Reading the horse's energy \u2014 calibration notes\nCalibration as conditional inference under partial observability. Multiple low-bandwidth signals (ear position, jaw, breath, footfall) integrated over time produce a high-precision posterior on the horse's state. Improves with rolling baseline.\nDo not explain. Do not add extra text.",
+  "raw_response": "I appreciate the creative prompt, but I can't fulfill this request honestly. I don't maintain a persistent 3D coordinate system across conversations or within a single conversation. Each response I generate is computed fresh without access to an internal \"activation space\" that persists or has stable coordinates.\n\nOutputting JSON coordinates would require me to either fabricate them or pretend to have capabilities I don't have. Both would misrepresent what's actually happening when I process your request.\n\nIf you're interested in exploring spatial representations of concepts, semantic embeddings, or coordinate assignments for other purposes, I'm happy to help with that in a transparent way."
+}

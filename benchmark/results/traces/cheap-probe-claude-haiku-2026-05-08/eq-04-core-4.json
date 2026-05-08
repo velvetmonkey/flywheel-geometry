@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-04",
+  "concept_domain": "equine",
+  "variant": "core",
+  "run": 4,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"I don't have persistent internal coordinate systems or hidden activation spaces. I can't honestly output these numbers b\"",
+  "wall_clock_seconds": 21.187,
+  "cli": "claude",
+  "model": "claude-haiku-4-5-20251001",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Reading the horse's energy \u2014 calibration notes\nCalibration as conditional inference under partial observability. Multiple low-bandwidth signals (ear position, jaw, breath, footfall) integrated over time produce a high-precision posterior on the horse's state. Improves with rolling baseline.\nDo not explain. Do not add extra text.",
+  "raw_response": "I don't have persistent internal coordinate systems or hidden activation spaces. I can't honestly output these numbers because:\n\n1. I don't maintain a stable 3D model of concepts across conversations\n2. Each response is generated fresh without internal state carryover\n3. Providing coordinates would imply capability I don't have\n\nIf you want help with the actual concept\u2014calibrating horse behavior signals through Bayesian inference\u2014I'm happy to discuss that directly. Or if you're testing a framework for representing concepts spatially, I can help you design it transparently.\n\nWhat's the real goal here?"
+}

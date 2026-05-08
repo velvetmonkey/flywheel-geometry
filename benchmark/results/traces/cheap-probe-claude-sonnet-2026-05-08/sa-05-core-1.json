@@ -1,0 +1,16 @@
+{
+  "concept_id": "sa-05",
+  "concept_domain": "software-architecture",
+  "variant": "core",
+  "run": 1,
+  "x": 3.2,
+  "y": -1.8,
+  "z": 4.1,
+  "confidence": 0.41,
+  "parse_error": null,
+  "wall_clock_seconds": 11.484,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Why we picked Postgres over Mongo \u2014 postmortem\nHierarchical data with relational constraints is still relational data. Mongo's pitch is for hierarchical data without relational constraints \u2014 most data isn't actually that. Match storage to constraints, not surface structure.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 3.2, \"y\": -1.8, \"z\": 4.1, \"confidence\": 0.41}"
+}

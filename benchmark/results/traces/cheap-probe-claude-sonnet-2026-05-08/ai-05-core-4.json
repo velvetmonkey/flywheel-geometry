@@ -1,0 +1,16 @@
+{
+  "concept_id": "ai-05",
+  "concept_domain": "ai-research",
+  "variant": "core",
+  "run": 4,
+  "x": 2.3,
+  "y": -1.7,
+  "z": 4.1,
+  "confidence": 0.12,
+  "parse_error": null,
+  "wall_clock_seconds": 16.499,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Activation steering experiments \u2014 daily log\nLinear steering toward 'Tuesday' breaks coherence \u2014 the day-of-week ring is a real geometric structure, and pushing along the linear average direction exits the manifold into the void. Cross-architecture stability of the failure suggests it's a property of the underlying geometry.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 2.3, \"y\": -1.7, \"z\": 4.1, \"confidence\": 0.12}"
+}

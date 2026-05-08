@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-05",
+  "concept_domain": "equine",
+  "variant": "C",
+  "run": 3,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"No internal activation space access. Can't report meaningful coordinates \u2014 any numbers would be fabricated. Won't do tha\"",
+  "wall_clock_seconds": 13.336,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Trailer loading reset training plan\nCaspian's bad trailer experience created a Bayesian update toward trailer aversion. Reset is also a series of Bayesian updates \u2014 feed the prior new evidence in a way it can integrate. Forcing through the trailer would generate more aversive evidence and reinforce the wrong association.\nDo not explain. Do not add extra text.",
+  "raw_response": "No internal activation space access. Can't report meaningful coordinates \u2014 any numbers would be fabricated. Won't do that."
+}

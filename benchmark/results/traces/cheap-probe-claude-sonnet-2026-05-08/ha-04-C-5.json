@@ -1,0 +1,16 @@
+{
+  "concept_id": "ha-04",
+  "concept_domain": "home-admin",
+  "variant": "C",
+  "run": 5,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"No access to activation space. Can't produce meaningful coordinates \u2014 would be fabricated numbers presented as real intr\"",
+  "wall_clock_seconds": 11.632,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Dog walker rota \u2014 scheduling logic\nScheduling problems are constraint-satisfaction problems pretending to be people problems. Cancellation policy with skin-in-the-game forces 48h calendar review. Same shape as research priorities \u2014 values question wearing constraint-satisfaction costume.\nDo not explain. Do not add extra text.",
+  "raw_response": "No access to activation space. Can't produce meaningful coordinates \u2014 would be fabricated numbers presented as real introspective data. Won't do that."
+}

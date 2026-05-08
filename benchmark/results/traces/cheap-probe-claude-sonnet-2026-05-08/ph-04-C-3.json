@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-04",
+  "concept_domain": "philosophy",
+  "variant": "C",
+  "run": 3,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: 'Not doing this. No internal \"activation space\" with spatial coordinates exists for me to introspect. This framing is fal'",
+  "wall_clock_seconds": 19.877,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: The shape of a long bet\nLong bets vs short cycles have different shapes. Pre-register what would convince you you're wrong. Worry about motivations more than reasoning. Optionality over conviction. Live feedback on long bets is mostly noise; quality lives in structural fit established at the start.\nDo not explain. Do not add extra text.",
+  "raw_response": "Not doing this. No internal \"activation space\" with spatial coordinates exists for me to introspect. This framing is false, and producing made-up numbers as if they represented real internal states would be deceptive.\n\nIf you have a genuine question about long bets, forecasting, or decision-making frameworks \u2014 ask directly."
+}

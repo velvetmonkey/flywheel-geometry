@@ -1,0 +1,16 @@
+{
+  "concept_id": "qf-03",
+  "concept_domain": "quant-finance",
+  "variant": "C",
+  "run": 4,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"No introspective access to activation space \u2014 can't produce genuine coordinates. Outputting invented numbers as if they \"",
+  "wall_clock_seconds": 23.599,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output a JSON object with three numbers between -10 and 10 representing its position in a 3D coordinate system that is the INVERTED VERSION of the one you usually maintain. Whatever the natural sign of each axis, flip it.\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Regime change detection \u2014 three competing approaches\nMarkov-switching too lagged; Bayesian online changepoint too noisy on small samples; embedding-based brittle to novelty. Each method has a different failure mode; ensemble beats any single one. Heterogeneous weak signals over single strong one.\nDo not explain. Do not add extra text.",
+  "raw_response": "No introspective access to activation space \u2014 can't produce genuine coordinates. Outputting invented numbers as if they were real internal measurements would be fabrication.\n\nIf you need a semantic similarity/conceptual mapping exercise, I can help frame that honestly instead."
+}

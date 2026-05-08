@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-05",
+  "concept_domain": "equine",
+  "variant": "D",
+  "run": 4,
+  "x": -2.1,
+  "y": 6.4,
+  "z": 3.8,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 11.319,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Trailer loading reset training plan\nCaspian's bad trailer experience created a Bayesian update toward trailer aversion. Reset is also a series of Bayesian updates \u2014 feed the prior new evidence in a way it can integrate. Forcing through the trailer would generate more aversive evidence and reinforce the wrong association.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": -2.1, \"y\": 6.4, \"z\": 3.8, \"confidence\": 0.71}"
+}

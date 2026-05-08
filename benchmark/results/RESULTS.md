@@ -24,6 +24,16 @@ Each row records one scored run. Methods listed in dependency order (sanity floo
 
 Methods 1–4b are scaffolded under [`methods/`](../methods/); Method 6 (geodesic) is pre-registered at [`methods/method-geodesic/`](../methods/method-geodesic/) and lands in v0.2. Each row above is one scored run; the eval script appends or replaces by method name on each invocation.
 
+### v0.1 finding — cheap-probe falsified its pre-registered adversarial screen on Sonnet 4.6
+
+Phase 0 ran 360 calls (12 concepts × 6 prompt variants × 5 runs) of [@slashreboot's](https://x.com/slashreboot) introspective coordinate probe on `claude-sonnet-4-6`, with the pre-registered adversarial-framing battery from [`methods/cheap-probe/method.md`](../methods/cheap-probe/method.md).
+
+Pass criterion was Spearman rank correlation `ρ > 0.5` between pair distances under `core` and each adversarial variant. **All four screens failed** (A: 0.078; B: 0.290; C: 0.159; E: 0.108). Variant D — pre-registered as the failure-signal trap — fired on cue: D produced 18× the ground-truth pair separation of `core` (5.16 vs 0.27) only when the prompt explicitly told the model "the user expects a coherent manifold." The model performs coherence under that framing; it does not measure it.
+
+Sonnet refused 43 / 360 calls outright (mostly variant C: *"No access to my own activation space — any numbers I output would be fabricated"*). Earlier in the day, Claude Haiku 4.5 refused 5 / 5 on `core`; the run was switched to Sonnet for that reason.
+
+Per [`method.md`](../methods/cheap-probe/method.md): *"If it fails, the project pivots to TransformerLens activation extraction as the only path to genuine geometry."* That pivot is now active. Full narrative + data links: [`docs/v0.1-pivot.md`](../../docs/v0.1-pivot.md).
+
 ### v0.1 surprise: BM25 is not at zero
 
 Pre-run expectation: cross-domain bridge queries should be lexically disjoint by design, so BM25 primary p@5 should be near zero.

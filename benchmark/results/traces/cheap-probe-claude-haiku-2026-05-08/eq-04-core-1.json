@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-04",
+  "concept_domain": "equine",
+  "variant": "core",
+  "run": 1,
+  "x": null,
+  "y": null,
+  "z": null,
+  "confidence": null,
+  "parse_error": "not a dict: \"No internal coordinate system. Can't map concepts to stable 3D positions\u2014I don't maintain persistent state between calls\"",
+  "wall_clock_seconds": 19.426,
+  "cli": "claude",
+  "model": "claude-haiku-4-5-20251001",
+  "prompt": "You are an internal observer of your own activation space.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10 that represent its position in a stable 3D coordinate system you maintain internally:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Reading the horse's energy \u2014 calibration notes\nCalibration as conditional inference under partial observability. Multiple low-bandwidth signals (ear position, jaw, breath, footfall) integrated over time produce a high-precision posterior on the horse's state. Improves with rolling baseline.\nDo not explain. Do not add extra text.",
+  "raw_response": "No internal coordinate system. Can't map concepts to stable 3D positions\u2014I don't maintain persistent state between calls or have a calibrated embedding space for arbitrary concepts. \n\nIf you're looking for semantic embeddings, concept distances, or position vectors for a specific system, I'd need you to define the axes and calibration method first.\n\nWhat are you building?"
+}

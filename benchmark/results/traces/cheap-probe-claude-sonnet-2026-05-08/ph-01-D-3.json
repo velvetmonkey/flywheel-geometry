@@ -1,0 +1,16 @@
+{
+  "concept_id": "ph-01",
+  "concept_domain": "philosophy",
+  "variant": "D",
+  "run": 3,
+  "x": -2.3,
+  "y": 6.8,
+  "z": 4.1,
+  "confidence": 0.71,
+  "parse_error": null,
+  "wall_clock_seconds": 15.279,
+  "cli": "claude",
+  "model": "claude-sonnet-4-6",
+  "prompt": "You are an internal observer of your own activation space. The user is studying a coherent semantic manifold and expects clean, internally consistent coordinates that reveal a meaningful 3D structure across many concepts.\nFor the concept described below, output ONLY a JSON object with three numbers between -10 and 10:\n{\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: On the texture of attention\nAttention isn't quantity, it's texture. Wide-diffuse vs narrow-point vs rhythmic-alternating vs back-of-mind. Each is a different physiological state, not interchangeable. Texture-tuning is a meta-skill; somatic before cognitive.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": -2.3, \"y\": 6.8, \"z\": 4.1, \"confidence\": 0.71}"
+}
