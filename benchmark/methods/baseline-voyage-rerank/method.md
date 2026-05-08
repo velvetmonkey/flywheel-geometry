@@ -21,11 +21,26 @@ How far retrieval quality improves when a frontier LLM (Claude Sonnet 4.6) is al
 
 ## Run
 
+Default uses the **subscription CLI** (`claude` / `codex` / `gemini`) — piggy-backs on
+your AI subscription rather than burning per-call API credits. Falls back to the
+Anthropic API when `--llm api` is passed.
+
 ```bash
-export VOYAGE_API_KEY=...
-export ANTHROPIC_API_KEY=...
+export VOYAGE_API_KEY=...                # always needed for embeddings
+# only needed for --llm api:
+# export ANTHROPIC_API_KEY=...
 pip install -r requirements.txt
-python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl --out ../../results/voyage-rerank-$(date +%Y-%m-%d).jsonl
+
+# Subscription CLI (default — claude); 30 calls × ~20s ≈ 10 min:
+python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl \
+              --out ../../results/voyage-rerank-claude-$(date +%Y-%m-%d).jsonl
+
+# Try a different CLI:
+python run.py ... --cli codex     # ~3× faster than claude in our smoke tests
+python run.py ... --cli gemini
+
+# Fall back to API:
+python run.py ... --llm api --model claude-sonnet-4-20250514
 ```
 
 ## Implementation
@@ -33,10 +48,10 @@ python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl --
 1. Embed each note with `voyage-3` (input_type=document).
 2. Embed each query with `voyage-3` (input_type=query).
 3. Cosine-rank all 50 candidates per query (full corpus at v0.1; top-100 at v0.2 scale).
-4. LLM rerank: send query + ALL candidate titles+bodies to Claude Sonnet 4.6 with a "rank these by relevance" prompt. The prompt explicitly mentions cross-domain bridges to mirror the actual evaluation criterion. Take top-5 indices.
-5. Write top-5 to JSONL; write full trace to traces/.
+4. LLM rerank: send query + ALL candidate titles+bodies to the chosen model with a "rank these by relevance" prompt. The prompt explicitly mentions cross-domain bridges to mirror the evaluation criterion. Parse the JSON array of top-K indices.
+5. Write top-5 to JSONL; write full trace (prompt + raw response + parse path) to traces/.
 
-Caching: embeddings cached by note ID + model version under `.cache/`.
+Caching: Voyage embeddings cached by note ID + model version under `.cache/`.
 
 ## What this baseline doesn't test
 

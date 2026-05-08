@@ -31,6 +31,15 @@ The benchmark separates four signal channels deliberately — **embedding qualit
 
 Method 4 is the bar Method 6 must clear. Method 2 vs Method 3 isolates "LLM-as-reranker" effects from "embedding + reranker" baseline. Method 3 vs Method 4 isolates the *explanation-generation* effect from the rerank.
 
+### LLM dispatch: subscription CLI by default
+
+Methods 3 and 4 invoke an LLM many times. By default each runner shells out to a local subscription CLI (`claude`, `codex`, or `gemini`) — same pattern as the [Roundtable MCP server](https://github.com/velvetmonkey/roundtable). This piggybacks on the user's AI subscriptions instead of burning per-token API credits.
+
+- **`--llm cli` (default)** — `--cli claude` / `--cli codex` / `--cli gemini`. CLI startup overhead is non-trivial (~10–25s/call); `--concurrency N` runs N parallel calls. Subscription tier dictates how high `N` can go before rate-limiting.
+- **`--llm api`** — falls back to the Anthropic SDK with `ANTHROPIC_API_KEY`. No rate-limit ceiling but billed per-token. Useful for high-volume runs or reproducibility against published API model digests.
+
+Method 4 (rationale generation) is the dominant cost. At v0.1 scale that's 1,500 LLM calls per run; with `--candidate-pool 15` it drops to 450. Configure both flags per run; both are logged in the manifest for reproducibility.
+
 ### Candidate pool sizing (v0.1)
 
 For the v0.1 50-note corpus, methods 3 and 4 rerank **the full corpus** (k=50) per query rather than a top-K cosine slice. Reason: at this scale, top-K cosine slicing risks excluding genuinely structurally-adjacent candidates that cosine ranks low — exactly the case Method 4 is supposed to test. At v0.2 scale (500 notes), candidate pools widen to top-100 or top-200 to balance compute vs coverage; the exact pool size will be pre-registered before v0.2 results run.

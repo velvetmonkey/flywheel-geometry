@@ -1,7 +1,10 @@
-"""Voyage-3 + Claude rerank baseline (LLM-as-reranker, no rationale generation).
+"""Voyage-3 + LLM rerank baseline (LLM-as-reranker, no rationale generation).
+
+Default mode: --llm cli (uses subscription tooling — claude / codex / gemini).
+Optional: --llm api (uses Anthropic SDK + ANTHROPIC_API_KEY).
 
 Embed corpus + queries with Voyage-3, cosine-rank to full corpus (v0.1 scale),
-Claude rerank to top-5. Full request/response traces written for reproducibility.
+LLM rerank to top-5. Full traces written for reproducibility.
 """
 import argparse
 import hashlib
@@ -14,10 +17,12 @@ from pathlib import Path
 
 import numpy as np
 import voyageai
-from anthropic import Anthropic
+
+# Allow imports from the shared lib regardless of CWD
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from _lib.cli_invoker import cli_invoke, parse_json_response  # noqa: E402
 
 CACHE_DIR = Path(__file__).parent / ".cache"
-RERANK_MODEL = "claude-sonnet-4-6"
 EMBED_MODEL = "voyage-3"
 METHOD_NAME = "voyage-rerank"
 
@@ -45,41 +50,75 @@ def embed_corpus(notes: list[dict], vclient: voyageai.Client) -> dict[str, np.nd
     return by_id
 
 
-def rerank_with_llm(query: str, candidates: list[dict], aclient: Anthropic, top_k: int) -> tuple[list[dict], dict]:
+def build_rerank_prompt(query: str, candidates: list[dict], top_k: int) -> str:
     candidate_block = "\n\n".join(
         f"[{i}] {c['title']}\n{c['body'][:800]}" for i, c in enumerate(candidates)
     )
-    prompt = f"""Rank these candidate notes by relevance to the query below. The query is looking for cross-domain conceptual bridges — notes from different domains that share underlying structure.
+    return f"""Rank these candidate notes by relevance to the query below. The query is looking for cross-domain conceptual bridges — notes from different domains that share underlying structure.
 
 Query: {query}
 
 Candidates:
 {candidate_block}
 
-Respond with a JSON array of the top {top_k} candidate indices in order of relevance, like [3, 0, 7, 1, 12]. Only the JSON, no other text."""
+Respond with ONLY a JSON array of the top {top_k} candidate indices in order of relevance, like [3, 0, 7, 1, 12]. No prose, no code fence, just the JSON array."""
+
+
+def rerank_via_cli(query: str, candidates: list[dict], top_k: int, cli: str, model: str | None) -> tuple[list[dict], dict]:
+    prompt = build_rerank_prompt(query, candidates, top_k)
+    resp = cli_invoke(cli, prompt, model=model, timeout=240)
+    parsed = parse_json_response(resp.text)
+    parse_error = None
+    if isinstance(parsed, list) and all(isinstance(i, int) for i in parsed):
+        try:
+            reranked = [candidates[i] for i in parsed[:top_k]]
+        except IndexError as e:
+            parse_error = f"index out of range: {e}"
+            reranked = candidates[:top_k]
+    else:
+        parse_error = f"failed to parse list of ints from {resp.text[:200]!r}"
+        reranked = candidates[:top_k]
+    trace = {
+        "method": "cli",
+        "cli": cli,
+        "model": model,
+        "prompt": prompt,
+        "raw_response": resp.text,
+        "parsed": parsed,
+        "parse_error": parse_error,
+        "wall_clock_seconds": resp.wall_clock_seconds,
+    }
+    return reranked, trace
+
+
+def rerank_via_api(query: str, candidates: list[dict], top_k: int, model: str) -> tuple[list[dict], dict]:
+    from anthropic import Anthropic
+    aclient = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    prompt = build_rerank_prompt(query, candidates, top_k)
     msg = aclient.messages.create(
-        model=RERANK_MODEL,
+        model=model,
         max_tokens=200,
         messages=[{"role": "user", "content": prompt}],
     )
     raw = msg.content[0].text.strip()
-    text = raw
-    if text.startswith("```"):
-        text = "\n".join(text.split("\n")[1:-1])
+    parsed = parse_json_response(raw)
     parse_error = None
-    try:
-        indices = json.loads(text)
-        reranked = [candidates[i] for i in indices[:top_k]]
-    except (json.JSONDecodeError, IndexError, KeyError) as e:
-        parse_error = repr(e)
-        indices = list(range(min(top_k, len(candidates))))
+    if isinstance(parsed, list) and all(isinstance(i, int) for i in parsed):
+        try:
+            reranked = [candidates[i] for i in parsed[:top_k]]
+        except IndexError as e:
+            parse_error = f"index out of range: {e}"
+            reranked = candidates[:top_k]
+    else:
+        parse_error = f"failed to parse list of ints from {raw[:200]!r}"
         reranked = candidates[:top_k]
     trace = {
-        "rerank_model": RERANK_MODEL,
+        "method": "api",
+        "api": "anthropic",
+        "model": model,
         "prompt": prompt,
         "raw_response": raw,
-        "parsed_text": text,
-        "parsed_indices": indices,
+        "parsed": parsed,
         "parse_error": parse_error,
     }
     return reranked, trace
@@ -91,18 +130,25 @@ def main() -> int:
     ap.add_argument("--queries", type=Path, required=True)
     ap.add_argument("--out", type=Path, required=True)
     ap.add_argument("--top-k", type=int, default=5)
+    ap.add_argument("--llm", choices=["cli", "api"], default="cli",
+                    help="Use subscription CLI (default) or paid API for rerank")
+    ap.add_argument("--cli", choices=["claude", "codex", "gemini"], default="claude",
+                    help="Which CLI to invoke when --llm=cli")
+    ap.add_argument("--model", default=None,
+                    help="Optional model override (depends on --llm choice)")
     args = ap.parse_args()
 
     notes = [json.loads(line) for line in args.corpus.read_text().splitlines() if line.strip()]
     queries = [json.loads(line) for line in args.queries.read_text().splitlines() if line.strip()]
 
     vclient = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
-    aclient = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     note_embeddings = embed_corpus(notes, vclient)
+
     args.out.parent.mkdir(parents=True, exist_ok=True)
     traces_dir = args.out.parent / "traces" / args.out.stem
     traces_dir.mkdir(parents=True, exist_ok=True)
+
+    api_model = args.model or "claude-sonnet-4-20250514"
 
     started = time.time()
     with args.out.open("w") as f:
@@ -112,7 +158,10 @@ def main() -> int:
             candidates = sorted(scored, key=lambda x: x[1], reverse=True)
             candidate_notes = [n for n, _ in candidates]
 
-            reranked, rerank_trace = rerank_with_llm(q["query_text"], candidate_notes, aclient, args.top_k)
+            if args.llm == "cli":
+                reranked, rerank_trace = rerank_via_cli(q["query_text"], candidate_notes, args.top_k, args.cli, args.model)
+            else:
+                reranked, rerank_trace = rerank_via_api(q["query_text"], candidate_notes, args.top_k, api_model)
 
             f.write(json.dumps({
                 "query_id": q["query_id"],
@@ -129,6 +178,7 @@ def main() -> int:
                 "rerank_trace": rerank_trace,
                 "final_top_k": [{"id": n["id"], "title": n["title"]} for n in reranked],
             }, indent=2))
+            print(f"  {q['query_id']}: top1={reranked[0]['id']}", flush=True)
 
     manifest = {
         "method": METHOD_NAME,
@@ -136,7 +186,10 @@ def main() -> int:
         "completed_at": datetime.now(timezone.utc).isoformat(),
         "wall_clock_seconds": round(time.time() - started, 2),
         "embed_model": EMBED_MODEL,
-        "rerank_model": RERANK_MODEL,
+        "llm_mode": args.llm,
+        "cli": args.cli if args.llm == "cli" else None,
+        "api_model": api_model if args.llm == "api" else None,
+        "model_override": args.model,
         "corpus_checksum": file_checksum(args.corpus),
         "corpus_count": len(notes),
         "queries_checksum": file_checksum(args.queries),
