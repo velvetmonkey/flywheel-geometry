@@ -1,7 +1,7 @@
-"""Voyage-3 + Claude rerank baseline (LLM-as-reranker, no rationale generation).
+"""Voyage-3 + Voyage native reranker baseline (no LLM in the loop).
 
 Embed corpus + queries with Voyage-3, cosine-rank to full corpus (v0.1 scale),
-Claude rerank to top-5. Full request/response traces written for reproducibility.
+rerank via Voyage's rerank-2, take top-5. Full traces written for reproducibility.
 """
 import argparse
 import hashlib
@@ -14,12 +14,11 @@ from pathlib import Path
 
 import numpy as np
 import voyageai
-from anthropic import Anthropic
 
 CACHE_DIR = Path(__file__).parent / ".cache"
-RERANK_MODEL = "claude-sonnet-4-6"
 EMBED_MODEL = "voyage-3"
-METHOD_NAME = "voyage-rerank"
+RERANK_MODEL = "rerank-2"
+METHOD_NAME = "voyage-native-rerank"
 
 
 def cosine(a: np.ndarray, b: np.ndarray) -> float:
@@ -45,46 +44,6 @@ def embed_corpus(notes: list[dict], vclient: voyageai.Client) -> dict[str, np.nd
     return by_id
 
 
-def rerank_with_llm(query: str, candidates: list[dict], aclient: Anthropic, top_k: int) -> tuple[list[dict], dict]:
-    candidate_block = "\n\n".join(
-        f"[{i}] {c['title']}\n{c['body'][:800]}" for i, c in enumerate(candidates)
-    )
-    prompt = f"""Rank these candidate notes by relevance to the query below. The query is looking for cross-domain conceptual bridges — notes from different domains that share underlying structure.
-
-Query: {query}
-
-Candidates:
-{candidate_block}
-
-Respond with a JSON array of the top {top_k} candidate indices in order of relevance, like [3, 0, 7, 1, 12]. Only the JSON, no other text."""
-    msg = aclient.messages.create(
-        model=RERANK_MODEL,
-        max_tokens=200,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    raw = msg.content[0].text.strip()
-    text = raw
-    if text.startswith("```"):
-        text = "\n".join(text.split("\n")[1:-1])
-    parse_error = None
-    try:
-        indices = json.loads(text)
-        reranked = [candidates[i] for i in indices[:top_k]]
-    except (json.JSONDecodeError, IndexError, KeyError) as e:
-        parse_error = repr(e)
-        indices = list(range(min(top_k, len(candidates))))
-        reranked = candidates[:top_k]
-    trace = {
-        "rerank_model": RERANK_MODEL,
-        "prompt": prompt,
-        "raw_response": raw,
-        "parsed_text": text,
-        "parsed_indices": indices,
-        "parse_error": parse_error,
-    }
-    return reranked, trace
-
-
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--corpus", type=Path, required=True)
@@ -97,9 +56,8 @@ def main() -> int:
     queries = [json.loads(line) for line in args.queries.read_text().splitlines() if line.strip()]
 
     vclient = voyageai.Client(api_key=os.environ["VOYAGE_API_KEY"])
-    aclient = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     note_embeddings = embed_corpus(notes, vclient)
+
     args.out.parent.mkdir(parents=True, exist_ok=True)
     traces_dir = args.out.parent / "traces" / args.out.stem
     traces_dir.mkdir(parents=True, exist_ok=True)
@@ -111,23 +69,26 @@ def main() -> int:
             scored = [(n, cosine(q_emb, note_embeddings[n["id"]])) for n in notes]
             candidates = sorted(scored, key=lambda x: x[1], reverse=True)
             candidate_notes = [n for n, _ in candidates]
+            candidate_texts = [f"{n['title']}\n\n{n['body']}" for n in candidate_notes]
 
-            reranked, rerank_trace = rerank_with_llm(q["query_text"], candidate_notes, aclient, args.top_k)
+            rr_result = vclient.rerank(query=q["query_text"], documents=candidate_texts, model=RERANK_MODEL, top_k=args.top_k)
+            reranked = [candidate_notes[r.index] for r in rr_result.results]
+            scores = [r.relevance_score for r in rr_result.results]
 
             f.write(json.dumps({
                 "query_id": q["query_id"],
                 "query_text": q["query_text"],
-                "top_k": [{"id": n["id"], "title": n["title"]} for n in reranked],
+                "top_k": [{"id": n["id"], "title": n["title"], "score": s} for n, s in zip(reranked, scores)],
                 "method": METHOD_NAME,
             }) + "\n")
             (traces_dir / f"{q['query_id']}.json").write_text(json.dumps({
                 "query_id": q["query_id"],
                 "query_text": q["query_text"],
                 "embed_model": EMBED_MODEL,
+                "rerank_model": RERANK_MODEL,
                 "candidate_pool_size": len(candidate_notes),
                 "cosine_top_5_pre_rerank": [{"id": n["id"], "score": s} for n, s in candidates[:5]],
-                "rerank_trace": rerank_trace,
-                "final_top_k": [{"id": n["id"], "title": n["title"]} for n in reranked],
+                "reranked_top_k": [{"id": n["id"], "title": n["title"], "score": s} for n, s in zip(reranked, scores)],
             }, indent=2))
 
     manifest = {

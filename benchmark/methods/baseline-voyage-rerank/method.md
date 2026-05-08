@@ -1,10 +1,12 @@
-# Baseline: Voyage-3 + LLM rerank
+# Baseline: Voyage-3 + Claude rerank
 
-Strong embedding-based retrieval baseline. The bar geodesic retrieval has to clear by ≥20% precision@5 to justify shipping.
+LLM-as-reranker baseline. Isolates the *LLM-rerank effect* on top of strong embedding retrieval — without prompting the LLM to generate any rationale or explanation.
 
 ## What this measures
 
-Modern dense-embedding retrieval over the 50-note corpus, with a frontier LLM rerank pass on the top candidates. This is what `flywheel-memory` already ships variants of (BM25 + semantic via RRF). If geodesic doesn't beat this on cross-domain bridges, geodesic isn't ready.
+How far retrieval quality improves when a frontier LLM (Claude Sonnet 4.6) is allowed to rerank embedding-retrieved candidates **without** generating bridge rationales. Compared against:
+- Method 2 (Voyage native rerank, no LLM) → isolates "Claude as reranker" vs "Voyage's native reranker."
+- Method 4 (rerank with rationale generation) → isolates the *explanation-generation* effect from raw rerank.
 
 ## Inputs
 
@@ -13,7 +15,9 @@ Modern dense-embedding retrieval over the 50-note corpus, with a frontier LLM re
 
 ## Outputs
 
-- `../../results/voyage-rerank-{date}.jsonl` — for each query, top-5 reranked note IDs
+- `../../results/voyage-rerank-{date}.jsonl` — top-5 reranked note IDs per query
+- `../../results/traces/voyage-rerank-{date}/q<NN>.json` — full request/response trace per query (prompt, raw response, parse path/errors)
+- `../../results/traces/voyage-rerank-{date}/manifest.json` — run metadata (model IDs, corpus/query checksums, wall-clock)
 
 ## Run
 
@@ -26,10 +30,15 @@ python run.py --corpus ../../corpus/notes.jsonl --queries ../../queries.jsonl --
 
 ## Implementation
 
-1. Embed each note with `voyage-3` (`voyageai` SDK).
-2. Embed each query with the same model.
-3. Cosine-rank → take top-15 candidates per query.
-4. LLM rerank pass: send query + 15 candidate note titles+bodies to Claude (claude-sonnet-4-6) with a "rank these by relevance to the query" prompt; take top-5.
-5. Write top-5 to JSONL.
+1. Embed each note with `voyage-3` (input_type=document).
+2. Embed each query with `voyage-3` (input_type=query).
+3. Cosine-rank all 50 candidates per query (full corpus at v0.1; top-100 at v0.2 scale).
+4. LLM rerank: send query + ALL candidate titles+bodies to Claude Sonnet 4.6 with a "rank these by relevance" prompt. The prompt explicitly mentions cross-domain bridges to mirror the actual evaluation criterion. Take top-5 indices.
+5. Write top-5 to JSONL; write full trace to traces/.
 
-Caching: embeddings cached by note ID + model version to avoid re-embedding on repeat runs.
+Caching: embeddings cached by note ID + model version under `.cache/`.
+
+## What this baseline doesn't test
+
+- Whether prompted rationale-generation helps. That's Method 4 (the kill-product test).
+- Whether activation-space geometry surfaces things no embedding sees. That's Method 6 (v0.2).
