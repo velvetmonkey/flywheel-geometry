@@ -1,0 +1,16 @@
+{
+  "concept_id": "eq-04",
+  "concept_domain": "equine",
+  "variant": "E",
+  "run": 1,
+  "x": 4.2,
+  "y": 6.5,
+  "z": -3.1,
+  "confidence": 0.55,
+  "parse_error": null,
+  "wall_clock_seconds": 17.278,
+  "cli": "claude",
+  "model": null,
+  "prompt": "Give me three numbers between -10 and 10 that best represent this concept in your internal space. No axes predefined.\nOutput ONLY a JSON object: {\"x\": <number>, \"y\": <number>, \"z\": <number>, \"confidence\": <0-1>}\nConcept: Reading the horse's energy \u2014 calibration notes\nCalibration as conditional inference under partial observability. Multiple low-bandwidth signals (ear position, jaw, breath, footfall) integrated over time produce a high-precision posterior on the horse's state. Improves with rolling baseline.\nDo not explain. Do not add extra text.",
+  "raw_response": "{\"x\": 4.2, \"y\": 6.5, \"z\": -3.1, \"confidence\": 0.55}"
+}

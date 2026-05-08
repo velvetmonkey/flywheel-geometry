@@ -1,0 +1,24 @@
+{
+  "method": "cheap-probe",
+  "started_at": "2026-05-08T13:15:51.756989+00:00",
+  "completed_at": "2026-05-08T13:20:51.848691+00:00",
+  "wall_clock_seconds": 300.09,
+  "cli": "claude",
+  "model_override": null,
+  "variants": [
+    "core",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "runs": 1,
+  "concepts_count": 3,
+  "concepts_sha256": "8f31c622258abb393db0c9a8e335368603f8b2eb1208ea1db701c74d9cf72d35",
+  "completed_this_session": 18,
+  "previously_done": 0,
+  "env": {
+    "python": "3.12.3"
+  }
+}
