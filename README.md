@@ -82,15 +82,17 @@ A separate falsifier targets the introspective probe itself: extract activations
 
 The project's central bets are registered as falsifiable assumptions in the [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas) decision ledger — the sibling project built for exactly this shape of work. Each assumption carries a falsifier and a resolution criterion; multi-model AI council dissent is logged at registration; outcomes (confirm / refute) propagate to dependent claims when experiments resolve.
 
-The currently tracked assumptions:
+The currently tracked assumptions, in their flywheel-ideas state as of 2026-05-08 (idea `idea-b4ZeRCoa`):
 
-1. **Self-reported (x,y,z) coordinates carry retrieval-useful relational structure**, even though the [Zenodo reasoning traces](https://doi.org/10.5281/ZENODO.18176077) show that the mechanism is text generation from learned discourse priors (PAD valence/arousal, Russell circumplex, colour-wheel framings) rather than direct activation readout. The narrower question — whether those narrative-derived coordinates correlate enough with activation-derived geometry to be useful as a cheap proxy — is what the cheap-probe + Method 6 comparison resolves. *Falsifier:* (a) cheap-probe adversarial sweep — relational distances must survive prompt-frame perturbation (variants A, B, E rank-correlation > 0.5 vs core); (b) TransformerLens activation-derived distances on the same concepts must correlate with self-reported distances above chance.
-2. **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** *Falsifier:* ≥20% precision@5 lift over the LLM-rerank baselines (direct rerank, rationale-augmented rerank, and rationale-augmented rerank with a stronger reranker) on the 27 cross-domain bridge queries that constitute the primary metric. Control queries are reported separately, never mixed into the headline.
-3. **Coordinate stability across runs is measurement-grade**, not stable narrative priors. *Falsifier:* adversarial replication with false anchors and synthetic concept domains.
-4. **Manifold proximity outperforms bridge-tension** (high embedding distance × high relational similarity) on cross-domain bridges. *Falsifier:* head-to-head on the same query corpus.
-5. **Human-rated bridge value is not explained by generic embedding similarity + LLM rationale generation.** *Falsifier:* baseline 2 above — if raters prefer rationale-augmented embeddings at equal or higher rates, the manifold effect is presentation, not retrieval.
+1. **`asm-HvE9muhM` — Self-reported (x,y,z) coordinates carry retrieval-useful relational structure.** Status: ❌ **REFUTED 2026-05-08** by outcome [`out-MyLPFpg7`](./docs/v0.1-pivot.md). Even though the [Zenodo reasoning traces](https://doi.org/10.5281/ZENODO.18176077) show the mechanism is text generation from learned discourse priors (PAD valence/arousal, Russell circumplex, colour-wheel framings), the narrower bet — that the coords still carried enough relational structure under adversarial framing to be retrieval-useful — also failed. Cheap-probe Phase 0 on Sonnet 4.6 produced rank correlations of 0.078 / 0.290 / 0.108 against core for variants A / B / E (all below the pre-registered 0.5 bar) and the variant-D failure-signal trap fired. Falsifier (a) refutes; falsifier (b) — TransformerLens correlation — superseded by the project's pivot to direct activation extraction (Method 6).
+2. **`asm-3zmj1VGB` — Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** Status: 🔒 **LOCKED, OPEN** — the central remaining bet. *Falsifier:* ≥20 % precision@5 lift over the LLM-rerank baselines (direct rerank, rationale-augmented rerank, and rationale-augmented rerank with a stronger reranker) on the 27 cross-domain bridge queries. Resolution gates: `layer-10 p@5 ≥ 1.20 × Method 3 p@5` (currently `1.20 × 0.370 = 0.444`) AND `layer-10 p@5 > random-kNN p@5 + 0.05`. Control queries reported separately, never mixed into the headline.
+3. **`asm-VotY4n8g` — Coordinate stability across runs is measurement-grade**, not stable narrative priors. Status: ❌ **REFUTED 2026-05-08** by the same outcome [`out-MyLPFpg7`](./docs/v0.1-pivot.md). Variant D produced 18× the ground-truth pair separation of `core` only when the prompt explicitly told the model to give a coherent answer — within-variant stability turned out to reflect deterministic narrative generation rather than geometric measurement.
+4. **`asm-7oiyCMji` — Manifold proximity outperforms bridge-tension** (high embedding distance × high relational similarity) on cross-domain bridges. Status: ⏸️ open, **not load-bearing** for v0.1; tested only if Method 6 lands a positive result and bridge-tension becomes a real alternative product framing.
+5. **`asm-wxSuxhBk` — Human-rated bridge value is not explained by generic embedding similarity + LLM rationale generation.** Status: 🔒 **LOCKED, OPEN.** *Falsifier:* assumption 2 above — if raters prefer rationale-augmented embeddings (Method 4a / 4b) at equal or higher rates, the "manifold effect" is presentation, not retrieval. Resolved jointly with `asm-3zmj1VGB` once Method 4a + 4b *full* runs land on the validate branch.
 
-If 5 refutes, the project pivots — and the public pivot post is the launch. Watching your own thesis fail in the open is the strongest brand outcome the bet can produce.
+The Anti-Portfolio post-mortem memo for the cheap-probe refutation (`out-MyLPFpg7`) is in the flywheel-ideas vault — root cause, what we expected, what actually happened, and the lesson on pre-registering coherence-pressure variants for any future probe that depends on a model self-reporting structure.
+
+If `asm-3zmj1VGB` refutes, the project pivots a second time — and the public pivot post is the launch. Watching your own thesis fail in the open is the strongest brand outcome the bet can produce.
 
 ---
 
@@ -173,13 +175,29 @@ This work builds on, does not extend, the underlying interpretability research. 
 
 ## Status
 
-v0.1 benchmark scaffolded: 50-note synthetic corpus, 30 cross-domain queries (27 primary + 3 control), gold-firewall split, evaluator with pre-scoring guards, baseline methods in [`benchmark/methods/`](./benchmark/methods/). BM25 sanity floor is the first scored row on the [running leaderboard](./benchmark/results/RESULTS.md); LLM-rerank baselines are next, pinned to a named model so the numbers are reproducible. Cheap-probe Phase 0 (introspective coordinate validation under adversarial controls) in flight. Method 6 (geodesic, activation-derived retrieval) pre-registered for v0.2.
+**v0.1 in flight, three of four kill-product-floor rows on the leaderboard.** Cheap-probe Phase 0 was pre-registered, run, and falsified earlier in the same session — the [public pivot post](./docs/v0.1-pivot.md) is live and Method 6 (TransformerLens activation extraction) is the remaining central bet.
+
+Current [leaderboard](./benchmark/results/RESULTS.md) on the 27 cross-domain bridge queries:
+
+| Method | P@5 | nDCG@5 | Provenance |
+|---|---|---|---|
+| `bm25-2026-05-08` | 0.252 | 0.439 | sanity floor |
+| `voyage-native-rerank-2026-05-08` | 0.333 | 0.624 | `voyage-3` + `rerank-2`, no LLM |
+| `cli-direct-rerank-claude-sonnet-2026-05-08` | **0.370** | **0.670** | `claude-sonnet-4-6`, single LLM rerank |
+
+**Method 6 lift target**: `1.20 × 0.370 = 0.444` primary p@5 to validate locked assumption [`asm-3zmj1VGB`](#tracked-through-flywheel-ideas) (≥20 % over Method 3). Required vs the 1.0 ceiling = achievable on this corpus configuration. Method 4a + 4b held until the Method 6 result lands; if Method 6 clears Method 3, both run *full* (not smoke) before the assumption resolves "validate."
+
+**Method 6 implementation**: scaffolded as a two-stage pipeline at [`benchmark/methods/method-geodesic/`](./benchmark/methods/method-geodesic/). Stage 1 (`extract.py`) runs on a rented 24 GB GPU, loads `meta-llama/Llama-3.1-8B-Instruct` via TransformerLens, extracts last-token residual-stream tensors at layers 8 / 10 / 12, dumps to a single `.npz`. Stage 2 (`run.py`) reads the `.npz` locally, builds a kNN graph (k = 10, Euclidean, symmetric union), computes shortest-path geodesic distances, retrieves top-5 per query, and emits eval-format JSONL plus a `.graphml` graph dump. Pre-registration locks **layer 10 as primary** and layers 8 / 12 as sensitivity rows; a deterministic random-kNN row at layer 10 is the within-method negative control. Hard gates for `asm-3zmj1VGB` resolution: `layer-10 p@5 ≥ 1.20 × Method 3 p@5` AND `layer-10 p@5 > random-kNN p@5 + 0.05` absolute.
 
 **30-day milestone (2026-06-07).** Three concrete success criteria, all required:
-1. Kill-product floor scored on the 27 primary queries, with at least one of {BM25, LLM rerank, rationale-augmented rerank} producing a non-degenerate baseline number that the geodesic method must clear by ≥20% precision@5.
-2. Cheap-probe Phase 0 resolved — pass (introspective coords carry retrieval-useful relational structure under adversarial framing → cheap baseline status earned) or pivot (project moves to TransformerLens activation extraction as the only path to genuine geometry).
-3. ≥1 substantive reply from researcher outreach (Matthew, Ekdeep, or Thomas Fel) on the benchmark design.
+1. Kill-product floor scored on the 27 primary queries, with at least one of {BM25, LLM rerank, rationale-augmented rerank} producing a non-degenerate baseline that the geodesic method must clear by ≥20% precision@5. **Three of four rows landed**; Method 4a / 4b deferred until after Method 6 spike per pre-registered staging.
+2. Cheap-probe Phase 0 resolved — **resolved → pivot**. The introspective probe was falsified along the variant-D failure-signal trap (D produced 18× core's ground-truth pair separation only when the prompt explicitly requested coherent geometry; the model performs, it doesn't measure). Full data + narrative at [`docs/v0.1-pivot.md`](./docs/v0.1-pivot.md).
+3. ≥1 substantive reply from researcher outreach (Matthew, Ekdeep, or Thomas Fel) on the benchmark design — pending.
 
 If two of three slip, the public pivot post is the launch. Watching the thesis fail in the open is itself a defensible outcome.
+
+### Goodfire Ember note (2026-05-08)
+
+Goodfire's hosted [Ember](https://goodfire.ai) interpretability platform was investigated as a path for Method 6's activation extraction; the SDK exposes **SAE-decoded feature activations**, not raw residual-stream tensors, and self-serve API access was deprecated Feb 2026 in favour of select-partner onboarding. Method 6 as locked (residual-stream kNN at layers 8 / 10 / 12) therefore runs via cloud-GPU rental (vast.ai / RunPod, ~$1, ~30 min wall-clock) using TransformerLens directly — no main-machine GPU work, no API dependency on the central bet. Goodfire's open-source SAE weights ([`Goodfire/Llama-3.1-8B-Instruct-SAE-l19`](https://huggingface.co/Goodfire/Llama-3.1-8B-Instruct-SAE-l19)) are downloadable and may underwrite a Method 6′ — *kNN over SAE-feature space at layer 19* — as a v0.2 sensitivity branch in the same rental session. Method 6′ is **not** a v0.1 substitute: it tests a different scientific question (feature-space kNN ≠ residual-stream kNN) and would need its own pre-registration before scoring.
 
 Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).

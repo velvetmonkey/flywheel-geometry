@@ -1,0 +1,13 @@
+# Stage 2 dependencies (this VM, no GPU).
+# kNN + shortest-path + JSONL output. Reads .npz from extract.py.
+numpy>=1.26
+scipy>=1.11
+networkx>=3.0
+
+# Stage 1 dependencies (rental GPU only — DO NOT install on Stage 2 VM):
+#   torch>=2.2
+#   transformers>=4.45
+#   transformer_lens>=2.0
+#   accelerate>=0.30
+#   huggingface_hub>=0.24
+# Install on the rental box with: pip install torch transformers transformer_lens accelerate huggingface_hub

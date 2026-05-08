@@ -1,6 +1,35 @@
 # Method 6 (v0.2): Activation extraction via TransformerLens + kNN — geodesic retrieval
 
-**Status: spec only. No `run.py` yet.** This file pre-registers the geodesic method's design before any results run, so the bench can't be tuned to favour the hypothesis post-hoc.
+**Status: pre-registered + scaffolded.** Pipeline split into two stages (`extract.py` for cloud-GPU forward passes, `run.py` for local kNN + retrieval). Backend stub awaits the rental session that fills in the TransformerLens hooks. This file pre-registers the design before any results land, so the bench can't be tuned to favour the hypothesis post-hoc.
+
+## Pre-registration (locked 2026-05-08)
+
+Per roundtable rounds 1–4 on the Method 6 plan:
+
+- **Primary layer = layer 10** (median of the locked 8–12 band). Layers 8 and 12 reported as **sensitivity rows**, never substituted for layer 10 in the assumption resolution.
+- **Negative control** = random-kNN row at layer 10. Same kNN topology with note IDs deterministically shuffled (seed 42) before edges are computed. Within-method floor: if layer 10 ≈ random-kNN, the geometry isn't doing work.
+- **Hard gates for validation** (assumption `asm-3zmj1VGB` resolves "validate") — both required:
+    1. `layer-10 p@5 ≥ 1.20 × Method 3 p@5` (currently 1.20 × 0.370 = 0.444)
+    2. `layer-10 p@5 > random-kNN p@5 + 0.05 absolute`
+- **Reportable, not gates**: layer-8 + layer-12 sensitivity rows; absolute lift over Method 3; graph-structural diagnostic (edge count, diameter, distance distribution); flag if diameter ≤ 2 or > 90 % of pairs within 2 hops (graph collapse — corpus finding, not Method 6 failure).
+- **k = 10 fixed.** Frozen precision/model TBD by the rental spike (bf16 expected; int4 fallback if VRAM forces it).
+
+## Activation artifact contract (locked 2026-05-08)
+
+Stage-1 (`extract.py`, rental) and Stage-2 (`run.py`, this VM) communicate through one persistence format. Either side that diverges from this contract fails the manifest's reproducibility check.
+
+| Field | Value |
+|---|---|
+| Model identity | `meta-llama/Llama-3.1-8B-Instruct` + HuggingFace revision SHA recorded in manifest |
+| Layers | residual-stream `blocks.{8,10,12}.hook_resid_post` (TransformerLens naming) |
+| Token selection / pooling | last-token of `f"{title}\n\n{body}"` for corpus notes; last-token of raw query string for queries |
+| Tokenizer | model's default chat-template tokenizer; **no system prompt**; **no instruct-template wrapping** — both corpus notes and queries go in as raw user text in identical format |
+| Normalisation | none — raw bf16 tensors. L2-normalisation considered an ablation, not the mainline |
+| Persistence format | `np.savez_compressed(out, corpus_ids=..., query_ids=..., corpus_layer_8=..., corpus_layer_10=..., corpus_layer_12=..., query_layer_8=..., query_layer_10=..., query_layer_12=..., manifest=json)` |
+| Dtype on disk | `float32` (bf16 not natively supported in `.npz`; cast happens at extraction) |
+| Distance metric | Euclidean for kNN edge weights; shortest-path on resulting symmetric-union graph |
+
+**Acceptance test**: Stage 2 reads the `.npz`, asserts `corpus_layer_10.shape == (50, 4096)` and `query_layer_10.shape == (30, 4096)`, builds a kNN graph, exits with no errors. If shape or dtype drifts, Stage 2 raises and refuses to score.
 
 ## The hypothesis being tested
 
