@@ -10,16 +10,22 @@ For cross-domain bridge queries — where the *same idea* is stated in different
 
 ### Model
 
-One open-source language model, pinned by:
-- model name + size (e.g., `meta-llama/Llama-3-70B`, `google/gemma-3-27b-it`)
+**Phase 0 + v0.2 mainline (locked 2026-05-08): `meta-llama/Llama-3.1-8B-Instruct`.** Replication run on `google/gemma-2-9b` for cross-family robustness once the mainline holds. Pinned by:
+- model name + size (e.g., `meta-llama/Llama-3.1-8B-Instruct`, `google/gemma-2-9b`)
 - exact weight digest where exposed (HuggingFace revision SHA)
-- precision (bf16 / int8 / int4) — bf16 preferred for retrieval
+- precision (bf16 preferred; int8 acceptable on consumer hardware)
 
-The choice between Llama 3 70B and Gemma 3 27B will be made on a *held-out probe-quality dataset* (not the cross-domain bridge corpus), to avoid choosing the model that happens to do well on the test corpus.
+Reasoning for the smaller model: Phase 0 + Phase 1 plumbing must run on consumer hardware for reproducibility, the Llama-3 family has the most existing TransformerLens / interpretability tooling, and 8B-class models are well-represented in the activation-geometry literature (Goodfire helices, Lubana belief manifolds, the public probe-quality datasets). A larger model (Llama-3.3-70B / Gemma-3-27B) is added in v0.3+ only after the mainline has cleared the 27 cross-domain queries — robustness check, not a primary measurement.
 
 ### Layer
 
-A single residual-stream layer chosen via the same prior probe-quality work. Likely a mid-network layer (e.g., layer 18-24 of a 40-layer model) where prior interpretability work has shown rich nonlinear concept geometry. **Not** chosen on the test corpus.
+Mainline: a single residual-stream layer in the **8–12 band** (mid-network for a 32-layer 8B model — where the Llama-3 family surfaces abstract semantic/relational structure most cleanly per published probing work). Final layer chosen on a *held-out probe-quality dataset* (small handcrafted concept-pair adjacency set), **not** the 30-query bridge corpus.
+
+Reserved variants:
+- **Layer 16** — strong secondary if mainline is inconclusive on the held-out probe set
+- **Layer 0** (early/embedding) — syntactic-control sanity check; geometry should *not* be present here, used as a negative control
+
+The chosen layer is published in the v0.2 manifest before any retrieval scoring runs.
 
 ### Pooling
 
@@ -72,4 +78,4 @@ Any deviation from this spec at run time gets logged as a **protocol violation**
 
 1. **Probe-quality dataset for model + layer choice**. Need a small held-out concept-probing corpus that's distinct from the bridge benchmark. Candidates: the 12-domain probe set from @slashreboot's Zenodo bundle (out of distribution from our notes); a handcrafted small probe set on the same domain types as the bridge corpus.
 2. **Token pooling vs token-level retrieval**. Single-vector-per-note retrieval (default) vs token-level kNN with aggregation. Token-level is more expensive but may capture finer structure. Decide before run.
-3. **GPU budget**. Llama 3 70B in bf16 ≈ 140GB → needs A100 80GB × 2 or H100 80GB. If only one GPU available, drop to Gemma 3 27B (~50GB bf16 fits one GPU).
+3. **GPU budget**. Llama-3.1-8B-Instruct in bf16 ≈ 16GB → fits a single 24GB consumer card (RTX 4090 / A5000) with room for the kNN graph and TransformerLens hooks. Replication on Gemma-2-9B fits the same hardware. Larger-model robustness check (Llama-3.3-70B / Gemma-3-27B) is v0.3+ and needs A100 80GB × 2 or H100 80GB — gated on v0.2 retrieval lift landing first.

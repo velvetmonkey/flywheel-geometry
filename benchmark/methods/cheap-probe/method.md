@@ -26,6 +26,12 @@ If the probe passes the adversarial screen, it earns the right to be a cheap bas
 
 Pass on Core + A + B + E = credible fast hypothesis generator. Tracks prompt frame heavily on D = clean pivot signal.
 
+## Interpretive lens (per Matthew-probe study, 2026-05-08)
+
+Reasoning traces from frontier models on this prompt show explicit construction of coordinates using psychology-textbook frames — PAD valence/arousal/dominance for emotion, Russell circumplex for affect, colour-wheel discourse for hue. Introspective coordinate elicitation is therefore best modelled as **text generation from learned discourse priors**, not direct activation readout. The cross-architecture and cross-language convergence Matthew documents on Zenodo has a boring explanation: the models share training data and reproduce the same standard human framings.
+
+The probe accordingly tests a *narrower* hypothesis than "does the model see its own geometry?" — it tests whether narrative-derived coordinates carry stable enough relational structure (under adversarial framing) to be retrieval-useful, regardless of the underlying mechanism. The activation-extraction falsifier (TransformerLens, Method 6) remains the way to compare these narrative coordinates to *actual* activation geometry on the same concepts.
+
 ## Concept set
 
 12 concepts curated from the 50-note synthetic corpus, each with a 1-2 sentence summary (see `concepts.jsonl`). Ten are organised into pre-defined ground-truth pairs; two are unpaired **stability anchors** that contribute only to per-concept variance tests (`ph-01`, `ha-04`).

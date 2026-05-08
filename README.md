@@ -84,7 +84,7 @@ The project's central bets are registered as falsifiable assumptions in the [fly
 
 The currently tracked assumptions:
 
-1. **Self-reported (x,y,z) coordinates correspond to actual activation geometry**, not interpretability-discourse priors. *Falsifier:* TransformerLens activation extraction + adversarial controls described above.
+1. **Self-reported (x,y,z) coordinates carry retrieval-useful relational structure**, even though the [Zenodo reasoning traces](https://doi.org/10.5281/ZENODO.18176077) show that the mechanism is text generation from learned discourse priors (PAD valence/arousal, Russell circumplex, colour-wheel framings) rather than direct activation readout. The narrower question — whether those narrative-derived coordinates correlate enough with activation-derived geometry to be useful as a cheap proxy — is what the cheap-probe + Method 6 comparison resolves. *Falsifier:* (a) cheap-probe adversarial sweep — relational distances must survive prompt-frame perturbation (variants A, B, E rank-correlation > 0.5 vs core); (b) TransformerLens activation-derived distances on the same concepts must correlate with self-reported distances above chance.
 2. **Activation-derived geometry contains retrieval-useful structure that strong embeddings miss.** *Falsifier:* ≥20% precision@5 lift over the LLM-rerank baselines (direct rerank, rationale-augmented rerank, and rationale-augmented rerank with a stronger reranker) on the 27 cross-domain bridge queries that constitute the primary metric. Control queries are reported separately, never mixed into the headline.
 3. **Coordinate stability across runs is measurement-grade**, not stable narrative priors. *Falsifier:* adversarial replication with false anchors and synthetic concept domains.
 4. **Manifold proximity outperforms bridge-tension** (high embedding distance × high relational similarity) on cross-domain bridges. *Falsifier:* head-to-head on the same query corpus.
@@ -97,6 +97,10 @@ If 5 refutes, the project pivots — and the public pivot post is the launch. Wa
 ## Theoretical Foundation
 
 - **Cross-architecture convergence** — Gemma, Llama, and GPT independently develop similar geometric structures (hue wheels, temporal helices, emotional circumplexes). *([Matthew (@slashreboot)](https://x.com/slashreboot), *Zero-Shot Geometric Probing Reveals Universal Cognitive Manifolds in LLMs*, Jan 2026 — [doi:10.5281/ZENODO.18176077](https://doi.org/10.5281/ZENODO.18176077))*
+
+- **Cross-modality convergence on physical reality** — Edamadaka, Yang, Li, Gómez-Bombarelli (MIT), *Universally Converging Representations of Matter Across Scientific Foundation Models* — [arXiv:2512.03750](https://arxiv.org/abs/2512.03750) (Dec 2025). ~60 foundation models across string-, graph-, 3D-atomistic, protein, and LLM architectures converge on shared representations of matter without coordinated training. Better-performing models converge more strongly; weaker ones scatter to architecture-specific manifolds. The strongest available evidence that the geometry is a property of the territory, not the map.
+
+- **Platonic Representation Hypothesis** — Huh, Cheung, Wang, Isola, *The Platonic Representation Hypothesis* — [arXiv:2405.07987](https://arxiv.org/abs/2405.07987) (ICML 2024). Different model families converge toward a shared statistical model of reality `Z` as scale, data volume, and task diversity grow; cross-modal alignment increases with capability. The unifying claim this project applies to retrieval.
 
 - **Geometry = behavior** — Representation geometry is a direct reflection of data statistics and model beliefs. To control behavior you must respect the geometry. Geodesic paths stay on the manifold; linear paths enter the void. *([Ekdeep Singh Lubana (@EkdeepL)](https://x.com/EkdeepL) et al., [Goodfire AI (@GoodfireAI)](https://x.com/GoodfireAI), 2025–2026 — [talk](https://www.youtube.com/watch?v=F9eEYWX64ZA))*
 
@@ -170,5 +174,12 @@ This work builds on, does not extend, the underlying interpretability research. 
 ## Status
 
 v0.1 benchmark scaffolded: 50-note synthetic corpus, 30 cross-domain queries (27 primary + 3 control), gold-firewall split, evaluator with pre-scoring guards, baseline methods in [`benchmark/methods/`](./benchmark/methods/). BM25 sanity floor is the first scored row on the [running leaderboard](./benchmark/results/RESULTS.md); LLM-rerank baselines are next, pinned to a named model so the numbers are reproducible. Cheap-probe Phase 0 (introspective coordinate validation under adversarial controls) in flight. Method 6 (geodesic, activation-derived retrieval) pre-registered for v0.2.
+
+**30-day milestone (2026-06-07).** Three concrete success criteria, all required:
+1. Kill-product floor scored on the 27 primary queries, with at least one of {BM25, LLM rerank, rationale-augmented rerank} producing a non-degenerate baseline number that the geodesic method must clear by ≥20% precision@5.
+2. Cheap-probe Phase 0 resolved — pass (introspective coords carry retrieval-useful relational structure under adversarial framing → cheap baseline status earned) or pivot (project moves to TransformerLens activation extraction as the only path to genuine geometry).
+3. ≥1 substantive reply from researcher outreach (Matthew, Ekdeep, or Thomas Fel) on the benchmark design.
+
+If two of three slip, the public pivot post is the launch. Watching the thesis fail in the open is itself a defensible outcome.
 
 Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
