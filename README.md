@@ -38,6 +38,7 @@ Part of the [Flywheel](https://github.com/velvetmonkey) suite:
 - **[flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — local-first MCP server, hybrid search, knowledge graph (this repo's host)
 - **[flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)** — Obsidian plugin: graph sidebar, vault health, semantic search UI
 - **[flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)** — falsifiable decision ledger with multi-model AI council dissent
+- **[flywheel-concept](https://github.com/velvetmonkey/flywheel-concept)** — sibling research programme on cross-model latent alignment; stands on the same `cheap-probe-360` evidence
 - **flywheel-geometry** *(this repo)* — geodesic retrieval, in-progress
 
 ---
