@@ -35,11 +35,11 @@ Flywheel Geometry is an **extension library for [flywheel-memory](https://github
 
 Part of the [Flywheel](https://github.com/velvetmonkey) suite:
 
-- **[flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — local-first MCP server, hybrid search, knowledge graph (this repo's host)
-- **[flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)** — Obsidian plugin: graph sidebar, vault health, semantic search UI
-- **[flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)** — falsifiable decision ledger with multi-model AI council dissent
-- **[flywheel-concept](https://github.com/velvetmonkey/flywheel-concept)** — sibling research programme on cross-model latent alignment; stands on the same `cheap-probe-360` evidence
-- **flywheel-geometry** *(this repo)* — geodesic retrieval, in-progress
+- **[flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — local-first MCP server. Hybrid BM25 + semantic search, knowledge graph, safe writes over an Obsidian vault.
+- **[flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)** — Obsidian plugin. Visual layer over Memory's graph: sidebar, vault health, semantic search UI.
+- **[flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)** — falsifiable decision ledger. Pre-registered assumptions, multi-model AI council dissent, outcome-driven refutation propagation.
+- **flywheel-geometry** *(this repo)* — geodesic retrieval extension. Pre-registered study of cross-domain bridge-finding via activation manifolds.
+- **[flywheel-concept](https://github.com/velvetmonkey/flywheel-concept)** — research programme on whether cross-model activations reveal structured concept geometry.
 
 ---
 
