@@ -1,0 +1,38 @@
+{
+  "query_id": "q27",
+  "query_text": "When should I drop the safety net even though it costs me when things go wrong?",
+  "top_k": [
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "ve-02",
+      "title": "Heat pump installation notes"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10/run-2026-05-10",
+  "anchor_corpus_index": 15,
+  "anchor_corpus_id": "eq-01",
+  "anchor_euclidean_distance": 7.7608,
+  "geodesic_top_k_distances": [
+    0.0,
+    5.5096,
+    5.6431,
+    5.6962,
+    5.7558
+  ]
+}

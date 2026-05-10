@@ -1,0 +1,38 @@
+{
+  "query_id": "q09",
+  "query_text": "What's the discipline that produces good outcomes against insurers and recurring fees?",
+  "top_k": [
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-8/run-2026-05-10",
+  "anchor_corpus_index": 15,
+  "anchor_corpus_id": "eq-01",
+  "anchor_euclidean_distance": 6.1727,
+  "geodesic_top_k_distances": [
+    0.0,
+    4.6088,
+    4.6508,
+    4.7421,
+    4.7766
+  ]
+}

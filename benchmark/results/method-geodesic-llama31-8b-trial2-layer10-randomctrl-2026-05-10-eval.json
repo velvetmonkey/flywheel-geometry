@@ -1,0 +1,884 @@
+{
+  "method": "method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10",
+  "results_file": "method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10.jsonl",
+  "primary": {
+    "n_queries": 27,
+    "mean_precision_at_5": 0.0888888888888889,
+    "mean_ndcg_at_5": 0.12721206029083887,
+    "queries_with_at_least_one_hit": 12
+  },
+  "secondary": {
+    "n_queries": 3,
+    "mean_precision_at_5": 0.0,
+    "mean_ndcg_at_5": 0.0,
+    "queries_with_at_least_one_hit": 0
+  },
+  "tie_threshold_v01_only": 0.05,
+  "per_query": [
+    {
+      "query_id": "q01",
+      "is_control": false,
+      "gold_ids": [
+        "ph-02",
+        "ai-05",
+        "qf-04",
+        "eq-04"
+      ],
+      "retrieved_ids_at_5": [
+        "ha-05",
+        "dj-01",
+        "qf-03",
+        "eq-02",
+        "ve-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.5616063116448506,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q02",
+      "is_control": false,
+      "gold_ids": [
+        "eq-02",
+        "qf-03",
+        "ve-04"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 1.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.46927872602275644,
+      "first_relevant_rank": 1,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q03",
+      "is_control": false,
+      "gold_ids": [
+        "eq-04",
+        "qf-02",
+        "ph-01"
+      ],
+      "retrieved_ids_at_5": [
+        "ha-05",
+        "dj-01",
+        "qf-03",
+        "eq-02",
+        "ve-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q04",
+      "is_control": false,
+      "gold_ids": [
+        "ph-03",
+        "ai-02",
+        "qf-01"
+      ],
+      "retrieved_ids_at_5": [
+        "ha-05",
+        "dj-01",
+        "qf-03",
+        "eq-02",
+        "ve-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q05",
+      "is_control": false,
+      "gold_ids": [
+        "eq-03",
+        "ca-01",
+        "qf-04"
+      ],
+      "retrieved_ids_at_5": [
+        "ve-02",
+        "ha-04",
+        "qf-04",
+        "qf-03",
+        "ha-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.5,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.23463936301137822,
+      "first_relevant_rank": 3,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q06",
+      "is_control": false,
+      "gold_ids": [
+        "eq-05",
+        "qf-03"
+      ],
+      "retrieved_ids_at_5": [
+        "ph-05",
+        "ve-05",
+        "ca-04",
+        "ha-04",
+        "qf-03"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.38685280723454163,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.23719771276929622,
+      "first_relevant_rank": 5,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q07",
+      "is_control": false,
+      "gold_ids": [
+        "qf-05",
+        "eq-02",
+        "ve-05"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.43067655807339306,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.20210734650054757,
+      "first_relevant_rank": 4,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q08",
+      "is_control": true,
+      "gold_ids": [
+        "ai-02",
+        "ai-05",
+        "ai-04"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q09",
+      "is_control": false,
+      "gold_ids": [
+        "ha-03",
+        "ha-05",
+        "ca-04"
+      ],
+      "retrieved_ids_at_5": [
+        "ph-05",
+        "ve-05",
+        "ca-04",
+        "ha-04",
+        "qf-03"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        true,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.5,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.23463936301137822,
+      "first_relevant_rank": 3,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q10",
+      "is_control": false,
+      "gold_ids": [
+        "sa-05",
+        "ha-04",
+        "tr-05"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q11",
+      "is_control": false,
+      "gold_ids": [
+        "ve-04",
+        "ve-01",
+        "qf-03",
+        "eq-04"
+      ],
+      "retrieved_ids_at_5": [
+        "ve-02",
+        "ha-04",
+        "qf-04",
+        "qf-03",
+        "ha-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.43067655807339306,
+      "ideal_dcg_at_5": 2.5616063116448506,
+      "ndcg_at_5": 0.16812753627111746,
+      "first_relevant_rank": 4,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q12",
+      "is_control": false,
+      "gold_ids": [
+        "eq-03",
+        "ca-04",
+        "ai-03"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q13",
+      "is_control": false,
+      "gold_ids": [
+        "ph-04",
+        "ca-01",
+        "tr-04"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q14",
+      "is_control": false,
+      "gold_ids": [
+        "sa-02",
+        "sa-01",
+        "qf-05"
+      ],
+      "retrieved_ids_at_5": [
+        "ve-02",
+        "ha-04",
+        "qf-04",
+        "qf-03",
+        "ha-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q15",
+      "is_control": false,
+      "gold_ids": [
+        "ha-02",
+        "qf-01"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q16",
+      "is_control": false,
+      "gold_ids": [
+        "dj-01",
+        "ai-03",
+        "ph-02"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q17",
+      "is_control": false,
+      "gold_ids": [
+        "ph-05",
+        "eq-05"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.6309297535714575,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.38685280723454163,
+      "first_relevant_rank": 2,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q18",
+      "is_control": false,
+      "gold_ids": [
+        "eq-05",
+        "ph-04"
+      ],
+      "retrieved_ids_at_5": [
+        "ph-05",
+        "ve-05",
+        "ca-04",
+        "ha-04",
+        "qf-03"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q19",
+      "is_control": false,
+      "gold_ids": [
+        "ve-04",
+        "ve-05",
+        "ha-03",
+        "ph-02"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        true,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.43067655807339306,
+      "ideal_dcg_at_5": 2.5616063116448506,
+      "ndcg_at_5": 0.16812753627111746,
+      "first_relevant_rank": 4,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q20",
+      "is_control": false,
+      "gold_ids": [
+        "ai-03",
+        "ca-02",
+        "ca-04"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-02",
+        "eq-05",
+        "ve-05",
+        "dj-04",
+        "tr-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q21",
+      "is_control": false,
+      "gold_ids": [
+        "eq-02",
+        "qf-05",
+        "sa-02"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q22",
+      "is_control": false,
+      "gold_ids": [
+        "ve-03",
+        "qf-04",
+        "eq-01"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q23",
+      "is_control": false,
+      "gold_ids": [
+        "ha-02",
+        "ph-03"
+      ],
+      "retrieved_ids_at_5": [
+        "ha-05",
+        "dj-01",
+        "qf-03",
+        "eq-02",
+        "ve-05"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q24",
+      "is_control": false,
+      "gold_ids": [
+        "ph-01",
+        "eq-04",
+        "dj-01"
+      ],
+      "retrieved_ids_at_5": [
+        "ha-05",
+        "dj-01",
+        "qf-03",
+        "eq-02",
+        "ve-05"
+      ],
+      "hits_at_5": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.6309297535714575,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.2960819109658652,
+      "first_relevant_rank": 2,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q25",
+      "is_control": false,
+      "gold_ids": [
+        "qf-05",
+        "sa-03",
+        "ve-02"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        true
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.38685280723454163,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.18154179253735267,
+      "first_relevant_rank": 5,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q26",
+      "is_control": false,
+      "gold_ids": [
+        "sa-04",
+        "ai-05",
+        "dj-03"
+      ],
+      "retrieved_ids_at_5": [
+        "eq-02",
+        "ve-05",
+        "ha-04",
+        "ha-05",
+        "qf-03"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q27",
+      "is_control": true,
+      "gold_ids": [
+        "ha-05"
+      ],
+      "retrieved_ids_at_5": [
+        "ph-05",
+        "ve-05",
+        "ca-04",
+        "ha-04",
+        "qf-03"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 1.0,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q28",
+      "is_control": true,
+      "gold_ids": [
+        "tr-05",
+        "tr-01",
+        "tr-04"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.0,
+      "dcg_at_5": 0.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.0,
+      "first_relevant_rank": null,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q29",
+      "is_control": false,
+      "gold_ids": [
+        "qf-03",
+        "ve-04",
+        "eq-05"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        true,
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 1.0,
+      "ideal_dcg_at_5": 2.1309297535714578,
+      "ndcg_at_5": 0.46927872602275644,
+      "first_relevant_rank": 1,
+      "manifold_uri": null
+    },
+    {
+      "query_id": "q30",
+      "is_control": false,
+      "gold_ids": [
+        "ca-05",
+        "ph-05"
+      ],
+      "retrieved_ids_at_5": [
+        "qf-03",
+        "ph-05",
+        "ha-05",
+        "ve-05",
+        "ve-02"
+      ],
+      "hits_at_5": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_5": 0.2,
+      "dcg_at_5": 0.6309297535714575,
+      "ideal_dcg_at_5": 1.6309297535714575,
+      "ndcg_at_5": 0.38685280723454163,
+      "first_relevant_rank": 2,
+      "manifold_uri": null
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "query_id": "q26",
+  "query_text": "What's the difference between an event-sourced and a state-based view of a system?",
+  "top_k": [
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 4,
+  "anchor_corpus_id": "ai-05",
+  "anchor_euclidean_distance": 8.8986,
+  "geodesic_top_k_distances": [
+    0.0,
+    7.116,
+    7.2919,
+    7.3316,
+    7.3675
+  ]
+}

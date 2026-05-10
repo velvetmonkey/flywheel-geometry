@@ -1,0 +1,38 @@
+{
+  "query_id": "q09",
+  "query_text": "What's the discipline that produces good outcomes against insurers and recurring fees?",
+  "top_k": [
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "ca-05",
+      "title": "Reading list \u2014 strategic thinking"
+    },
+    {
+      "id": "eq-04",
+      "title": "Reading the horse's energy \u2014 calibration notes"
+    },
+    {
+      "id": "tr-01",
+      "title": "Tasmania trip 2025 \u2014 debrief"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 8,
+  "anchor_corpus_id": "ca-04",
+  "anchor_euclidean_distance": 8.9994,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.6079,
+    6.8074,
+    6.851,
+    6.9033
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "query_id": "q26",
+  "query_text": "What's the difference between an event-sourced and a state-based view of a system?",
+  "top_k": [
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ha-04",
+      "title": "Dog walker rota \u2014 scheduling logic"
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    },
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes"
+    }
+  ],
+  "method": "method-geodesic-randomctrl",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10-randomctrl/run-2026-05-10",
+  "anchor_corpus_index": 16,
+  "anchor_euclidean_distance": 7.2997
+}

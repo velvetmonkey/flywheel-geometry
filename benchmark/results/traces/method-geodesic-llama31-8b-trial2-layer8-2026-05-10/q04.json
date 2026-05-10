@@ -1,0 +1,38 @@
+{
+  "query_id": "q04",
+  "query_text": "Why do closed taxonomies hide the most important findings?",
+  "top_k": [
+    {
+      "id": "sa-01",
+      "title": "Crucible \u2014 system overview"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile"
+    },
+    {
+      "id": "ca-05",
+      "title": "Reading list \u2014 strategic thinking"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-8/run-2026-05-10",
+  "anchor_corpus_index": 35,
+  "anchor_corpus_id": "sa-01",
+  "anchor_euclidean_distance": 6.2799,
+  "geodesic_top_k_distances": [
+    0.0,
+    4.8895,
+    4.953,
+    4.9849,
+    5.0379
+  ]
+}

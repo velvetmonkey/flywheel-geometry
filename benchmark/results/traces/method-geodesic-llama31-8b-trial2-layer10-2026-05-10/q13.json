@@ -1,0 +1,38 @@
+{
+  "query_id": "q13",
+  "query_text": "How does a long-term commitment differ in shape from a short-cycle decision?",
+  "top_k": [
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "qf-04",
+      "title": "Factor decay benchmarks"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10/run-2026-05-10",
+  "anchor_corpus_index": 30,
+  "anchor_corpus_id": "qf-01",
+  "anchor_euclidean_distance": 7.4348,
+  "geodesic_top_k_distances": [
+    0.0,
+    5.7558,
+    5.8723,
+    5.8815,
+    6.031
+  ]
+}

@@ -22,6 +22,10 @@ Each row records one scored run. Methods listed in dependency order (sanity floo
 | `bm25-2026-05-08` | 0.252 (24/27) | 0.439 | 0.267 (2/3) | 0.421 | 2026-05-08 |
 | `cli-direct-rerank-claude-sonnet-2026-05-08` | 0.370 (26/27) | 0.670 | 0.267 (2/3) | 0.490 | 2026-05-08 |
 | `voyage-native-rerank-2026-05-08` | 0.333 (26/27) | 0.624 | 0.400 (2/3) | 0.628 | 2026-05-08 |
+| `method-geodesic-llama31-8b-trial2-layer10-2026-05-10` | 0.104 (11/27) | 0.154 | 0.000 (0/3) | 0.000 | 2026-05-10 |
+| `method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10` | 0.089 (12/27) | 0.127 | 0.000 (0/3) | 0.000 | 2026-05-10 |
+| `method-geodesic-llama31-8b-trial2-layer12-2026-05-10` | 0.074 (10/27) | 0.105 | 0.067 (1/3) | 0.210 | 2026-05-10 |
+| `method-geodesic-llama31-8b-trial2-layer8-2026-05-10` | 0.059 (8/27) | 0.089 | 0.000 (0/3) | 0.000 | 2026-05-10 |
 <!-- leaderboard:end -->
 
 Methods 1–4b are scaffolded under [`methods/`](../methods/); Method 6 (geodesic) is pre-registered at [`methods/method-geodesic/`](../methods/method-geodesic/) and lands in v0.2. Each row above is one scored run; the eval script appends or replaces by method name on each invocation.

@@ -1,0 +1,38 @@
+{
+  "query_id": "q20",
+  "query_text": "What's the right way to introduce yourself to a researcher whose work you admire?",
+  "top_k": [
+    {
+      "id": "tr-05",
+      "title": "Bhutan trek \u2014 visa timeline"
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "ha-04",
+      "title": "Dog walker rota \u2014 scheduling logic"
+    },
+    {
+      "id": "ai-03",
+      "title": "Interpretability fellowship application \u2014 draft notes"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10/run-2026-05-10",
+  "anchor_corpus_index": 44,
+  "anchor_corpus_id": "tr-05",
+  "anchor_euclidean_distance": 7.9016,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.3384,
+    6.649,
+    6.6936,
+    6.7505
+  ]
+}

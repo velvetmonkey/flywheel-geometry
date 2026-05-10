@@ -1,0 +1,38 @@
+{
+  "query_id": "q05",
+  "query_text": "When should I switch from drilling what I know to exploring what I don't?",
+  "top_k": [
+    {
+      "id": "qf-04",
+      "title": "Factor decay benchmarks"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10/run-2026-05-10",
+  "anchor_corpus_index": 33,
+  "anchor_corpus_id": "qf-04",
+  "anchor_euclidean_distance": 7.6893,
+  "geodesic_top_k_distances": [
+    0.0,
+    5.8441,
+    5.9822,
+    6.031,
+    6.0953
+  ]
+}

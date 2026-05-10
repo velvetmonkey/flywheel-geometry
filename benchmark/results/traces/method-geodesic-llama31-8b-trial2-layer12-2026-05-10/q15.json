@@ -1,0 +1,38 @@
+{
+  "query_id": "q15",
+  "query_text": "What's the cost of pretending consensus among self-interested parties produces good decisions?",
+  "top_k": [
+    {
+      "id": "ai-04",
+      "title": "Linear vs nonlinear concept geometry \u2014 survey notes"
+    },
+    {
+      "id": "ph-03",
+      "title": "Why I distrust closed taxonomies"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 3,
+  "anchor_corpus_id": "ai-04",
+  "anchor_euclidean_distance": 8.8346,
+  "geodesic_top_k_distances": [
+    0.0,
+    7.5505,
+    7.5828,
+    7.5844,
+    7.6494
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "query_id": "q04",
+  "query_text": "Why do closed taxonomies hide the most important findings?",
+  "top_k": [
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10/run-2026-05-10",
+  "anchor_corpus_index": 26,
+  "anchor_corpus_id": "ph-02",
+  "anchor_euclidean_distance": 7.5434,
+  "geodesic_top_k_distances": [
+    0.0,
+    5.5906,
+    5.8723,
+    5.9929,
+    6.0565
+  ]
+}

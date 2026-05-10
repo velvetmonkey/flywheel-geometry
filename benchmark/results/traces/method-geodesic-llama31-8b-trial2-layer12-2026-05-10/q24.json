@@ -1,0 +1,38 @@
+{
+  "query_id": "q24",
+  "query_text": "How does attention texture differ from attention quantity?",
+  "top_k": [
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ai-05",
+      "title": "Activation steering experiments \u2014 daily log"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 26,
+  "anchor_corpus_id": "ph-02",
+  "anchor_euclidean_distance": 9.3998,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.6972,
+    6.9524,
+    7.3316,
+    7.3646
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "query_id": "q17",
+  "query_text": "How does pre-rehearsing a difficulty change what happens when it actually arrives?",
+  "top_k": [
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "eq-01",
+      "title": "Caspian \u2014 horse profile"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-8/run-2026-05-10",
+  "anchor_corpus_index": 30,
+  "anchor_corpus_id": "qf-01",
+  "anchor_euclidean_distance": 6.4219,
+  "geodesic_top_k_distances": [
+    0.0,
+    4.5064,
+    4.6088,
+    4.6807,
+    4.7242
+  ]
+}

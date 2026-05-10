@@ -1,0 +1,21 @@
+{
+  "layer": 8,
+  "k": 10,
+  "wall_clock_seconds_graph_build": 0.14,
+  "n_nodes": 50,
+  "n_edges": 422,
+  "mean_degree": 16.88,
+  "max_degree": 47,
+  "min_degree": 10,
+  "n_components": 1,
+  "largest_component_size": 50,
+  "diameter_largest_component": 2,
+  "diameter_le_2_flag": true,
+  "hop_distribution": {
+    "pct_pairs_hops_1_or_less": 0.34448979591836737,
+    "pct_pairs_hops_2_or_less": 1.0,
+    "pct_pairs_hops_3_or_less": 1.0,
+    "pct_pairs_hops_4_or_less": 1.0,
+    "pct_pairs_hops_5_or_less": 1.0
+  }
+}

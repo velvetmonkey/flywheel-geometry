@@ -1,0 +1,38 @@
+{
+  "query_id": "q05",
+  "query_text": "When should I switch from drilling what I know to exploring what I don't?",
+  "top_k": [
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet"
+    },
+    {
+      "id": "tr-01",
+      "title": "Tasmania trip 2025 \u2014 debrief"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ai-03",
+      "title": "Interpretability fellowship application \u2014 draft notes"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 28,
+  "anchor_corpus_id": "ph-04",
+  "anchor_euclidean_distance": 9.3047,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.7556,
+    6.8087,
+    7.0956,
+    7.1109
+  ]
+}

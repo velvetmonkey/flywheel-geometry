@@ -1,0 +1,30 @@
+{
+  "query_id": "q08",
+  "query_text": "Why does intervening on geometry produce coherent change while intervening on direction doesn't?",
+  "top_k": [
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes"
+    },
+    {
+      "id": "ph-05",
+      "title": "Notes on Stoic exposure therapy"
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ve-02",
+      "title": "Heat pump installation notes"
+    }
+  ],
+  "method": "method-geodesic-randomctrl",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10-randomctrl/run-2026-05-10",
+  "anchor_corpus_index": 32,
+  "anchor_euclidean_distance": 8.1887
+}

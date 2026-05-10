@@ -1,0 +1,38 @@
+{
+  "query_id": "q29",
+  "query_text": "How do you know when your model of a system is more wrong than the system is broken?",
+  "top_k": [
+    {
+      "id": "qf-04",
+      "title": "Factor decay benchmarks"
+    },
+    {
+      "id": "ca-05",
+      "title": "Reading list \u2014 strategic thinking"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15"
+    },
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-8/run-2026-05-10",
+  "anchor_corpus_index": 33,
+  "anchor_corpus_id": "qf-04",
+  "anchor_euclidean_distance": 6.0362,
+  "geodesic_top_k_distances": [
+    0.0,
+    4.7185,
+    4.7892,
+    4.8974,
+    4.9065
+  ]
+}

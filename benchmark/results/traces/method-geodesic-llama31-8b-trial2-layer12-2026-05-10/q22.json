@@ -1,0 +1,38 @@
+{
+  "query_id": "q22",
+  "query_text": "Why does the boundary of any operating envelope matter more than the spec at the centre?",
+  "top_k": [
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    },
+    {
+      "id": "ph-01",
+      "title": "On the texture of attention"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 49,
+  "anchor_corpus_id": "ve-05",
+  "anchor_euclidean_distance": 8.748,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.5758,
+    6.7824,
+    6.8597,
+    6.9504
+  ]
+}

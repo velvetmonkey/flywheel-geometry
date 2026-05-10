@@ -1,0 +1,30 @@
+{
+  "query_id": "q14",
+  "query_text": "Why do we always discover that idempotency is universal in retrospect?",
+  "top_k": [
+    {
+      "id": "ve-02",
+      "title": "Heat pump installation notes"
+    },
+    {
+      "id": "ha-04",
+      "title": "Dog walker rota \u2014 scheduling logic"
+    },
+    {
+      "id": "qf-04",
+      "title": "Factor decay benchmarks"
+    },
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes"
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    }
+  ],
+  "method": "method-geodesic-randomctrl",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10-randomctrl/run-2026-05-10",
+  "anchor_corpus_index": 46,
+  "anchor_euclidean_distance": 7.5426
+}

@@ -1,0 +1,38 @@
+{
+  "query_id": "q12",
+  "query_text": "What's the right ratio of structured work to open exploration?",
+  "top_k": [
+    {
+      "id": "tr-05",
+      "title": "Bhutan trek \u2014 visa timeline"
+    },
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    },
+    {
+      "id": "ai-03",
+      "title": "Interpretability fellowship application \u2014 draft notes"
+    },
+    {
+      "id": "tr-01",
+      "title": "Tasmania trip 2025 \u2014 debrief"
+    },
+    {
+      "id": "sa-05",
+      "title": "Why we picked Postgres over Mongo \u2014 postmortem"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 44,
+  "anchor_corpus_id": "tr-05",
+  "anchor_euclidean_distance": 9.4451,
+  "geodesic_top_k_distances": [
+    0.0,
+    6.7725,
+    7.5053,
+    7.522,
+    7.6699
+  ]
+}

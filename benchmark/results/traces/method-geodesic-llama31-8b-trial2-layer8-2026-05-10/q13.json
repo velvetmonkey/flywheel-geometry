@@ -1,0 +1,38 @@
+{
+  "query_id": "q13",
+  "query_text": "How does a long-term commitment differ in shape from a short-cycle decision?",
+  "top_k": [
+    {
+      "id": "ph-02",
+      "title": "What craftsmen know about feedback"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    },
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ha-02",
+      "title": "Body corporate disputes \u2014 strata notes"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-8/run-2026-05-10",
+  "anchor_corpus_index": 26,
+  "anchor_corpus_id": "ph-02",
+  "anchor_euclidean_distance": 6.019,
+  "geodesic_top_k_distances": [
+    0.0,
+    4.6681,
+    4.7242,
+    4.8232,
+    4.8309
+  ]
+}

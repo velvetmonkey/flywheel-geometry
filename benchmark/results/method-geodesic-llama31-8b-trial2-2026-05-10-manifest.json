@@ -1,0 +1,105 @@
+{
+  "method": "method-geodesic",
+  "started_at": "2026-05-10T16:56:14.313473+00:00",
+  "completed_at": "2026-05-10T16:56:14.894124+00:00",
+  "wall_clock_seconds_total": 0.58,
+  "stage_1_extract_manifest": {
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "dtype_runtime": "bfloat16",
+    "dtype_on_disk": "float32",
+    "layers": [
+      8,
+      10,
+      12
+    ],
+    "n_layers_in_model": 32,
+    "d_model": 4096,
+    "pooling": "last-token",
+    "corpus_format": "f\"{title}\\n\\n{body}\"",
+    "query_format": "raw query_text, no template",
+    "corpus_count": 50,
+    "queries_count": 30,
+    "corpus_sha256": "76f33934a2d994c3d77e0611b3ceb5209c8a972836fc164aa8291d761b2a0d7d",
+    "queries_sha256": "e98ce569222310e06510ef676f994f73b5a66387c844e04315366cb2e075da07",
+    "wall_clock_seconds": {
+      "model_load": 21.3,
+      "corpus_extract": 5.5,
+      "query_extract": 2.1
+    },
+    "gpu_name": "NVIDIA GeForce RTX 4090",
+    "gpu_count": 1,
+    "transformer_lens_version": "2.8.0",
+    "torch_version": "2.4.0+cu121"
+  },
+  "stage_2_run_args": {
+    "activations": "benchmark/methods/method-geodesic/cache/activations-trial2.npz",
+    "corpus_jsonl_sha256": "76f33934a2d994c3d77e0611b3ceb5209c8a972836fc164aa8291d761b2a0d7d",
+    "queries_jsonl_sha256": "e98ce569222310e06510ef676f994f73b5a66387c844e04315366cb2e075da07",
+    "k": 10,
+    "top_k": 5,
+    "primary_layer": 10,
+    "random_control": true,
+    "random_seed": 42
+  },
+  "pre_registration": {
+    "primary_layer": 10,
+    "sensitivity_layers": [
+      8,
+      12
+    ],
+    "hard_gates": {
+      "lift_over_method_3": "\u22651.20\u00d7",
+      "above_random_kNN": ">+0.05 absolute"
+    }
+  },
+  "artifacts": [
+    {
+      "layer": 8,
+      "jsonl": "benchmark/results/method-geodesic-llama31-8b-trial2-layer8-2026-05-10.jsonl",
+      "traces_dir": "benchmark/results/traces/method-geodesic-llama31-8b-trial2-layer8-2026-05-10",
+      "diagnostic": "benchmark/results/method-geodesic-llama31-8b-trial2-layer8-2026-05-10-diagnostic.json",
+      "graphml": "benchmark/results/method-geodesic-llama31-8b-trial2-layer8-2026-05-10.graphml",
+      "diagnostic_summary": {
+        "n_edges": 422,
+        "diameter": 2,
+        "diameter_le_2": true
+      }
+    },
+    {
+      "layer": 10,
+      "jsonl": "benchmark/results/method-geodesic-llama31-8b-trial2-layer10-2026-05-10.jsonl",
+      "traces_dir": "benchmark/results/traces/method-geodesic-llama31-8b-trial2-layer10-2026-05-10",
+      "diagnostic": "benchmark/results/method-geodesic-llama31-8b-trial2-layer10-2026-05-10-diagnostic.json",
+      "graphml": "benchmark/results/method-geodesic-llama31-8b-trial2-layer10-2026-05-10.graphml",
+      "diagnostic_summary": {
+        "n_edges": 407,
+        "diameter": 3,
+        "diameter_le_2": false
+      }
+    },
+    {
+      "layer": 12,
+      "jsonl": "benchmark/results/method-geodesic-llama31-8b-trial2-layer12-2026-05-10.jsonl",
+      "traces_dir": "benchmark/results/traces/method-geodesic-llama31-8b-trial2-layer12-2026-05-10",
+      "diagnostic": "benchmark/results/method-geodesic-llama31-8b-trial2-layer12-2026-05-10-diagnostic.json",
+      "graphml": "benchmark/results/method-geodesic-llama31-8b-trial2-layer12-2026-05-10.graphml",
+      "diagnostic_summary": {
+        "n_edges": 391,
+        "diameter": 3,
+        "diameter_le_2": false
+      }
+    }
+  ],
+  "random_control": {
+    "layer": 10,
+    "jsonl": "benchmark/results/method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10.jsonl",
+    "traces_dir": "benchmark/results/traces/method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10",
+    "diagnostic": "benchmark/results/method-geodesic-llama31-8b-trial2-layer10-randomctrl-2026-05-10-diagnostic.json"
+  },
+  "env": {
+    "numpy": "2.4.3",
+    "scipy": "1.17.1",
+    "networkx": "3.6.1",
+    "python": "3.12.3"
+  }
+}

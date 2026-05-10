@@ -1,0 +1,30 @@
+{
+  "query_id": "q23",
+  "query_text": "What unblocks a stuck collaborative-decision system?",
+  "top_k": [
+    {
+      "id": "ha-05",
+      "title": "Insurance renewal comparison spreadsheet"
+    },
+    {
+      "id": "dj-01",
+      "title": "Daily \u2014 2026-04-15"
+    },
+    {
+      "id": "qf-03",
+      "title": "Regime change detection \u2014 notes"
+    },
+    {
+      "id": "eq-02",
+      "title": "Lateral work session 2026-04-12"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    }
+  ],
+  "method": "method-geodesic-randomctrl",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-10-randomctrl/run-2026-05-10",
+  "anchor_corpus_index": 24,
+  "anchor_euclidean_distance": 7.7582
+}

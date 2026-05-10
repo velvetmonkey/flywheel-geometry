@@ -1,0 +1,38 @@
+{
+  "query_id": "q13",
+  "query_text": "How does a long-term commitment differ in shape from a short-cycle decision?",
+  "top_k": [
+    {
+      "id": "qf-01",
+      "title": "Meridian Capital \u2014 book overview"
+    },
+    {
+      "id": "ca-04",
+      "title": "Conference circuit \u2014 ROI estimates"
+    },
+    {
+      "id": "ph-04",
+      "title": "The shape of a long bet"
+    },
+    {
+      "id": "ve-05",
+      "title": "Electric mountain bike \u2014 maintenance schedule"
+    },
+    {
+      "id": "sa-03",
+      "title": "Choosing a vector DB \u2014 comparison"
+    }
+  ],
+  "method": "method-geodesic",
+  "manifold_uri": "manifold://llama-3.1-8b-instruct/layer-12/run-2026-05-10",
+  "anchor_corpus_index": 30,
+  "anchor_corpus_id": "qf-01",
+  "anchor_euclidean_distance": 9.0398,
+  "geodesic_top_k_distances": [
+    0.0,
+    7.0126,
+    7.3844,
+    7.3887,
+    7.5343
+  ]
+}
