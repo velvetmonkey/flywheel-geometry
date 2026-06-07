@@ -14,7 +14,7 @@ Open question: do cross-domain bridges in a personal knowledge vault — notes t
 
 ## Falsification log
 
-Each trial is pre-registered before any data lands. Resolution is one of `falsified`, `validated`, `running`, or `deferred` — the same vocabulary as `flywheel-ideas` outcome states. Public commitments only; the private vault holds method-design notes that don't bind outside readers.
+Each trial is pre-registered before any data lands. Resolution is one of `falsified`, `validated`, `running`, or `deferred` — the same vocabulary as `flywheel-ideas` [[outcome]] states. Public commitments only; the private vault holds method-design notes that don't bind outside readers.
 
 | # | Trial | Pre-registered | Status | Numbers / outcome |
 |---|---|---|---|---|
@@ -23,9 +23,9 @@ Each trial is pre-registered before any data lands. Resolution is one of `falsif
 | 2 | Method 6 — kNN + geodesic distance over residual-stream activations at layers 8 / 10 / 12 of `meta-llama/Llama-3.1-8B-Instruct` beats the kill-product floor on the 27 primary queries by ≥20 % p@5 | 2026-05-08 (primary layer 10 + sensitivity 8/12 + random-kNN negative control + activation contract locked at commit `82540a3`) | ❌ **falsified 2026-05-10** | Layer-10 (primary) **p@5 = 0.104 (11/27)** vs required ≥0.444. Lost to BM25 (0.252, −59%), voyage-native-rerank (0.333, −69%), and the kill-product floor cli-direct-rerank-claude-sonnet (0.370, −72%). Within-method random-kNN control at layer 10 scored 0.089; geodesic adds only +0.015 absolute, statistically tied at n=27 (eval flagged `tied_with_best`). Layer sensitivity: layer-12 0.074, layer-8 0.059. Activations SHA256 `bf619cf5151…`. Full audit: [`docs/trial2-postmortem.md`](./docs/trial2-postmortem.md). Public announcement: [@thevelvetmonke thread](https://x.com/thevelvetmonke/status/2053522315162607659) (6 posts + 1 reply). Refutes flywheel-ideas `asm-3zmj1VGB`; outcome record assignment in flywheel-ideas pending. |
 | 3 | Method 6 vs rationale-augmented baselines — does the manifold effect survive the kill-product floor's full set (Method 3 + 4a + 4b)? | Triggers only on Trial 2 validate branch | 🚫 **deferred indefinitely** (Trial 2 falsified) | This branch was conditional on Trial 2 PASS. Method 4a / 4b full runs no longer triggered. Locked assumption `asm-wxSuxhBk` deferred indefinitely. |
 
-The artifact-vs-geometry distinction relevant to Trial 1: the cheap-probe sweep replicated @slashreboot's *surface artifact* (different LLMs output convergent self-reported coordinates on identical prompts) but **not** the underlying claim that those coordinates measure activation geometry. Reasoning traces show models constructing coordinates from PAD valence/arousal axes + Russell-circumplex priors learned in training. Method 6 (Trial 2) is the path that would read activation manifolds directly — which is why the project pivoted there rather than discarding the manifold thesis on Trial 1's failure.
+The artifact-vs-geometry distinction relevant to Trial 1: the cheap-probe sweep replicated @slashreboot's *surface artifact* (different LLMs output convergent self-reported coordinates on identical prompts) but **not** the underlying claim that those coordinates measure activation geometry. Reasoning traces show [[models]] constructing coordinates from PAD valence/arousal axes + Russell-circumplex priors learned in training. Method 6 (Trial 2) is the path that would read activation manifolds directly — which is why the project pivoted there rather than discarding the manifold [[thesis]] on Trial 1's failure.
 
-The full leaderboard with all per-query metrics is at [`benchmark/results/RESULTS.md`](./benchmark/results/RESULTS.md). The flywheel-ideas decision ledger (idea `idea-b4ZeRCoa`) holds the full assumption / outcome state.
+The full leaderboard with all per-query [[metrics]] is at [`benchmark/results/RESULTS.md`](./benchmark/results/RESULTS.md). The flywheel-ideas decision ledger (idea `idea-b4ZeRCoa`) holds the full assumption / outcome state.
 
 ---
 
@@ -59,7 +59,7 @@ Sparse autoencoders (SAEs) tile the manifold into fragments. They shatter the he
 
 **Isn't**: a claim that activation geometry beats cosine for general retrieval. It probably doesn't, and we're not testing that. Use the right tool for each question — cosine for precision search, geodesic for bridge-finding.
 
-The bet: notes from different domains — horse training, AI architecture, finance, philosophy — that share underlying structure (feedback loops, regime change, calibration, exploration vs exploitation) should surface together via geodesic adjacency on the activation manifold. No shared keywords. No explicit links. Just structural proximity.
+The bet: notes from different domains — horse training, AI architecture, finance, [[philosophy]] — that share underlying structure (feedback loops, regime change, calibration, exploration vs exploitation) should surface together via geodesic adjacency on the activation manifold. No shared keywords. No explicit links. Just structural proximity.
 
 Whether activation-derived geometry actually delivers this signal more reliably than rationale-augmented embedding retrieval is the open empirical question.
 
@@ -91,7 +91,7 @@ The second baseline is the one that distinguishes retrieval from presentation. I
 
 Results — confirming or refuting — get published here.
 
-A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation extraction.
+A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation [[extraction]].
 
 ### Tracked through [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)
 
@@ -170,6 +170,27 @@ The `flywheel-geometry` repo is **closed at v0.1** with the falsifier ran-and-fa
 
 ### Goodfire Ember note (2026-05-08)
 
-Goodfire's hosted [Ember](https://goodfire.ai) interpretability platform was investigated as a path for Method 6's activation extraction; the SDK exposes **SAE-decoded feature activations**, not raw residual-stream tensors, and self-serve API access was deprecated Feb 2026 in favour of select-partner onboarding. Method 6 as locked (residual-stream kNN at layers 8 / 10 / 12) therefore runs via cloud-GPU rental (vast.ai / RunPod, ~$1, ~30 min wall-clock) using TransformerLens directly — no main-machine GPU work, no API dependency on the central bet. Goodfire's open-source SAE weights ([`Goodfire/Llama-3.1-8B-Instruct-SAE-l19`](https://huggingface.co/Goodfire/Llama-3.1-8B-Instruct-SAE-l19)) are downloadable and may underwrite a Method 6′ — *kNN over SAE-feature space at layer 19* — as a v0.2 sensitivity branch in the same rental session. Method 6′ is **not** a v0.1 substitute: it tests a different scientific question (feature-space kNN ≠ residual-stream kNN) and would need its own pre-registration before scoring.
+Goodfire's hosted [Ember](https://goodfire.ai) interpretability platform was investigated as a path for Method 6's activation extraction; the SDK exposes **SAE-decoded feature activations**, not raw residual-stream tensors, and self-serve API access was deprecated Feb 2026 in favour of select-partner [[onboarding]]. Method 6 as locked (residual-stream kNN at layers 8 / 10 / 12) therefore runs via cloud-GPU rental (vast.ai / RunPod, ~$1, ~30 min wall-clock) using TransformerLens directly — no main-machine GPU work, no API dependency on the central bet. Goodfire's open-source SAE weights ([`Goodfire/Llama-3.1-8B-Instruct-SAE-l19`](https://huggingface.co/Goodfire/Llama-3.1-8B-Instruct-SAE-l19)) are downloadable and may underwrite a Method 6′ — *kNN over SAE-feature space at layer 19* — as a v0.2 sensitivity branch in the same rental session. Method 6′ is **not** a v0.1 substitute: it tests a different scientific question (feature-space kNN ≠ residual-stream kNN) and would need its own pre-registration before scoring.
 
 Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-archive). Where this came from: [`docs/philosophy.md`](./docs/philosophy.md).
+
+## Related repositories
+
+Part of the **Flywheel suite** — local-first knowledge infrastructure over a plain-markdown Obsidian vault:
+
+- [vault-core](https://github.com/velvetmonkey/vault-core) — Shared infrastructure for the Flywheel ecosystem.
+- [flywheel-memory](https://github.com/velvetmonkey/flywheel-memory) — Persistent knowledge-graph memory MCP server: semantic search, read, and write over your vault.
+- [flywheel-crank](https://github.com/velvetmonkey/flywheel-crank) — Desktop window into your vault's Flywheel MCP server.
+- [flywheel-gravity](https://github.com/velvetmonkey/flywheel-gravity) — A compressed, reality-filtered context field over a vault.
+- [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas) — Local-first decision ledger: falsifiable bets, accepted outcomes, reusable lessons.
+- [mega-monkey](https://github.com/velvetmonkey/mega-monkey) — Telegram-native AI research cockpit over an Obsidian vault.
+- [roundtable](https://github.com/velvetmonkey/roundtable) — Local MCP server for delegating tasks to multiple AI models.
+
+Research and experiments:
+
+- [flywheel-concept](https://github.com/velvetmonkey/flywheel-concept) — A falsifiable study of cross-model concept geometry.
+- **flywheel-geometry** (this repo) — A pre-registered study of cross-domain knowledge retrieval.
+- [flywheel-universe](https://github.com/velvetmonkey/flywheel-universe) — Lean 4 / Mathlib-verified core of the descent argument.
+- [flywheel-velvetgram](https://github.com/velvetmonkey/flywheel-velvetgram) — Local widescreen Telegram reader for long-form reading.
+
+Verified-cognition demo: [mcp-seal](https://github.com/velvetmonkey/mcp-seal) (verified MCP approval gate) and [canary](https://github.com/velvetmonkey/canary) (the seal demo host).
