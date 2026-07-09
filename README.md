@@ -31,15 +31,11 @@ The full leaderboard with all per-query [[metrics]] is at [`benchmark/results/RE
 
 ## How this slots in
 
-Flywheel Geometry is an **extension library for [flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — the local-first MCP server that turns an Obsidian vault into safe AI memory. Today flywheel-memory ships hybrid BM25 + semantic search via Reciprocal Rank Fusion. Flywheel Geometry adds a *bridge-finder* axis: a separate query mode answering "what's structurally adjacent across domains?" alongside the existing precision-search modes. If the empirical experiment lands, the new axis ships as an optional layer — same MCP surface, additional `mode: "bridge"` discriminator, no replacement of existing search.
+Flywheel Geometry is an **extension library for flywheel-memory** — the local-first MCP server that turns an Obsidian vault into safe AI memory. Today flywheel-memory ships hybrid BM25 + semantic search via Reciprocal Rank Fusion. Flywheel Geometry adds a *bridge-finder* axis: a separate query mode answering "what's structurally adjacent across domains?" alongside the existing precision-search modes. If the empirical experiment lands, the new axis ships as an optional layer — same MCP surface, additional `mode: "bridge"` discriminator, no replacement of existing search.
 
 Part of the [Flywheel](https://github.com/velvetmonkey) suite:
 
-- **[flywheel-memory](https://github.com/velvetmonkey/flywheel-memory)** — local-first MCP server. Hybrid BM25 + semantic search, knowledge graph, safe writes over an Obsidian vault.
-- **[flywheel-crank](https://github.com/velvetmonkey/flywheel-crank)** — Obsidian plugin. Visual layer over Memory's graph: sidebar, vault health, semantic search UI.
-- **[flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)** — falsifiable decision ledger. Pre-registered assumptions, multi-model AI council dissent, outcome-driven refutation propagation.
 - **flywheel-geometry** *(this repo)* — geodesic retrieval extension. Pre-registered study of cross-domain bridge-finding via activation manifolds.
-- **[flywheel-concept](https://github.com/velvetmonkey/flywheel-concept)** — research programme on whether cross-model activations reveal structured concept geometry.
 
 ---
 
@@ -93,9 +89,9 @@ Results — confirming or refuting — get published here.
 
 A separate falsifier targets the introspective probe itself: extract activations via TransformerLens for the same concepts, compare to self-reported coordinates under adversarial controls (false anchors, fake coordinate frames, synthetic concept domains). If self-report tracks activation-derived relational structure, the probe is measurement-grade. If it tracks the prompt's framing instead, the project pivots to direct activation [[extraction]].
 
-### Tracked through [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas)
+### Tracked through flywheel-ideas
 
-The project's central bets are registered as falsifiable assumptions in the [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas) decision ledger — the sibling project built for exactly this shape of work. Each assumption carries a falsifier and a resolution criterion; multi-model AI council dissent is logged at registration; outcomes (confirm / refute) propagate to dependent claims when experiments resolve.
+The project's central bets are registered as falsifiable assumptions in the flywheel-ideas decision ledger — the sibling project built for exactly this shape of work. Each assumption carries a falsifier and a resolution criterion; multi-model AI council dissent is logged at registration; outcomes (confirm / refute) propagate to dependent claims when experiments resolve.
 
 The currently tracked assumptions, in their flywheel-ideas state as of 2026-05-08 (idea `idea-b4ZeRCoa`):
 
@@ -107,7 +103,7 @@ The currently tracked assumptions, in their flywheel-ideas state as of 2026-05-0
 
 The Anti-Portfolio post-mortem memo for the cheap-probe refutation (`out-MyLPFpg7`) is in the flywheel-ideas vault — root cause, what we expected, what actually happened, and the lesson on pre-registering coherence-pressure variants for any future probe that depends on a model self-reporting structure.
 
-**Update 2026-05-10:** `asm-3zmj1VGB` refuted. The project has pivoted. The pivot is the launch. Public FAIL announcement thread: https://x.com/thevelvetmonke/status/2053522315162607659. Repo postmortem: [`docs/trial2-postmortem.md`](./docs/trial2-postmortem.md). Sibling [`flywheel-concept`](https://github.com/velvetmonkey/flywheel-concept) becomes the primary research lane under a separately pre-registered claim. Watching the thesis fail in the open was the strongest brand outcome the bet could produce — that outcome is now in the record.
+**Update 2026-05-10:** `asm-3zmj1VGB` refuted. The project has pivoted. The pivot is the launch. Public FAIL announcement thread: https://x.com/thevelvetmonke/status/2053522315162607659. Repo postmortem: [`docs/trial2-postmortem.md`](./docs/trial2-postmortem.md). Sibling `flywheel-concept` becomes the primary research lane under a separately pre-registered claim. Watching the thesis fail in the open was the strongest brand outcome the bet could produce — that outcome is now in the record.
 
 ---
 
@@ -166,7 +162,7 @@ Live trial state — including pinned numbers for the three scored kill-product-
 
 **The pivot is the launch.** The public FAIL announcement thread (https://x.com/thevelvetmonke/status/2053522315162607659) and the repo postmortem are the v0.1 deliverables. Watching the thesis fail in the open with full pre-registration discipline was the strongest brand outcome the bet could produce. That outcome is now in the record.
 
-The `flywheel-geometry` repo is **closed at v0.1** with the falsifier ran-and-failed outcome as the canonical artifact. Future work on cross-model concept geometry continues at sibling project [`flywheel-concept`](https://github.com/velvetmonkey/flywheel-concept) under a separately pre-registered claim.
+The `flywheel-geometry` repo is **closed at v0.1** with the falsifier ran-and-failed outcome as the canonical artifact. Future work on cross-model concept geometry continues at sibling project `flywheel-concept` under a separately pre-registered claim.
 
 ### Goodfire Ember note (2026-05-08)
 
@@ -179,18 +175,12 @@ Vision archived at tag [`v0.1-vision-archive`](../../releases/tag/v0.1-vision-ar
 Part of the **Flywheel suite** — local-first knowledge infrastructure over a plain-markdown Obsidian vault:
 
 - [vault-core](https://github.com/velvetmonkey/vault-core) — Shared infrastructure for the Flywheel ecosystem.
-- [flywheel-memory](https://github.com/velvetmonkey/flywheel-memory) — Persistent knowledge-graph memory MCP server: semantic search, read, and write over your vault.
-- [flywheel-crank](https://github.com/velvetmonkey/flywheel-crank) — Desktop window into your vault's Flywheel MCP server.
-- [flywheel-gravity](https://github.com/velvetmonkey/flywheel-gravity) — A compressed, reality-filtered context field over a vault.
-- [flywheel-ideas](https://github.com/velvetmonkey/flywheel-ideas) — Local-first decision ledger: falsifiable bets, accepted outcomes, reusable lessons.
 - [mega-monkey](https://github.com/velvetmonkey/mega-monkey) — Telegram-native AI research cockpit over an Obsidian vault.
 - [roundtable](https://github.com/velvetmonkey/roundtable) — Local MCP server for delegating tasks to multiple AI models.
 
 Research and experiments:
 
-- [flywheel-concept](https://github.com/velvetmonkey/flywheel-concept) — A falsifiable study of cross-model concept geometry.
 - **flywheel-geometry** (this repo) — A pre-registered study of cross-domain knowledge retrieval.
 - [flywheel-universe](https://github.com/velvetmonkey/flywheel-universe) — Lean 4 / Mathlib-verified core of the descent argument.
-- [flywheel-velvetgram](https://github.com/velvetmonkey/flywheel-velvetgram) — Local widescreen Telegram reader for long-form reading.
 
 Verified-cognition demo: [mcp-seal](https://github.com/velvetmonkey/mcp-seal) (verified MCP approval gate) and [canary](https://github.com/velvetmonkey/canary) (the seal demo host).
